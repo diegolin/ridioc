@@ -2,71 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanPrivateDefaultConstructor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithDefaultConstructor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDefaultConstructorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveCharConstructorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrivateDefaultConstructorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MyEnum.java" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanPrivateDefaultConstructor.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithDefaultConstructor.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestEnum.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithDefaultConstructorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveCharConstructorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrivateDefaultConstructorImpl.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanButNoImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanButNoImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithBooleanConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithBooleanConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithByteConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithByteConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithCharacterConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithCharacterConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithDateArrayConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithDateArrayConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithDateConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithDateConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithDoubleConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithDoubleConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithEnumConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithEnumConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithFloatConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithFloatConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithIntegerConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithIntegerConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithLongConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithLongConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveBooleanConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveBooleanConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveByteConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveByteConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveCharConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveCharConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveDoubleConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveDoubleConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveFloatConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveFloatConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveIntegerConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveIntegerConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveLongConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveLongConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithPrimitiveShortConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithPrimitiveShortConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithShortConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithShortConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithStringArrayConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithStringArrayConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestBeanWithStringConstructor.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithStringConstructor.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\TestObjectFactory.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MyObjectFactory.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithBooleanConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithBooleanConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithByteConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithByteConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithCharacterConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithCharacterConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithDateArrayConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDateArrayConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithDateConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDateConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithDoubleConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDoubleConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithEnumConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithEnumConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithFloatConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithFloatConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithIntegerConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithIntegerConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithLongConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithLongConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveBooleanConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveBooleanConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveByteConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveByteConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveDoubleConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveDoubleConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveFloatConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveFloatConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveIntegerConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveIntegerConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveLongConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveLongConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithPrimitiveShortConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveShortConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithShortConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithShortConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithStringArrayConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithStringArrayConstructorImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\impl\TestBeanWithStringConstructorImpl.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithStringConstructorImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/DITest.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/DITest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iml" afterPath="$PROJECT_DIR$/ridioc.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.ipr" afterPath="$PROJECT_DIR$/ridioc.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398851883376" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853129363" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853240201" ignored="false" />
     <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852781985" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398846903271" ignored="false" />
@@ -1007,7 +948,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="34" selection-start="890" selection-end="890" vertical-scroll-proportion="0.54855645">
+            <state line="28" column="42" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.44967532">
               <folding />
             </state>
           </provider>
@@ -1110,7 +1051,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -1121,7 +1062,20 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -1364,12 +1318,13 @@
     <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49815044" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35240573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20838471" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19023462" sideWeight="0.5018496" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.7053021" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19023462" sideWeight="0.5018496" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24920736" sideWeight="0.7916153" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6506765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.2860666" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1379,7 +1334,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35240573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1427,7 +1381,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="2nd shot of README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="test beans classes should not start with TESTxyz - maven doesn't like it" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1444,6 +1398,7 @@
     <MESSAGE value="initial release 0.1" />
     <MESSAGE value="1st shot of README.md" />
     <MESSAGE value="2nd shot of README.md" />
+    <MESSAGE value="test beans classes should not start with TESTxyz - maven doesn't like it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1526,7 +1481,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="34" selection-start="890" selection-end="890" vertical-scroll-proportion="0.54855645">
+        <state line="28" column="42" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.44967532">
           <folding />
         </state>
       </provider>
