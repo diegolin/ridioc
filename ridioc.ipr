@@ -52,6 +52,13 @@
       </list>
     </option>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="Diego.kuenzi">
+      <words>
+        <w>ridioc</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ridioc.iml" filepath="$PROJECT_DIR$/ridioc.iml" />
