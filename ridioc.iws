@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.ipr" afterPath="$PROJECT_DIR$/ridioc.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398851883376" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853240201" ignored="false" />
+    <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398857199439" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853540542" ignored="false" />
     <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852781985" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398846903271" ignored="false" />
@@ -948,7 +950,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="42" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.44967532">
+            <state line="106" column="32" selection-start="3298" selection-end="3298" vertical-scroll-proportion="0.86713284">
               <folding />
             </state>
           </provider>
@@ -970,6 +972,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
     <option name="myDateState">
       <MyDateState />
     </option>
@@ -1011,7 +1014,7 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="ridioc-core" />
+          <option name="myItemId" value="ridioc core" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -1021,7 +1024,7 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="ridioc-core" />
+          <option name="myItemId" value="ridioc core" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -1319,12 +1322,12 @@
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35240573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20838471" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26263872" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19023462" sideWeight="0.5018496" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24920736" sideWeight="0.7916153" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19023462" sideWeight="0.7373613" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.58323056" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6506765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.2860666" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1481,7 +1484,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="42" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.44967532">
+        <state line="106" column="32" selection-start="3298" selection-end="3298" vertical-scroll-proportion="0.86713284">
           <folding />
         </state>
       </provider>
