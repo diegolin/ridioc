@@ -4,11 +4,11 @@ ridioc - ridiculously small inversion of control for Java
 ## Credits
 
 Built upon
-* reflections [ronmamo / reflections] (https://github.com/ronmamo/reflections)
-* paranamer [paul-hammant / paranamer] (https://github.com/paul-hammant/paranamer)
+* reflections [ronmamo / reflections](https://github.com/ronmamo/reflections)
+* paranamer [paul-hammant / paranamer](https://github.com/paul-hammant/paranamer)
 
 Tested using
-* JUnit [junit-team / junit] (https://github.com/junit-team/junit)
+* JUnit [junit-team / junit](https://github.com/junit-team/junit)
 
 ## License
 
