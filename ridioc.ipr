@@ -25,11 +25,16 @@
         <module name="ridioc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ridioc" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+  </component>
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -39,6 +44,12 @@
         <option name="myName" value="Project Default" />
         <option name="myLocal" value="false" />
         <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
+        <inspection_tool class="UnusedDeclaration" enabled="false" level="WARNING" enabled_by_default="false">
+          <option name="ADD_MAINS_TO_ENTRIES" value="true" />
+          <option name="ADD_APPLET_TO_ENTRIES" value="true" />
+          <option name="ADD_SERVLET_TO_ENTRIES" value="true" />
+          <option name="ADD_NONJAVA_TO_ENTRIES" value="true" />
+        </inspection_tool>
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -55,8 +66,14 @@
   <component name="ProjectDictionaryState">
     <dictionary name="Diego.kuenzi">
       <words>
+        <w>github</w>
+        <w>hammant</w>
+        <w>junit</w>
         <w>lgpl</w>
+        <w>namer</w>
+        <w>paranamer</w>
         <w>ridioc</w>
+        <w>webpage</w>
       </words>
     </dictionary>
   </component>
