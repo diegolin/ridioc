@@ -15,5 +15,5 @@ Tested using
 [LGPL] (https://www.gnu.org/copyleft/lesser.html)
 
 ## About me
-*[LinkedIn profile](http://www.linkedin.com/in/dkitc)
-*[Xing profile](https://www.xing.com/profile/Diego_Kuenzi)
+* [LinkedIn profile](http://www.linkedin.com/in/dkitc)
+* [Xing profile](https://www.xing.com/profile/Diego_Kuenzi)
