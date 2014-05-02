@@ -1,145 +1,48 @@
-package ch.dkitc.ridioc;
-
-import ch.dkitc.ridioc.test.api.*;
-import org.junit.Test;
+package ch.dkitc.ridioc.test;
 
 import javax.xml.bind.DatatypeConverter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class DITest {
+import ch.dkitc.ridioc.DIObjectFactory;
+import ch.dkitc.ridioc.test.api.*;
 
-    public static final String PACKAGE_PREFIX = DITest.class.getPackage().getName();
+public class DIObjectFactoryTest extends DIBaseTest {
+
+    private DIObjectFactory objectFactory;
+
+    public DIObjectFactoryTest() {
+    }
+
+    @Before
+    public void initialize() {
+        objectFactory = createObjectFactory();
+    }
 
     @Test
     public void factoryRegisterInstancePositiveTests() {
-        MyObjectFactory objectFactory = DI.createObjectFactory(MyObjectFactory.class, PACKAGE_PREFIX);
-        assertNotNull(objectFactory);
-
-        // (default constructor)
-        {
-            BeanWithDefaultConstructor testBean1 = objectFactory.instance(BeanWithDefaultConstructor.class);
-            assertNotNull(testBean1);
-            BeanWithDefaultConstructor testBean2 = objectFactory.instance(BeanWithDefaultConstructor.class);
-            assertNotNull(testBean2);
-            assertEquals(testBean1, testBean2);
-        }
-
-        // java.lang.String
-        {
-            objectFactory.registerInstance(String.class, "myTestString");
-            BeanWithStringConstructor bean1 = objectFactory.instance(BeanWithStringConstructor.class);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestString(), "myTestString");
-            BeanWithStringConstructor bean2 = objectFactory.instance(BeanWithStringConstructor.class);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestString(), "myTestString");
-            assertEquals(bean1, bean2);
-        }
-
-        // int (primitive)
-        {
-            objectFactory.registerInstance(int.class, Integer.MAX_VALUE);
-            BeanWithPrimitiveIntegerConstructor bean1 = objectFactory.instance(BeanWithPrimitiveIntegerConstructor.class);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestInt(), Integer.MAX_VALUE);
-            BeanWithPrimitiveIntegerConstructor bean2 = objectFactory.instance(BeanWithPrimitiveIntegerConstructor.class);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestInt(), Integer.MAX_VALUE);
-            assertEquals(bean1, bean2);
-        }
-
-        // java.lang.Integer
-        {
-            objectFactory.registerInstance(Integer.class, Integer.MAX_VALUE);
-            BeanWithIntegerConstructor bean1 = objectFactory.instance(BeanWithIntegerConstructor.class);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestInteger(), new Integer(Integer.MAX_VALUE));
-            BeanWithIntegerConstructor bean2 = objectFactory.instance(BeanWithIntegerConstructor.class);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestInteger(), new Integer(Integer.MAX_VALUE));
-            assertEquals(bean1, bean2);
-        }
-
-        // java.lang.Enum
-        {
-            objectFactory.registerInstance(MyEnum.class, MyEnum.ONE);
-            BeanWithEnumConstructor bean1 = objectFactory.instance(BeanWithEnumConstructor.class);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestEnum(), MyEnum.ONE);
-            BeanWithEnumConstructor bean2 = objectFactory.instance(BeanWithEnumConstructor.class);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestEnum(), MyEnum.ONE);
-            assertEquals(bean1, bean2);
-        }
+        factoryRegisterInstancePositiveTests_checkDefaultConstructor();
+        factoryRegisterInstancePositiveTests_checkJavaLangString();
+        factoryRegisterInstancePositiveTests_checkPrimitiveInteger();
+        factoryRegisterInstancePositiveTests_checkJavaLangInteger();
+        factoryRegisterInstancePositiveTests_checkJavaLangEnum();
     }
 
     @Test
     public void factoryNewInstancePositiveTests() {
-        MyObjectFactory objectFactory = DI.createObjectFactory(MyObjectFactory.class, PACKAGE_PREFIX);
-        assertNotNull(objectFactory);
-
-        // default constructor
-        {
-            BeanWithDefaultConstructor bean1 = objectFactory.newInstance(BeanWithDefaultConstructor.class);
-            assertNotNull(bean1);
-            BeanWithDefaultConstructor bean2 = objectFactory.newInstance(BeanWithDefaultConstructor.class);
-            assertNotNull(bean2);
-            assertNotEquals(bean1, bean2);
-        }
-
-        // java.lang.String
-        {
-            BeanWithStringConstructor bean1 = objectFactory.newInstance(BeanWithStringConstructor.class, "myTestString");
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestString(), "myTestString");
-            BeanWithStringConstructor bean2 = objectFactory.newInstance(BeanWithStringConstructor.class, "myTestString");
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestString(), "myTestString");
-            assertNotEquals(bean1, bean2);
-        }
-
-        // int (primitive)
-        {
-            BeanWithPrimitiveIntegerConstructor bean1 = objectFactory.newInstance(BeanWithPrimitiveIntegerConstructor.class, 1234);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestInt(), 1234);
-            BeanWithPrimitiveIntegerConstructor bean2 = objectFactory.newInstance(BeanWithPrimitiveIntegerConstructor.class, 1234);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestInt(), 1234);
-            assertNotEquals(bean1, bean2);
-        }
-
-        // java.lang.Integer
-        {
-            BeanWithIntegerConstructor bean1 = objectFactory.newInstance(BeanWithIntegerConstructor.class, 1234);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestInteger(), new Integer(1234));
-            BeanWithIntegerConstructor bean2 = objectFactory.newInstance(BeanWithIntegerConstructor.class, 1234);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestInteger(), new Integer(1234));
-            assertNotEquals(bean1, bean2);
-        }
-
-        // java.lang.Enum
-        {
-            BeanWithEnumConstructor bean1 = objectFactory.newInstance(BeanWithEnumConstructor.class, MyEnum.ONE);
-            assertNotNull(bean1);
-            assertEquals(bean1.getTestEnum(), MyEnum.ONE);
-            BeanWithEnumConstructor bean2 = objectFactory.newInstance(BeanWithEnumConstructor.class, MyEnum.ONE);
-            assertNotNull(bean2);
-            assertEquals(bean2.getTestEnum(), MyEnum.ONE);
-            assertNotEquals(bean1, bean2);
-        }
+        factoryNewInstancePositiveTests_checkDefaultConstructor();
+        factoryNewInstancePositiveTests_checkJavaLangString();
+        factoryNewInstancePositiveTests_checkPrimitiveInteger();
+        factoryNewInstancePositiveTests_checkJavaLangInteger();
+        factoryNewInstancePositiveTests_checkJavaLangEnum();
     }
 
     @Test
-    public void factoryRegisterArrayLiteralPositiveTets() {
-        MyObjectFactory objectFactory = DI.createObjectFactory(MyObjectFactory.class, PACKAGE_PREFIX);
-        assertNotNull(objectFactory);
-
+    public void factoryRegisterArrayLiteralPositiveTests() {
         // java.lang.String[]
         {
             List<String> testStrings = new ArrayList<String>();
@@ -156,9 +59,6 @@ public class DITest {
 
     @Test
     public void factoryRegisterStringLiteralPositiveTests() {
-        MyObjectFactory objectFactory = DI.createObjectFactory(MyObjectFactory.class, PACKAGE_PREFIX);
-        assertNotNull(objectFactory);
-
         // java.lang.String
         {
             objectFactory.registerStringLiteral("testString", "myTestString");
@@ -326,69 +226,118 @@ public class DITest {
 
     @Test
     public void factoryInstanceNegativeTests() {
-        MyObjectFactory objectFactory = DI.createObjectFactory(MyObjectFactory.class, PACKAGE_PREFIX);
-        assertNotNull(objectFactory);
-
         try {
             objectFactory.instance(BeanButNoImpl.class);
             fail("should throw IllegalArgumentException");
-        }
-        catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             // good!
         }
 
         try {
             objectFactory.instance(BeanPrivateDefaultConstructor.class);
             fail("should throw IllegalArgumentException");
-        }
-        catch (IllegalArgumentException ex) {
-            // good!
-        }
-    }
-
-    @Test
-    public void createFactoryNegativeTests() {
-        try {
-            DI.createObjectFactory(null, PACKAGE_PREFIX);
-            fail("should throw an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {
-            // good!
-        }
-
-        try {
-            DI.createObjectFactory(Object.class, PACKAGE_PREFIX);
-            fail("should throw an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {
-            // good!
-        }
-
-        try {
-            DI.createObjectFactory(EmptyInterface.class, PACKAGE_PREFIX);
-            fail("should throw an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {
-            // good!
-        }
-
-        try {
-            DI.createObjectFactory(InterfaceWithFiveMethodsButNotAnObjectFactory.class, PACKAGE_PREFIX);
-            fail("should throw an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {
-            // good!
-        }
-
-        try {
-            DI.createObjectFactory(MyObjectFactory.class, null);
-            fail("should throw an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {
-            // good!
-        }
-
-        try {
-            DI.createObjectFactory(MyObjectFactory.class, "");
-            fail("should throw an IllegalArgumentException");
         } catch (IllegalArgumentException ex) {
             // good!
         }
     }
 
+    private void factoryRegisterInstancePositiveTests_checkJavaLangEnum() {
+        objectFactory.registerInstance(MyEnum.class, MyEnum.ONE);
+        BeanWithEnumConstructor bean1 = objectFactory.instance(BeanWithEnumConstructor.class);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestEnum(), MyEnum.ONE);
+        BeanWithEnumConstructor bean2 = objectFactory.instance(BeanWithEnumConstructor.class);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestEnum(), MyEnum.ONE);
+        assertEquals(bean1, bean2);
+    }
+
+    private void factoryRegisterInstancePositiveTests_checkPrimitiveInteger() {
+        objectFactory.registerInstance(int.class, Integer.MAX_VALUE);
+        BeanWithPrimitiveIntegerConstructor bean1 = objectFactory.instance(BeanWithPrimitiveIntegerConstructor.class);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestInt(), Integer.MAX_VALUE);
+        BeanWithPrimitiveIntegerConstructor bean2 = objectFactory.instance(BeanWithPrimitiveIntegerConstructor.class);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestInt(), Integer.MAX_VALUE);
+        assertEquals(bean1, bean2);
+    }
+
+    private void factoryRegisterInstancePositiveTests_checkDefaultConstructor() {
+        BeanWithDefaultConstructor testBean1 = objectFactory.instance(BeanWithDefaultConstructor.class);
+        assertNotNull(testBean1);
+        BeanWithDefaultConstructor testBean2 = objectFactory.instance(BeanWithDefaultConstructor.class);
+        assertNotNull(testBean2);
+        assertEquals(testBean1, testBean2);
+    }
+
+    private void factoryRegisterInstancePositiveTests_checkJavaLangString() {
+        objectFactory.registerInstance(String.class, "myTestString");
+        BeanWithStringConstructor bean1 = objectFactory.instance(BeanWithStringConstructor.class);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestString(), "myTestString");
+        BeanWithStringConstructor bean2 = objectFactory.instance(BeanWithStringConstructor.class);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestString(), "myTestString");
+        assertEquals(bean1, bean2);
+    }
+
+    private void factoryRegisterInstancePositiveTests_checkJavaLangInteger() {
+        objectFactory.registerInstance(Integer.class, Integer.MAX_VALUE);
+        BeanWithIntegerConstructor bean1 = objectFactory.instance(BeanWithIntegerConstructor.class);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestInteger(), new Integer(Integer.MAX_VALUE));
+        BeanWithIntegerConstructor bean2 = objectFactory.instance(BeanWithIntegerConstructor.class);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestInteger(), new Integer(Integer.MAX_VALUE));
+        assertEquals(bean1, bean2);
+    }
+
+    private void factoryNewInstancePositiveTests_checkJavaLangInteger() {
+        BeanWithIntegerConstructor bean1 = objectFactory.newInstance(BeanWithIntegerConstructor.class, 1234);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestInteger(), new Integer(1234));
+        BeanWithIntegerConstructor bean2 = objectFactory.newInstance(BeanWithIntegerConstructor.class, 1234);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestInteger(), new Integer(1234));
+        assertNotEquals(bean1, bean2);
+    }
+
+    private void factoryNewInstancePositiveTests_checkJavaLangString() {
+        BeanWithStringConstructor bean1 = objectFactory.newInstance(BeanWithStringConstructor.class, "myTestString");
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestString(), "myTestString");
+        BeanWithStringConstructor bean2 = objectFactory.newInstance(BeanWithStringConstructor.class, "myTestString");
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestString(), "myTestString");
+        assertNotEquals(bean1, bean2);
+    }
+
+    private void factoryNewInstancePositiveTests_checkDefaultConstructor() {
+        BeanWithDefaultConstructor bean1 = objectFactory.newInstance(BeanWithDefaultConstructor.class);
+        assertNotNull(bean1);
+        BeanWithDefaultConstructor bean2 = objectFactory.newInstance(BeanWithDefaultConstructor.class);
+        assertNotNull(bean2);
+        assertNotEquals(bean1, bean2);
+    }
+
+    private void factoryNewInstancePositiveTests_checkPrimitiveInteger() {
+        BeanWithPrimitiveIntegerConstructor bean1 = objectFactory.newInstance(BeanWithPrimitiveIntegerConstructor.class, 1234);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestInt(), 1234);
+        BeanWithPrimitiveIntegerConstructor bean2 = objectFactory.newInstance(BeanWithPrimitiveIntegerConstructor.class, 1234);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestInt(), 1234);
+        assertNotEquals(bean1, bean2);
+    }
+
+    private void factoryNewInstancePositiveTests_checkJavaLangEnum() {
+        BeanWithEnumConstructor bean1 = objectFactory.newInstance(BeanWithEnumConstructor.class, MyEnum.ONE);
+        assertNotNull(bean1);
+        assertEquals(bean1.getTestEnum(), MyEnum.ONE);
+        BeanWithEnumConstructor bean2 = objectFactory.newInstance(BeanWithEnumConstructor.class, MyEnum.ONE);
+        assertNotNull(bean2);
+        assertEquals(bean2.getTestEnum(), MyEnum.ONE);
+        assertNotEquals(bean1, bean2);
+    }
 }

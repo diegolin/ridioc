@@ -13,18 +13,17 @@ public final class DI {
         return (FACTORY) Proxy.newProxyInstance(factoryType.getClassLoader(), new Class[]{checkedFactoryType}, factoryHandler);
     }
 
-    private static String checkAndMassagePackagePrefix(String packagePrefix) {
-        if (packagePrefix == null || packagePrefix.isEmpty()) {
-            throw new IllegalArgumentException("'packagePrefix' must not be NULL or empty");
-        }
-        // cut off '.'
-        String realPackagePrefix;
-        if (packagePrefix.endsWith(".")) {
-            realPackagePrefix = packagePrefix.substring(0, packagePrefix.length() - 1);
-        } else {
-            realPackagePrefix = packagePrefix;
-        }
-        return realPackagePrefix;
+    private static Map<Class<?>, Class<?>> createWrappedPrimitiveTypeMap() {
+        Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap = new HashMap<Class<?>, Class<?>>();
+        wrappedPrimitiveTypeMap.put(byte.class, Byte.class);
+        wrappedPrimitiveTypeMap.put(short.class, Short.class);
+        wrappedPrimitiveTypeMap.put(int.class, Integer.class);
+        wrappedPrimitiveTypeMap.put(long.class, Long.class);
+        wrappedPrimitiveTypeMap.put(float.class, Float.class);
+        wrappedPrimitiveTypeMap.put(double.class, Double.class);
+        wrappedPrimitiveTypeMap.put(char.class, Character.class);
+        wrappedPrimitiveTypeMap.put(boolean.class, Boolean.class);
+        return wrappedPrimitiveTypeMap;
     }
 
     private static <FACTORY> Class<FACTORY> checkFactoryType(Class<FACTORY> factoryType) {
@@ -48,16 +47,17 @@ public final class DI {
         return factoryType;
     }
 
-    private static Map<Class<?>, Class<?>> createWrappedPrimitiveTypeMap() {
-        Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap = new HashMap<Class<?>, Class<?>>();
-        wrappedPrimitiveTypeMap.put(byte.class, Byte.class);
-        wrappedPrimitiveTypeMap.put(short.class, Short.class);
-        wrappedPrimitiveTypeMap.put(int.class, Integer.class);
-        wrappedPrimitiveTypeMap.put(long.class, Long.class);
-        wrappedPrimitiveTypeMap.put(float.class, Float.class);
-        wrappedPrimitiveTypeMap.put(double.class, Double.class);
-        wrappedPrimitiveTypeMap.put(char.class, Character.class);
-        wrappedPrimitiveTypeMap.put(boolean.class, Boolean.class);
-        return wrappedPrimitiveTypeMap;
+    private static String checkAndMassagePackagePrefix(String packagePrefix) {
+        if (packagePrefix == null || packagePrefix.isEmpty()) {
+            throw new IllegalArgumentException("'packagePrefix' must not be NULL or empty");
+        }
+        // cut off '.'
+        String realPackagePrefix;
+        if (packagePrefix.endsWith(".")) {
+            realPackagePrefix = packagePrefix.substring(0, packagePrefix.length() - 1);
+        } else {
+            realPackagePrefix = packagePrefix;
+        }
+        return realPackagePrefix;
     }
 }

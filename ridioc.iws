@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIBaseTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DITest.java" />
+      <change type="DELETED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\test\api\MyObjectFactory.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\test\java\ch\dkitc\ridioc\DITest.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iml" afterPath="$PROJECT_DIR$/ridioc.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.ipr" afterPath="$PROJECT_DIR$/ridioc.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398860892985" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398869832949" ignored="false" />
-    <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852781985" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398954779608" ignored="false" />
+    <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399022207991" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
-    <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398846903271" ignored="false" />
+    <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399024518844" ignored="false" />
     <file path="/TestObjectFactory.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852753302" ignored="false" />
     <file path="$USER_HOME$/.m2/settings.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398860833945" ignored="false" />
     <file path="$PROJECT_DIR$/../Thirdparties/src/test/java/ch/biosn/di/test/api/TestBeanWithPrimitiveLongConstructor.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852564933" ignored="false" />
@@ -885,6 +894,11 @@
     <file path="$PROJECT_DIR$/../Thirdparties/src/main/java/CH/obj/thirdparty/di/DIConstructors.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853170272" ignored="false" />
     <file path="$PROJECT_DIR$/../Thirdparties/src/main/java/CH/obj/thirdparty/di/DIConstructor.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853170272" ignored="false" />
     <file path="$PROJECT_DIR$/../Thirdparties/src/main/java/CH/obj/thirdparty/di/DIUtils.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398853170272" ignored="false" />
+    <file path="/DIObjectFactory.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399021364897" ignored="false" />
+    <file path="/DIObjectFactoryHelper.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399021856710" ignored="false" />
+    <file path="/DITest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399023162272" ignored="false" />
+    <file path="/DIBaseTest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399023039604" ignored="false" />
+    <file path="/DIObjectFactoryTest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399023560832" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -945,11 +959,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="163" column="62" selection-start="5209" selection-end="5209" vertical-scroll-proportion="0.5699301">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="26" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DIObjectFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="105" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DIObjectFactoryTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="18" selection-start="400" selection-end="400" vertical-scroll-proportion="0.50524473">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1492#1500#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DITest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DITest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DIBaseTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIBaseTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="62" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -978,15 +1046,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/TestBeanWithEnumConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithEnumConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/TestBeanWithShortConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithShortConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/TestBeanWithPrimitiveDoubleConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveDoubleConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/TestBeanButNoImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanButNoImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/TestBeanWithByteConstructor.java" />
         <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithByteConstructor.java" />
         <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/TestEnum.java" />
         <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MyEnum.java" />
@@ -994,6 +1053,15 @@
         <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MObjectFactory.java" />
         <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MyObjectFactory.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/DITest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/DIObjectFactoryTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryBaseTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DITest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIBaseTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" />
       </list>
     </option>
   </component>
@@ -1020,6 +1088,38 @@
     <option name="width" value="1616" />
     <option name="height" value="916" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code style issues</id>
+          </State>
+          <State>
+            <id>Control flow issues</id>
+          </State>
+          <State>
+            <id>Initialization issues</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>J2ME issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -1027,7 +1127,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -1053,10 +1153,6 @@
               <option name="myItemId" value="ridioc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1068,10 +1164,121 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch.dkitc.ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1079,7 +1286,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="MavenSettings" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -1091,7 +1298,12 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager" selected="Maven.ridioc-core [test]">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ch.dkitc.ridioc.test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.JUnit (All)">
     <configuration default="false" name="ridioc-core [deploy]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1274,6 +1486,9 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value="SHOW_NON_PUBLIC" />
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -1315,22 +1530,23 @@
     <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35240573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26263872" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6506765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.2860666" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41676942" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.351418" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24984147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19023462" sideWeight="0.7373613" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24920736" sideWeight="0.7373613" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6506765" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.2860666" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43033293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41676942" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="716" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1378,7 +1594,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="made pom.xml ready to be published on sonatype repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="changelist master" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1397,36 +1613,12 @@
     <MESSAGE value="2nd shot of README.md" />
     <MESSAGE value="test beans classes should not start with TESTxyz - maven doesn't like it" />
     <MESSAGE value="made pom.xml ready to be published on sonatype repository" />
+    <MESSAGE value="changelist master" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrivateDefaultConstructorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="62" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithIntegerConstructorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="55" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDoubleConstructorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="54" selection-start="150" selection-end="150" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveCharConstructorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="61" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithPrimitiveLongConstructorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="61" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithFloatConstructorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="53" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" />
@@ -1467,11 +1659,6 @@
         <state line="2" column="18" selection-start="53" selection-end="53" vertical-scroll-proportion="0.08695652" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/MyObjectFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="1" selection-start="352" selection-end="352" vertical-scroll-proportion="0.3478261" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanButNoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="17" selection-start="52" selection-end="52" vertical-scroll-proportion="0.08695652" />
@@ -1479,8 +1666,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="62" selection-start="5209" selection-end="5209" vertical-scroll-proportion="0.5699301">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="105" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="26" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="295" column="0" selection-start="13919" selection-end="13919" vertical-scroll-proportion="0.86787564">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1792#1810#0" expanded="true" />
+            <element signature="e#5038#5046#0" expanded="true" />
+            <element signature="e#5127#5158#0" expanded="true" />
+            <element signature="e#11322#11342#0" expanded="true" />
+            <element signature="e#12454#12465#0" expanded="true" />
+            <element signature="e#13225#13233#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIBaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="62" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DITest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="18" selection-start="400" selection-end="400" vertical-scroll-proportion="0.50524473">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1492#1500#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

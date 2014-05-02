@@ -43,13 +43,18 @@
       <profile version="1.0" is_locked="false">
         <option name="myName" value="Project Default" />
         <option name="myLocal" value="false" />
+        <inspection_tool class="AbstractMethodOverridesAbstractMethod" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="CyclicPackageDependency" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="ElementOnlyUsedFromTestCode" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="HtmlTagCanBeJavadocTag" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="RedundantSuppression" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="RedundantThrowsDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
-        <inspection_tool class="UnusedDeclaration" enabled="false" level="WARNING" enabled_by_default="false">
-          <option name="ADD_MAINS_TO_ENTRIES" value="true" />
-          <option name="ADD_APPLET_TO_ENTRIES" value="true" />
-          <option name="ADD_SERVLET_TO_ENTRIES" value="true" />
-          <option name="ADD_NONJAVA_TO_ENTRIES" value="true" />
+        <inspection_tool class="UnnecessaryInheritDoc" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="UnnecessaryJavaDocLink" enabled="true" level="WARNING" enabled_by_default="true">
+          <option name="ignoreInlineLinkToSuper" value="false" />
         </inspection_tool>
+        <inspection_tool class="UnusedLibrary" enabled="true" level="WARNING" enabled_by_default="true" />
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -63,9 +68,15 @@
       </list>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsManager">
+    <option name="PER_PROJECT_SETTINGS">
+      <value />
+    </option>
+  </component>
   <component name="ProjectDictionaryState">
     <dictionary name="Diego.kuenzi">
       <words>
+        <w>constr</w>
         <w>dgpg</w>
         <w>diegolin</w>
         <w>github</w>

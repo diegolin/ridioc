@@ -7,18 +7,7 @@ import java.util.*;
 
 public class DIObjectFactoryHelper {
 
-    private final Map<Class<?>, Object> instanceCache = new HashMap<Class<?>, Object>();
-    private final DIReflectionsCache reflectionsCache;
-    private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
-    private final DIStringLiteralStore stringLiteralStore;
-
-    public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
-        this.reflectionsCache = new DIReflectionsCache(packagePrefix);
-        this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
-        this.stringLiteralStore = new DIStringLiteralStore(wrappedPrimitiveTypeMap);
-    }
-
-    public static boolean hasDefaultConstructor(Class<?> type) {
+    private static boolean hasDefaultConstructor(Class<?> type) {
         try {
             type.getDeclaredConstructor();
             return true;
@@ -61,6 +50,17 @@ public class DIObjectFactoryHelper {
         return diConstructors;
     }
 
+    private final Map<Class<?>, Object> instanceCache = new HashMap<Class<?>, Object>();
+    private final DIReflectionsCache reflectionsCache;
+    private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
+    private final DIStringLiteralStore stringLiteralStore;
+
+    public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+        this.reflectionsCache = new DIReflectionsCache(packagePrefix);
+        this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
+        this.stringLiteralStore = new DIStringLiteralStore(wrappedPrimitiveTypeMap);
+    }
+
     public <T> T newInstance(Class<T> type, Object... params) {
         checkType(type);
         checkParams(params);
@@ -68,7 +68,18 @@ public class DIObjectFactoryHelper {
         return constructOneImplementation(type, potentialImplType, params);
     }
 
-    public Object instance(Class<?> type) throws IllegalStateException {
+    /**
+     * Looks up or creates an instance of the given type.
+     * <p>Tries to look up the give type in the instance cache.
+     * If the instance cache does not yet contain an instance of the given type, the method
+     * tries to find exactly ONE implementation of the given type. The method creates a new instance using
+     * dependency injection.</p>
+     *
+     * @param type a type to look up or create an instance for. Must not be {@code null}
+     * @return the lookup up instance or a newly created instance of the given type
+     * @throws IllegalArgumentException
+     */
+    public Object instance(Class<?> type) throws IllegalArgumentException {
         checkType(type);
 
         // already in cache?
@@ -136,10 +147,10 @@ public class DIObjectFactoryHelper {
                 methodParamsIndexMap.put(constrParamType, methodParamsIndex);
             }
 
-            DIInstanceMethodParam instaceMethodParamOfType = methodParamsIndex.next();
-            if (instaceMethodParamOfType != null) {
+            DIInstanceMethodParam instanceMethodParamOfType = methodParamsIndex.next();
+            if (instanceMethodParamOfType != null) {
                 // o.k. - a matching method param has been passed - use it
-                initArgsAsList.add(instaceMethodParamOfType.getValue());
+                initArgsAsList.add(instanceMethodParamOfType.getValue());
                 usedMethodParamCount++;
                 continue;
             }
@@ -186,7 +197,7 @@ public class DIObjectFactoryHelper {
                 throw new IllegalArgumentException("Could not find " + constrParam.getName() + " of type " + constrParamType + " within instance cache or string literal store");
             }
 
-            // if we're here, it is NOT an array, not a number / primitve / enum / string / date / character / boolean
+            // if we're here, it is NOT an array, not a number / primitive / enum / string / date / character / boolean
             initArgsAsList.add(instance(constrParamType));
         }
 
@@ -202,7 +213,15 @@ public class DIObjectFactoryHelper {
         return diConstructor.newInstance(initArgsAsList);
     }
 
-    private <T> Class<? extends T> getSinglePotentialImplType(Class<T> type) {
+    /**
+     * Returns a <b>single</b> potential implementation type for a given type.
+     *
+     * @param type the type to look for a potential implementation type
+     * @param <T>  describes the type parameter
+     * @return a <b>single</b> potential implementation type for the given type
+     * @throws IllegalArgumentException if no potential implementation type could be found; or if 2 or more potential implementations types have bee found
+     */
+    private <T> Class<? extends T> getSinglePotentialImplType(Class<T> type) throws IllegalArgumentException {
         List<Class<? extends T>> potentialImplTypes = getPotentialImplTypes(type);
         switch (potentialImplTypes.size()) {
             case 0:
@@ -232,7 +251,7 @@ public class DIObjectFactoryHelper {
         return potentialImplTypes;
     }
 
-    private DIConstructorParams createConstuctorParams(DIConstructor diConstructor) {
+    private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {
         List<String> paramNames = diConstructor.getParameterNames();
         DIConstructorParams constructorParams = new DIConstructorParams();
         for (int i = 0; i < paramNames.size(); i++) {
@@ -245,7 +264,7 @@ public class DIObjectFactoryHelper {
         List<DIConstructor> diConstructors = findMatchingConstructor(potentialImplType);
         List<Exception> exceptions = new ArrayList<Exception>();
         for (DIConstructor diConstructor : diConstructors) {
-            DIConstructorParams constructorParams = createConstuctorParams(diConstructor);
+            DIConstructorParams constructorParams = createConstructorParams(diConstructor);
             DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);
             try {
                 return newInstance(diConstructor, constructorParams, instanceMethodParams);
@@ -259,7 +278,7 @@ public class DIObjectFactoryHelper {
     }
 
     private Object createArrayInitArg(Class<?> constructorParamType) {
-        List<Object> subTypeImpls = new ArrayList<Object>();
+        List<Object> subTypeImplementations = new ArrayList<Object>();
         Class<?> paramArrayComponentType = constructorParamType.getComponentType();
         for (Class<?> subTypeImpl : reflectionsCache.getSubTypesOf(paramArrayComponentType)) {
             // filter out abstract types...
@@ -269,9 +288,8 @@ public class DIObjectFactoryHelper {
             if (!hasDefaultConstructor(subTypeImpl)) {
                 continue;
             }
-            subTypeImpls.add(constructOneImplementation(paramArrayComponentType, subTypeImpl));
+            subTypeImplementations.add(constructOneImplementation(paramArrayComponentType, subTypeImpl));
         }
-        return subTypeImpls.toArray((Object[]) Array.newInstance(paramArrayComponentType, subTypeImpls.size()));
+        return subTypeImplementations.toArray((Object[]) Array.newInstance(paramArrayComponentType, subTypeImplementations.size()));
     }
-
 }
