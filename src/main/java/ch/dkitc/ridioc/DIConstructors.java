@@ -2,15 +2,17 @@ package ch.dkitc.ridioc;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class DIConstructors extends ArrayList<DIConstructor> {
 
     private final Class<?> type;
 
-    public DIConstructors(Class<?> type) {
+    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
         this.type = type;
         for (Constructor<?> constructor : type.getConstructors()) {
-            add(new DIConstructor(constructor));
+            add(new DIConstructor(constructor, wrappedPrimitiveTypeMap));
         }
     }
 
@@ -21,7 +23,28 @@ public class DIConstructors extends ArrayList<DIConstructor> {
         return this;
     }
 
-    public DIConstructor findMatchingConstructor(Object... params) {
+    public List<DIConstructor> findMatchingConstructorsByParams(Object... params) {
+        mustHaveAtLeastOnePublicConstructor();
+
+        DIConstructor diConstructor = findMatchingConstructorByParams(params);
+        if (diConstructor != null) {
+            // leave early!
+            return DIListUtils.toList(diConstructor);
+        }
+
+        // if we're here, no exact constructor was found for given params
+        // return DEFAULT constructor
+        DIConstructor diDefaultConstructor = findDefaultConstructor();
+        if (diDefaultConstructor != null) {
+            // leave early!
+            return DIListUtils.toList(diDefaultConstructor);
+        }
+
+        // o.k. let's just return ALL public constructors
+        return this;
+    }
+
+    public DIConstructor findMatchingConstructorByParams(Object... params) {
         for (DIConstructor diConstructor : this) {
             if (diConstructor.matchesParams(params)) {
                 return diConstructor;
@@ -32,7 +55,18 @@ public class DIConstructors extends ArrayList<DIConstructor> {
         return null;
     }
 
+    public DIConstructor findMatchingConstructorByParamTypes(Class<?>... paramTypes) {
+        for (DIConstructor diConstructor : this) {
+            if (diConstructor.matchesParamTypes(paramTypes)) {
+                return diConstructor;
+            }
+        }
+
+        // if we're here, no constructor was found
+        return null;
+    }
+
     public DIConstructor findDefaultConstructor() {
-        return findMatchingConstructor(/* no parameters means: default constructor */);
+        return findMatchingConstructorByParams(/* no parameters means: default constructor */);
     }
 }

@@ -13,6 +13,25 @@ public class DIMethod {
         this.method = method;
     }
 
+    public boolean hasParametersOfType(Class<?>... givenParamTypesArray) {
+        Class<?>[] methodParamTypesArray = method.getParameterTypes();
+        if (givenParamTypesArray.length != methodParamTypesArray.length) {
+            return false;
+        }
+
+        List<Class<?>> givenParamTypes = new ArrayList<Class<?>>();
+        Collections.addAll(givenParamTypes, givenParamTypesArray);
+        for (int i = 0; i < methodParamTypesArray.length; i++) {
+            Class<?> paramType = methodParamTypesArray[i];
+            if (!paramType.isAssignableFrom(givenParamTypes.get(i))) {
+                return false;
+            }
+        }
+
+        // if we're here, all tests have passed
+        return true;
+    }
+
     public DIMethod mustHaveParametersOfType(Class<?>... givenParamTypesArray) {
         Class<?>[] methodParamTypesArray = method.getParameterTypes();
         if (givenParamTypesArray.length != methodParamTypesArray.length) {
@@ -27,6 +46,8 @@ public class DIMethod {
                 throw new IllegalArgumentException("Method param type '" + paramType + "' is NOT assignable from given param type '" + givenParamTypes.get(i) + "'");
             }
         }
+
+        // if we're here, all tests have passed
         return this;
     }
 
@@ -36,4 +57,5 @@ public class DIMethod {
         }
         return this;
     }
+
 }

@@ -18,10 +18,14 @@ public class DIStringLiteralStore {
     public Object convertSingleValueTo(String name, Class<?> type) {
         String value = mustBeInSingleValueMap(name);
         if (Number.class.isAssignableFrom(type)) {
+            DIConstructor diConstructor = new DIConstructors(type, wrappedPrimitiveTypeMap).findMatchingConstructorByParamTypes(String.class);
+            if (diConstructor == null) {
+                throw new IllegalArgumentException(type + " does not have constructor that takes a single string argument");
+            }
             try {
-                return type.getMethod("valueOf", String.class).invoke(/* static */ null, value);
+                return diConstructor.newInstance(value);
             } catch (Exception ex) {
-                throw new IllegalArgumentException("Cannot convert '" + name + "'='" + value + "' to number type '" + type.getName() + "'", ex);
+                throw new IllegalArgumentException("Cannot convert '" + name + "'='" + value + "' to type '" + type.getName() + "'", ex);
             }
         } else if (type.isPrimitive()) {
             Class<?> wrappedType = wrappedPrimitiveTypeMap.get(type);
@@ -51,7 +55,7 @@ public class DIStringLiteralStore {
                 throw new IllegalArgumentException("Unicode character must start with '\\u' but looks like this: '" + value + "'");
             }
             String unicode = value.substring(2);
-            return Character.valueOf((char)Integer.parseInt(unicode, 16));
+            return (char) Integer.parseInt(unicode, /* radix */ 16);
         } else {
             throw new IllegalArgumentException(type + " is not supported");
         }

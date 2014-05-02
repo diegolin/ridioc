@@ -3,7 +3,7 @@ package ch.dkitc.ridioc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DIAggregateException extends RuntimeException {
+public class DIAggregateException extends IllegalArgumentException {
 
     private List<Exception> exceptionBasket = new ArrayList<Exception>();
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DIUtils {
+public class DIListUtils {
 
     public static <T> List<T> toList(T ... ts) {
         List<T> list = new ArrayList<T>();
@@ -12,7 +12,7 @@ public class DIUtils {
         return list;
     }
 
-    private DIUtils() {
+    private DIListUtils() {
     }
 
 }

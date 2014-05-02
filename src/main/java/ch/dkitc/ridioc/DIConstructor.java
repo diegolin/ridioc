@@ -1,22 +1,25 @@
 package ch.dkitc.ridioc;
 
-import com.thoughtworks.paranamer.AdaptiveParanamer;
-import com.thoughtworks.paranamer.Paranamer;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
+import com.thoughtworks.paranamer.AdaptiveParanamer;
+import com.thoughtworks.paranamer.Paranamer;
 
 public class DIConstructor {
 
     private final Constructor<?> constructor;
     private final Paranamer paranamer = new AdaptiveParanamer();
+    private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
 
-    public DIConstructor(Constructor<?> constructor) {
+    public DIConstructor(Constructor<?> constructor, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
         this.constructor = constructor;
+        this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
     }
 
     public String getName() {
@@ -31,26 +34,43 @@ public class DIConstructor {
             }
             givenParamTypes.add(givenParam.getClass());
         }
+        return matchesParamTypes(givenParamTypes.toArray(new Class[givenParamTypes.size()]));
+    }
 
+
+    public boolean matchesParamTypes(Class<?>... givenParamTypes) {
         Class<?>[] constructorParamTypesArray = constructor.getParameterTypes();
-        if (givenParams.length != constructorParamTypesArray.length) {
+        if (givenParamTypes.length != constructorParamTypesArray.length) {
             // leave early
             return false;
         }
 
         for (int i=0; i<constructorParamTypesArray.length; i++) {
             Class<?> paramType = constructorParamTypesArray[i];
-            if (!paramType.isAssignableFrom(givenParamTypes.get(i))) {
-                throw new IllegalArgumentException("Constructor param type '" + paramType + "' is NOT assignable from given param type '" + givenParamTypes.get(i) + "'");
+            Class<?> wrappedParamType;
+            if (paramType.isPrimitive()) {
+                wrappedParamType = wrappedPrimitiveTypeMap.get(paramType);
+                if (wrappedParamType == null) {
+                    throw new IllegalStateException("there is no wrapped type available for primitive type '" + paramType + '"');
+                }
+            } else {
+                wrappedParamType = paramType;
+            }
+            if (!wrappedParamType.isAssignableFrom(givenParamTypes[i])) {
+                return false;
             }
         }
 
-        // if we're here, everthings alrite!
+        // if we're here, everything is alrite!
         return true;
     }
 
     public <T> T newInstance(List<Object> initArgsAsList) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-        return (T) constructor.newInstance(initArgsAsList.toArray());
+        return newInstance(initArgsAsList.toArray());
+    }
+
+    public <T> T newInstance(Object ... initArgs) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        return (T) constructor.newInstance(initArgs);
     }
 
     public List<String> getParameterNames() {

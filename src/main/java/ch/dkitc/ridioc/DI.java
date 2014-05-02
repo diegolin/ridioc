@@ -13,7 +13,7 @@ public final class DI {
         return (FACTORY) Proxy.newProxyInstance(factoryType.getClassLoader(), new Class[]{checkedFactoryType}, factoryHandler);
     }
 
-    private static Map<Class<?>, Class<?>> createWrappedPrimitiveTypeMap() {
+    public static Map<Class<?>, Class<?>> createWrappedPrimitiveTypeMap() {
         Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap = new HashMap<Class<?>, Class<?>>();
         wrappedPrimitiveTypeMap.put(byte.class, Byte.class);
         wrappedPrimitiveTypeMap.put(short.class, Short.class);
@@ -26,7 +26,7 @@ public final class DI {
         return wrappedPrimitiveTypeMap;
     }
 
-    private static <FACTORY> Class<FACTORY> checkFactoryType(Class<FACTORY> factoryType) {
+    public static <FACTORY> Class<FACTORY> checkFactoryType(Class<FACTORY> factoryType) {
         /*
         <T> T newInstance(Class<T> type, Object... params);
         <T> T instance(Class<T> type);
@@ -38,12 +38,11 @@ public final class DI {
             throw new IllegalArgumentException("'factoryType' must not be NULL");
         }
         DIMethods methods = new DIMethods(factoryType).mustNotBeAnInterface().mustHaveNumberOfMethods(5);
-        methods.mustContainMethods("newInstance", "instance", "registerInstance", "registerStringLiteral", "registerStringLiteralArray");
-        methods.method("newInstance").mustHaveParametersOfType(Class.class, Object[].class).mustHaveReturnType(Object.class);
-        methods.method("instance").mustHaveParametersOfType(Class.class).mustHaveReturnType(Object.class);
-        methods.method("registerInstance").mustHaveParametersOfType(Class.class, Object.class).mustHaveReturnType(Object.class);
-        methods.method("registerStringLiteral").mustHaveParametersOfType(String.class, String.class).mustHaveReturnType(String.class);
-        methods.method("registerStringLiteralArray").mustHaveParametersOfType(String.class, String[].class).mustHaveReturnType(String[].class);
+        methods.mustContainExactlyOneMethod("newInstance").mustHaveParametersOfType(Class.class, Object[].class).mustHaveReturnType(Object.class);
+        methods.mustContainExactlyOneMethod("instance").mustHaveParametersOfType(Class.class).mustHaveReturnType(Object.class);
+        methods.mustContainExactlyOneMethod("registerInstance").mustHaveParametersOfType(Class.class, Object.class).mustHaveReturnType(Object.class);
+        methods.mustContainExactlyOneMethod("registerStringLiteral").mustHaveParametersOfType(String.class, String.class).mustHaveReturnType(String.class);
+        methods.mustContainExactlyOneMethod("registerStringLiteralArray").mustHaveParametersOfType(String.class, String[].class).mustHaveReturnType(String[].class);
         return factoryType;
     }
 

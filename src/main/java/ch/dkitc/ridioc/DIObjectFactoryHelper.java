@@ -5,50 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
+import static ch.dkitc.ridioc.DIParamUtils.checkParams;
+import static ch.dkitc.ridioc.DITypeUtils.checkType;
+import static ch.dkitc.ridioc.DITypeUtils.hasDefaultConstructor;
+
 public class DIObjectFactoryHelper {
-
-    private static boolean hasDefaultConstructor(Class<?> type) {
-        try {
-            type.getDeclaredConstructor();
-            return true;
-        } catch (NoSuchMethodException e) {
-            return false;
-        }
-    }
-
-    private static <T> void checkType(Class<T> type) {
-        if (type == null) {
-            throw new IllegalArgumentException("Argument 'type' must NOT be null");
-        }
-    }
-
-    private static void checkParams(Object[] params) {
-        for (Object param : params) {
-            if (param == null) {
-                throw new IllegalArgumentException("Parameter within 'params' may NOT be null");
-            }
-        }
-    }
-
-    private static List<DIConstructor> findMatchingConstructor(Class<?> type, Object... params) {
-        DIConstructors diConstructors = new DIConstructors(type).mustHaveAtLeastOnePublicConstructor();
-        DIConstructor diConstructor = diConstructors.findMatchingConstructor(params);
-        if (diConstructor != null) {
-            // leave early!
-            return DIUtils.toList(diConstructor);
-        }
-
-        // if we're here, no exact constructor was found for given params
-        // return DEFAULT constructor
-        DIConstructor diDefaultConstructor = diConstructors.findDefaultConstructor();
-        if (diDefaultConstructor != null) {
-            // leave early!
-            return DIUtils.toList(diDefaultConstructor);
-        }
-
-        // o.k. let's just return ALL public constructors
-        return diConstructors;
-    }
 
     private final Map<Class<?>, Object> instanceCache = new HashMap<Class<?>, Object>();
     private final DIReflectionsCache reflectionsCache;
@@ -76,7 +37,7 @@ public class DIObjectFactoryHelper {
      * dependency injection.</p>
      *
      * @param type a type to look up or create an instance for. Must not be {@code null}
-     * @return the lookup up instance or a newly created instance of the given type
+     * @return the looked up instance or a newly created instance of the given type
      * @throws IllegalArgumentException
      */
     public Object instance(Class<?> type) throws IllegalArgumentException {
@@ -113,6 +74,85 @@ public class DIObjectFactoryHelper {
         return instanceCache.put(realType, instance);
     }
 
+    private <T> T constructOneImplementation(Class<T> type, Class<?> potentialImplType, Object... params) {
+        List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, wrappedPrimitiveTypeMap).findMatchingConstructorsByParams(params);
+        List<Exception> exceptions = new ArrayList<Exception>();
+        for (DIConstructor diConstructor : diConstructors) {
+            DIConstructorParams constructorParams = createConstructorParams(diConstructor);
+            DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);
+            try {
+                return newInstance(diConstructor, constructorParams, instanceMethodParams);
+            } catch (Exception ex) {
+                exceptions.add(ex);
+            }
+        }
+
+        throw new DIAggregateException("Cound not instantiate implementation for type '" + type + "'", exceptions);
+    }
+
+    private Object createArrayInitArg(Class<?> constructorParamType) {
+        List<Object> subTypeImplementations = new ArrayList<Object>();
+        Class<?> paramArrayComponentType = constructorParamType.getComponentType();
+        for (Class<?> subTypeImpl : reflectionsCache.getSubTypesOf(paramArrayComponentType)) {
+            // filter out abstract types...
+            if (Modifier.isAbstract(subTypeImpl.getModifiers())) {
+                continue;
+            }
+            if (!hasDefaultConstructor(subTypeImpl)) {
+                continue;
+            }
+            subTypeImplementations.add(constructOneImplementation(paramArrayComponentType, subTypeImpl));
+        }
+        return subTypeImplementations.toArray((Object[]) Array.newInstance(paramArrayComponentType, subTypeImplementations.size()));
+    }
+
+    private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {
+        List<String> paramNames = diConstructor.getParameterNames();
+        DIConstructorParams constructorParams = new DIConstructorParams();
+        for (int i = 0; i < paramNames.size(); i++) {
+            constructorParams.add(paramNames.get(i), diConstructor.getParamType(i), diConstructor.getParamAnnotations(i));
+        }
+        return constructorParams;
+    }
+
+    private <T> List<Class<? extends T>> getPotentialImplTypes(Class<T> type) {
+        Set<Class<? extends T>> types = reflectionsCache.getSubTypesOf(type);
+        List<Class<? extends T>> potentialImplTypes = new ArrayList<Class<? extends T>>();
+        Iterator<Class<? extends T>> it = types.iterator();
+        while (it.hasNext()) {
+            Class<? extends T> potentialImplType = it.next();
+            if (Modifier.isAbstract(potentialImplType.getModifiers())) {
+                it.remove();
+                continue;
+            }
+            potentialImplTypes.add(potentialImplType);
+        }
+        return potentialImplTypes;
+    }
+
+    /**
+     * Returns a <b>single</b> potential implementation type for a given type.
+     *
+     * @param type the type to look for a potential implementation type
+     * @param <T>  describes the type parameter
+     * @return a <b>single</b> potential implementation type for the given type
+     * @throws IllegalArgumentException if no potential implementation type could be found; or if 2 or more potential implementations types have bee found
+     */
+    private <T> Class<? extends T> getSinglePotentialImplType(Class<T> type) throws IllegalArgumentException {
+        List<Class<? extends T>> potentialImplTypes = getPotentialImplTypes(type);
+        switch (potentialImplTypes.size()) {
+            case 0:
+                // not good
+                throw new IllegalArgumentException("no matching implementation of type " + type + "' found within '" + reflectionsCache.getUrls() + '"');
+            case 1:
+                // good
+                return potentialImplTypes.get(0);
+            default:
+                // not good
+                throw new IllegalArgumentException(potentialImplTypes.size() + " matching implementation types found within '" + reflectionsCache.getUrls() + '"');
+        }
+    }
+
     private Class<?> getWrappedPrimitiveType(Class<?> type) {
         if (!type.isPrimitive()) {
             throw new IllegalArgumentException("Given type '" + type + " is NOT primitive");
@@ -131,7 +171,7 @@ public class DIObjectFactoryHelper {
             Class<?> constrParamType = constrParam.getType();
             if (Collection.class.isAssignableFrom(constrParamType)) {
                 // fail early
-                throw new IllegalArgumentException("Colletions are NOT supported - I cannot determine the element type at runtime: http://stackoverflow.com/questions/10945993/using-java-reflections-to-find-collections-element-type");
+                throw new IllegalArgumentException("Collections are NOT supported - I cannot determine the element type at runtime: http://stackoverflow.com/questions/10945993/using-java-reflections-to-find-collections-element-type");
             }
 
             if (constrParamType.isPrimitive()) {
@@ -211,85 +251,5 @@ public class DIObjectFactoryHelper {
         }
 
         return diConstructor.newInstance(initArgsAsList);
-    }
-
-    /**
-     * Returns a <b>single</b> potential implementation type for a given type.
-     *
-     * @param type the type to look for a potential implementation type
-     * @param <T>  describes the type parameter
-     * @return a <b>single</b> potential implementation type for the given type
-     * @throws IllegalArgumentException if no potential implementation type could be found; or if 2 or more potential implementations types have bee found
-     */
-    private <T> Class<? extends T> getSinglePotentialImplType(Class<T> type) throws IllegalArgumentException {
-        List<Class<? extends T>> potentialImplTypes = getPotentialImplTypes(type);
-        switch (potentialImplTypes.size()) {
-            case 0:
-                // not good
-                throw new IllegalArgumentException("no matching implementation of type " + type + "' found within '" + reflectionsCache.getUrls() + '"');
-            case 1:
-                // good
-                return potentialImplTypes.get(0);
-            default:
-                // not good
-                throw new IllegalArgumentException(potentialImplTypes.size() + " matching implementation types found within '" + reflectionsCache.getUrls() + '"');
-        }
-    }
-
-    private <T> List<Class<? extends T>> getPotentialImplTypes(Class<T> type) {
-        Set<Class<? extends T>> types = reflectionsCache.getSubTypesOf(type);
-        List<Class<? extends T>> potentialImplTypes = new ArrayList<Class<? extends T>>();
-        Iterator<Class<? extends T>> it = types.iterator();
-        while (it.hasNext()) {
-            Class<? extends T> potentialImplType = it.next();
-            if (Modifier.isAbstract(potentialImplType.getModifiers())) {
-                it.remove();
-                continue;
-            }
-            potentialImplTypes.add(potentialImplType);
-        }
-        return potentialImplTypes;
-    }
-
-    private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {
-        List<String> paramNames = diConstructor.getParameterNames();
-        DIConstructorParams constructorParams = new DIConstructorParams();
-        for (int i = 0; i < paramNames.size(); i++) {
-            constructorParams.add(paramNames.get(i), diConstructor.getParamType(i), diConstructor.getParamAnnotations(i));
-        }
-        return constructorParams;
-    }
-
-    private <T> T constructOneImplementation(Class<T> type, Class<?> potentialImplType, Object... params) {
-        List<DIConstructor> diConstructors = findMatchingConstructor(potentialImplType);
-        List<Exception> exceptions = new ArrayList<Exception>();
-        for (DIConstructor diConstructor : diConstructors) {
-            DIConstructorParams constructorParams = createConstructorParams(diConstructor);
-            DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);
-            try {
-                return newInstance(diConstructor, constructorParams, instanceMethodParams);
-            } catch (Exception ex) {
-                exceptions.add(ex);
-                ex.printStackTrace(System.err);
-            }
-        }
-
-        throw new DIAggregateException("Cound not instantiate implementation for type '" + type + "'", exceptions);
-    }
-
-    private Object createArrayInitArg(Class<?> constructorParamType) {
-        List<Object> subTypeImplementations = new ArrayList<Object>();
-        Class<?> paramArrayComponentType = constructorParamType.getComponentType();
-        for (Class<?> subTypeImpl : reflectionsCache.getSubTypesOf(paramArrayComponentType)) {
-            // filter out abstract types...
-            if (Modifier.isAbstract(subTypeImpl.getModifiers())) {
-                continue;
-            }
-            if (!hasDefaultConstructor(subTypeImpl)) {
-                continue;
-            }
-            subTypeImplementations.add(constructOneImplementation(paramArrayComponentType, subTypeImpl));
-        }
-        return subTypeImplementations.toArray((Object[]) Array.newInstance(paramArrayComponentType, subTypeImplementations.size()));
     }
 }
