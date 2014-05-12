@@ -62,7 +62,7 @@ public class PicoServiceImpl implements PicoService {
 
 ```
 
-Now, to access an instance of type 'UberInterface', you can do this:
+Now, to access an instance of type `UberInterface`, you can do this:
 
 ```java
 public class Example {
