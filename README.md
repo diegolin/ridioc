@@ -4,22 +4,32 @@ ridioc - ridiculously small inversion of control for Java
 ## Usage
 
 ```java
-package ch.dkitc.ridioc.samples;
-
-import ch.dkitc.ridioc.DI;
-import ch.dkitc.ridioc.DIObjectFactory;
-import ch.dkitc.ridioc.samples.api.UberService;
-
+public interface UberService { void executeUberService(); }
+...
+public class UberServiceImpl implements UberService {
+    private final FirstService firstService;
+    private final SecondService secondService;
+    private final ThirdService thirdService;
+    public UberServiceImpl(FirstService firstService, SecondService secondService, ThirdService thirdService) { ... }
+    @Override public void executeUberService() {...}
+    }
+}
+...
+public interface FirstService { void executeFirstService(); }
+...
+public class FirstServiceImpl implements FirstService {
+    private final MicroService microService;
+    public FirstServiceImpl(MicroService microService) { ... }
+    @Override public void executeFirstService() { ...  }
+}
+...
 public class Example {
-
     public static final String PACKAGE_PREFIX = Example.class.getPackage().getName();
-
     public static void main(String[] args) {
         DIObjectFactory objectFactory = DI.createObjectFactory(DIObjectFactory.class, PACKAGE_PREFIX);
         UberService uberService = objectFactory.instance(UberService.class);
         uberService.executeUberService();
     }
-
 }
 ```
 
