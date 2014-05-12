@@ -1,6 +1,18 @@
 ridioc - ridiculously small inversion of control for Java
 =========================================================
 
+## Intro
+
+For maven projects just add this dependency:
+
+```xml
+<dependency>
+  <groupId>ch.dkitc</groupId>
+  <artifactId>ridioc-core</artifactId>
+  <version>0.1</version>
+</dependency>
+```
+
 ## Usage
 
 Say you have these interfaces and their single implementation classes:
