@@ -1,7 +1,7 @@
-package ch.dkitc.ridioc.samples.impl;
+package ch.dkitc.ridioc.samples.uberservice.impl;
 
-import ch.dkitc.ridioc.samples.api.FirstService;
-import ch.dkitc.ridioc.samples.api.MicroService;
+import ch.dkitc.ridioc.samples.uberservice.api.FirstService;
+import ch.dkitc.ridioc.samples.uberservice.api.MicroService;
 
 public class FirstServiceImpl implements FirstService {
 

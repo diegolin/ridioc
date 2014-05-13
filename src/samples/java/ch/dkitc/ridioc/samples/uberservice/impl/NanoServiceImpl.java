@@ -1,7 +1,7 @@
-package ch.dkitc.ridioc.samples.impl;
+package ch.dkitc.ridioc.samples.uberservice.impl;
 
-import ch.dkitc.ridioc.samples.api.NanoService;
-import ch.dkitc.ridioc.samples.api.PicoService;
+import ch.dkitc.ridioc.samples.uberservice.api.NanoService;
+import ch.dkitc.ridioc.samples.uberservice.api.PicoService;
 
 public class NanoServiceImpl implements NanoService {
 

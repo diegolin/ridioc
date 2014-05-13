@@ -1,12 +1,12 @@
-package ch.dkitc.ridioc.samples;
+package ch.dkitc.ridioc.samples.uberservice;
 
 import ch.dkitc.ridioc.DI;
 import ch.dkitc.ridioc.DIObjectFactory;
-import ch.dkitc.ridioc.samples.api.UberService;
+import ch.dkitc.ridioc.samples.uberservice.api.UberService;
 
-public class Example {
+public class UberSample {
 
-    public static final String PACKAGE_PREFIX = Example.class.getPackage().getName();
+    public static final String PACKAGE_PREFIX = UberSample.class.getPackage().getName();
 
     public static void main(String[] args) {
         DIObjectFactory objectFactory = DI.createObjectFactory(DIObjectFactory.class, PACKAGE_PREFIX);

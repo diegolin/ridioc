@@ -2,6 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\Example.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\FirstService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/FirstService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\MicroService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/MicroService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\NanoService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/NanoService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\PicoService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/PicoService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\SecondService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/SecondService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\ThirdService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/ThirdService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\UberService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\FirstServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/FirstServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\MicroServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/MicroServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\NanoServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/NanoServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\PicoServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/PicoServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\SecondServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/SecondServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\ThirdServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/ThirdServiceImpl.java" />
+      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\UberServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/UberServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
@@ -10,7 +25,7 @@
     <ignored path="release.properties.BACKUP" />
     <ignored path="log.txt" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963586484" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963699863" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963798454" ignored="false" />
     <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399918486610" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399056557163" ignored="false" />
@@ -995,18 +1010,18 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="SecondService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/SecondService.java">
+        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/SecondService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SecondServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/SecondServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/SecondServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="138" selection-end="557" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="174" selection-end="593" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1014,60 +1029,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="25" selection-start="447" selection-end="447" vertical-scroll-proportion="0.42256215">
+            <state line="123" column="20" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThirdService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/ThirdService.java">
+      <file leaf-file-name="UberService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="38" selection-end="103" vertical-scroll-proportion="0.0">
+            <state line="2" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThirdServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/ThirdServiceImpl.java">
+      <file leaf-file-name="UberSample.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="137" selection-end="552" vertical-scroll-proportion="0.0">
+            <state line="6" column="14" selection-start="188" selection-end="188" vertical-scroll-proportion="0.19029851">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MicroService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/MicroService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MicroServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/MicroServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="137" selection-end="602" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="release.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/release.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="34" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1096,10 +1082,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/UberService.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/FirstService.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/Example.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/MicroService.java" />
         <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/FirstServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/UberServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/NanoService.java" />
@@ -1112,6 +1094,10 @@
         <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/PicoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/SecondService.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/Example.java" />
+        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/UeberSample.java" />
+        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UeberSample.java" />
+        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java" />
       </list>
     </option>
   </component>
@@ -1315,37 +1301,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ridioc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ridioc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
+              <option name="myItemId" value="uberservice" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1417,7 +1373,7 @@
       <recent name="ch.dkitc.ridioc.test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Example">
+  <component name="RunManager" selected="Application.UberSample">
     <configuration default="false" name="ridioc-core [deploy]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1478,8 +1434,8 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="Example" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="ch.dkitc.ridioc.samples.Example" />
+    <configuration default="false" name="UberSample" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="ch.dkitc.ridioc.samples.uberservice.UberSample" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1495,7 +1451,9 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -1628,11 +1586,11 @@
       <item index="1" class="java.lang.String" itemvalue="Maven.ridioc-core [test]" />
       <item index="2" class="java.lang.String" itemvalue="Maven.ridioc-core [deploy]" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest.instancePositiveTests" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Example" />
+      <item index="4" class="java.lang.String" itemvalue="Application.UberSample" />
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Example" />
+        <item index="0" class="java.lang.String" itemvalue="Application.UberSample" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest.instancePositiveTests" />
         <item index="2" class="java.lang.String" itemvalue="Maven.ridioc-core [deploy]" />
       </list>
@@ -1706,7 +1664,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4562269" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.2860666" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39729398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3970407" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41676942" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="716" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1788,85 +1746,37 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/UberServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/SecondService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="34" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/SecondServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="174" selection-end="593" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/FirstService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/FirstServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/SecondService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/SecondServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="138" selection-end="557" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/ThirdService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="38" selection-end="103" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/ThirdServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="137" selection-end="552" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/MicroService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/PicoServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/PicoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="1" selection-start="402" selection-end="402" vertical-scroll-proportion="0.6040609">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/PicoService.java">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/PicoService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="0.21573605">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/NanoServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/NanoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="136" selection-end="597" vertical-scroll-proportion="0.09390863">
           <folding>
@@ -1875,7 +1785,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/NanoService.java">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/NanoService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="38" selection-end="102" vertical-scroll-proportion="0.08192771">
           <folding />
@@ -1889,26 +1799,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/MicroServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/release.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="137" selection-end="602" vertical-scroll-proportion="0.0">
+        <state line="14" column="34" selection-start="652" selection-end="652" vertical-scroll-proportion="0.44402984">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/MicroServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="137" selection-end="602" vertical-scroll-proportion="0.15858209">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/release.properties">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/MicroService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="104" selection-end="104" vertical-scroll-proportion="0.15858209">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/ThirdServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="137" selection-end="552" vertical-scroll-proportion="0.15858209">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/ThirdService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="38" selection-end="103" vertical-scroll-proportion="0.063432835">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="1" selection-start="1152" selection-end="1152" vertical-scroll-proportion="0.5391791">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="25" selection-start="447" selection-end="447" vertical-scroll-proportion="0.42256215">
+        <state line="123" column="20" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="14" selection-start="188" selection-end="188" vertical-scroll-proportion="0.19029851">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

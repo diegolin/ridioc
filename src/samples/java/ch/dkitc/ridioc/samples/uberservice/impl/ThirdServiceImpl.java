@@ -1,7 +1,7 @@
-package ch.dkitc.ridioc.samples.impl;
+package ch.dkitc.ridioc.samples.uberservice.impl;
 
-import ch.dkitc.ridioc.samples.api.PicoService;
-import ch.dkitc.ridioc.samples.api.ThirdService;
+import ch.dkitc.ridioc.samples.uberservice.api.PicoService;
+import ch.dkitc.ridioc.samples.uberservice.api.ThirdService;
 
 public class ThirdServiceImpl implements ThirdService {
 

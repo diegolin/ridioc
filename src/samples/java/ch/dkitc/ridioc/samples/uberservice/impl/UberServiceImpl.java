@@ -1,9 +1,9 @@
-package ch.dkitc.ridioc.samples.impl;
+package ch.dkitc.ridioc.samples.uberservice.impl;
 
-import ch.dkitc.ridioc.samples.api.FirstService;
-import ch.dkitc.ridioc.samples.api.SecondService;
-import ch.dkitc.ridioc.samples.api.ThirdService;
-import ch.dkitc.ridioc.samples.api.UberService;
+import ch.dkitc.ridioc.samples.uberservice.api.FirstService;
+import ch.dkitc.ridioc.samples.uberservice.api.SecondService;
+import ch.dkitc.ridioc.samples.uberservice.api.ThirdService;
+import ch.dkitc.ridioc.samples.uberservice.api.UberService;
 
 public class UberServiceImpl implements UberService {
 
