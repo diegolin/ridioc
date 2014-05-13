@@ -61,6 +61,7 @@
           <option name="ADD_NONJAVA_TO_ENTRIES" value="true" />
         </inspection_tool>
         <inspection_tool class="UnusedLibrary" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="UnusedProperty" enabled="false" level="WARNING" enabled_by_default="false" />
       </profile>
     </profiles>
     <option name="PROJECT_PROFILE" value="Project Default" />
@@ -84,6 +85,14 @@
     </option>
   </component>
   <component name="ProjectDictionaryState">
+    <dictionary name="diego.kuenzi">
+      <words>
+        <w>dkitc</w>
+        <w>nano</w>
+        <w>pico</w>
+        <w>uber</w>
+      </words>
+    </dictionary>
     <dictionary name="Diego.kuenzi">
       <words>
         <w>alrite</w>
