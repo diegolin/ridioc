@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/Example.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/FirstService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/FirstServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/MicroService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/MicroServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/NanoService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/NanoServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/PicoService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/PicoServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/SecondService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/SecondServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/ThirdService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/ThirdServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/api/UberService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/impl/UberServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iml" afterPath="$PROJECT_DIR$/ridioc.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.ipr" afterPath="$PROJECT_DIR$/ridioc.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/release.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
@@ -28,7 +11,7 @@
     <ignored path="release.properties.BACKUP" />
     <ignored path="log.txt" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963586484" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399918478894" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963669499" ignored="false" />
     <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399918486610" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399056557163" ignored="false" />
@@ -1778,7 +1761,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified group ID to accommodate sonatype policies" />
+    <option name="LAST_COMMIT_MESSAGE" value="release properties" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1800,6 +1783,7 @@
     <MESSAGE value="changelist master" />
     <MESSAGE value="refactorig test classes" />
     <MESSAGE value="modified group ID to accommodate sonatype policies" />
+    <MESSAGE value="release properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
