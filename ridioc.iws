@@ -2,21 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\Example.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\FirstService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/FirstService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\MicroService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/MicroService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\NanoService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/NanoService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\PicoService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/PicoService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\SecondService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/SecondService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\ThirdService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/ThirdService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\api\UberService.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\FirstServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/FirstServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\MicroServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/MicroServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\NanoServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/NanoServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\PicoServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/PicoServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\SecondServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/SecondServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\ThirdServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/ThirdServiceImpl.java" />
-      <change type="MOVED" beforePath="C:\Users\ked\IdeaProjects\ridioc\src\samples\java\ch\dkitc\ridioc\samples\impl\UberServiceImpl.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/UberServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
@@ -25,7 +10,7 @@
     <ignored path="release.properties.BACKUP" />
     <ignored path="log.txt" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963586484" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963798454" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399989397654" ignored="false" />
     <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399918486610" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399056557163" ignored="false" />
@@ -1029,28 +1014,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="20" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
+            <state line="142" column="20" selection-start="4542" selection-end="4542" vertical-scroll-proportion="0.93499047">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UberService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UberSample.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UberSample.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="14" selection-start="188" selection-end="188" vertical-scroll-proportion="0.19029851">
+            <state line="12" column="14" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1718,7 +1694,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="release properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="re-arranged UBER sample&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1741,18 +1717,12 @@
     <MESSAGE value="refactorig test classes" />
     <MESSAGE value="modified group ID to accommodate sonatype policies" />
     <MESSAGE value="release properties" />
+    <MESSAGE value="re-arranged UBER sample&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/SecondService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="118" selection-end="118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/SecondServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="174" selection-end="593" vertical-scroll-proportion="0.0">
@@ -1845,26 +1815,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="20" selection-start="3885" selection-end="3885" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="12" column="14" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/impl/UberServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="309" selection-end="309" vertical-scroll-proportion="0.22201492">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/api/UberService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
+        <state line="2" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.063432835">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="14" selection-start="188" selection-end="188" vertical-scroll-proportion="0.19029851">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="142" column="20" selection-start="4542" selection-end="4542" vertical-scroll-proportion="0.93499047">
+          <folding />
         </state>
       </provider>
     </entry>
