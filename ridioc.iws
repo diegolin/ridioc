@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62409070-f094-4fc9-897c-b390a4eb2525" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/AnotherBeanWithTypeArrayConstructor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithTypeArrayConstructorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithMultipleImplsImpl3.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithTypeArrayConstructor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithTypeArrayConstructorImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIInternalInstances.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DINewInstanceHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/objectfactory/ObjectFactorySample.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructorParam.java" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructorParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/AnotherBeanWithDefaultConstructor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithDefaultConstructorImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithMultipleTypesConstructor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithMultipleTypesConstructorImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeConstructorImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructorWithDependencies.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeConstructorWithDependenciesImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeDependency.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeDependencyImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" afterPath="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/objectfactory/ObjectFactorySample.java" afterPath="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/objectfactory/ObjectFactorySample.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ridioc.iws" afterPath="$PROJECT_DIR$/ridioc.iws" />
     </list>
     <ignored path="ridioc.iws" />
@@ -21,8 +22,8 @@
     <ignored path="release.properties.BACKUP" />
     <ignored path="log.txt" />
     <file path="/pom.xml" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399963586484" ignored="false" />
-    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400493798080" ignored="false" />
-    <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400579553673" ignored="false" />
+    <file path="/Dummy.txt" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400580758522" ignored="false" />
+    <file path="/fragment.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400588737008" ignored="false" />
     <file path="/README.md" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398844607400" ignored="false" />
     <file path="/a.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399056557163" ignored="false" />
     <file path="/TestObjectFactory.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1398852753302" ignored="false" />
@@ -903,7 +904,7 @@
     <file path="/DIObjectFactoryHelper.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400579856430" ignored="false" />
     <file path="/DITest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399023162272" ignored="false" />
     <file path="/DIBaseTest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399023039604" ignored="false" />
-    <file path="/DIObjectFactoryTest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400570733901" ignored="false" />
+    <file path="/DIObjectFactoryTest.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400596137478" ignored="false" />
     <file path="/BeanWithMultipleImplsImpl1.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399030014535" ignored="false" />
     <file path="/BeanWithMultipleImplsImpl2.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399030053115" ignored="false" />
     <file path="/DIAggregateException.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399037178856" ignored="false" />
@@ -945,13 +946,22 @@
     <file path="/NanoServiceImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399920680135" ignored="false" />
     <file path="/PicoServer.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399920505584" ignored="false" />
     <file path="/PicoServiceImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399920521424" ignored="false" />
-    <file path="/ObjectFactorySample.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1399989741516" ignored="false" />
+    <file path="/ObjectFactorySample.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400581390297" ignored="false" />
     <file path="/BeanWithTypeArrayCosntructor.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400569014126" ignored="false" />
     <file path="/BeanWithTypeArrayConstructorImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400569405584" ignored="false" />
     <file path="/AnotherBeanWithTypeArrayConstructorImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400570574875" ignored="false" />
-    <file path="/DINewInstanceHelper.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400580639536" ignored="false" />
+    <file path="/DINewInstanceHelper.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400581517088" ignored="false" />
     <file path="/DIInternalInstances.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400579814265" ignored="false" />
     <file path="/DIConstructorParam.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400580544820" ignored="false" />
+    <file path="/BeanWithSingleTypeConstructor.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400586911550" ignored="false" />
+    <file path="/BeanWithSingleTypeConstructorImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400586958335" ignored="false" />
+    <file path="/AnotherBeanWithDefaultConstructorImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400587377482" ignored="false" />
+    <file path="/BeanWithMultipleTypesConstructor.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400587409953" ignored="false" />
+    <file path="/BeanWithMultipleTypesConstructorImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400587491623" ignored="false" />
+    <file path="/BeanWithSingleTypeConstructorWithDependencies.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400588756481" ignored="false" />
+    <file path="/BeanWithSingleTypeConstructorWithDependenciesImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400595645708" ignored="false" />
+    <file path="/BeanWithSingleTypeDependency.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400595683604" ignored="false" />
+    <file path="/BeanWithSingleTypeDependencyImpl.java" changelist="62409070-f094-4fc9-897c-b390a4eb2525" time="1400595723414" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1003,6 +1013,23 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" line="479" class="ch.dkitc.ridioc.test.DIObjectFactoryTest" package="ch.dkitc.ridioc.test">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -1012,67 +1039,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DIObjectFactoryTest.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DIObjectFactoryTest.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="392" column="35" selection-start="18171" selection-end="18171" vertical-scroll-proportion="0.0">
+            <state line="492" column="0" selection-start="24531" selection-end="24531" vertical-scroll-proportion="0.27798507">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DIObjectFactoryHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2580#2588#0" expanded="true" />
-                <element signature="e#4222#4233#0" expanded="true" />
-                <element signature="e#5517#5537#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DIConstructors.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructors.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="27" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DIConstructor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="11" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DINewInstanceHelper.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DINewInstanceHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="12" selection-start="271" selection-end="271" vertical-scroll-proportion="0.29254302">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1845#1853#0" expanded="true" />
-                <element signature="e#1934#1965#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DIConstructorParam.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructorParam.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="98" selection-start="2597" selection-end="2597" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1101,22 +1074,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DI.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithTypeArrayCosntructor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithTypeArrayConstructor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithTypeArrayConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithMultipleImplsImpl3.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/AnotherBeanWithTypeArrayConstructor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithTypeArrayConstructorImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/DIInstanceMethod.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/DIInstancesMethod.java" />
-        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/DIInternalInstances.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIInstancesMethod.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIInternalInstances.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructorParam.java" />
+        <option value="$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/objectfactory/ObjectFactorySample.java" />
         <option value="$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DINewInstanceHelper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructor.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeConstructorImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithDefaultConstructorImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithMultipleTypesConstructor.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithMultipleTypesConstructorImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithDependency.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructorWithDependencies.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeConstructorWithDependenciesImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeDependency.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeDependencyImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java" />
       </list>
     </option>
   </component>
@@ -1295,6 +1268,90 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dkitc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dkitc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridioc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="samples" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1358,6 +1415,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="samples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="objectfactory" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1428,15 +1489,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="ch.dkitc.ridioc" />
       <recent name="ch.dkitc.ridioc.test.api" />
+      <recent name="ch.dkitc.ridioc" />
       <recent name="ch.dkitc.ridioc.test" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="ch.dkitc.ridioc" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JUnit (All)">
+  <component name="RunManager" selected="JUnit.DIObjectFactoryTest.instancePositiveTests">
     <configuration default="false" name="ridioc-core [deploy]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -1517,6 +1578,32 @@
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DIObjectFactoryTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="ridioc" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="ch.dkitc.ridioc.test" />
+      <option name="MAIN_CLASS_NAME" value="ch.dkitc.ridioc.test.DIObjectFactoryTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <ConfigurationWrapper RunnerId="Debug" />
       <method />
     </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
@@ -1650,18 +1737,20 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="JUnit.JUnit (All)" />
       <item index="1" class="java.lang.String" itemvalue="Maven.ridioc-core [test]" />
       <item index="2" class="java.lang.String" itemvalue="Maven.ridioc-core [deploy]" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest.instancePositiveTests" />
       <item index="4" class="java.lang.String" itemvalue="Application.UberSample" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.UberSample" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest.instancePositiveTests" />
-        <item index="2" class="java.lang.String" itemvalue="Maven.ridioc-core [deploy]" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest.instancePositiveTests" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DIObjectFactoryTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.UberSample" />
+        <item index="3" class="java.lang.String" itemvalue="Maven.ridioc-core [deploy]" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -1727,7 +1816,7 @@
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30702835" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292232" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34525278" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17879161" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24984147" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19023462" sideWeight="0.602706" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30374128" sideWeight="0.69297165" order="1" side_tool="false" content_ui="combo" />
@@ -1787,7 +1876,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="re-arranged UBER sample&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduces array instances cache" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1811,125 +1900,134 @@
     <MESSAGE value="modified group ID to accommodate sonatype policies" />
     <MESSAGE value="release properties" />
     <MESSAGE value="re-arranged UBER sample&#10;" />
+    <MESSAGE value="Introduces array instances cache" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-sources.jar!/org/junit/Assert.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="25" selection-start="3952" selection-end="3952" vertical-scroll-proportion="0.0">
+        <state line="2" column="46" selection-start="52" selection-end="81" vertical-scroll-proportion="0.043312103">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithTypeArrayConstructorImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/AnotherBeanWithDefaultConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="582" selection-end="582" vertical-scroll-proportion="0.40052357">
+        <state line="2" column="50" selection-start="85" selection-end="85" vertical-scroll-proportion="0.04576043">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithDefaultConstructorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="0.2225131">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithMultipleTypesConstructorImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="48" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.5206391">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithTypeArrayConstructor.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithMultipleTypesConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="83" selection-end="131" vertical-scroll-proportion="0.064968154">
+        <state line="2" column="49" selection-start="52" selection-end="84" vertical-scroll-proportion="0.04450262">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Class.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanPrivateDefaultConstructor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2046" column="26" selection-start="87352" selection-end="87352" vertical-scroll-proportion="0.0">
+        <state line="4" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.08900524">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DITypeUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/AnotherBeanWithDefaultConstructorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="33" selection-start="87" selection-end="87" vertical-scroll-proportion="0.086624205">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="11" selection-start="579" selection-end="579" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="27" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIAggregateException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="91" selection-end="91" vertical-scroll-proportion="0.08900524">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.33376962">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/AnotherBeanWithTypeArrayConstructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="140" selection-end="140" vertical-scroll-proportion="0.11125655">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIInternalInstances.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="68" selection-start="201" selection-end="201" vertical-scroll-proportion="0.086624205">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="392" column="35" selection-start="18171" selection-end="18171" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactoryHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2580#2588#0" expanded="true" />
-            <element signature="e#4222#4233#0" expanded="true" />
-            <element signature="e#5517#5537#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIConstructorParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="98" selection-start="2597" selection-end="2597" vertical-scroll-proportion="0.0">
+        <state line="4" column="84" selection-start="188" selection-end="188" vertical-scroll-proportion="0.086624205">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DINewInstanceHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="12" selection-start="271" selection-end="271" vertical-scroll-proportion="0.29254302">
+        <state line="5" column="23" selection-start="122" selection-end="122" vertical-scroll-proportion="0.11010363">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1845#1853#0" expanded="false" />
+            <element signature="e#1934#1965#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIObjectFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="24" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.48445597">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/samples/java/ch/dkitc/ridioc/samples/uberservice/UberSample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.32484075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/dkitc/ridioc/DIStringLiteralStore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="40" selection-start="302" selection-end="302" vertical-scroll-proportion="0.15414508">
+          <folding>
+            <element signature="e#329#347#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeDependencyImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="69" selection-start="492" selection-end="492" vertical-scroll-proportion="0.2225131">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1845#1853#0" expanded="true" />
-            <element signature="e#1934#1965#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeDependency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="45" selection-start="52" selection-end="80" vertical-scroll-proportion="0.043312103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/impl/BeanWithSingleTypeConstructorWithDependenciesImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="89" selection-start="440" selection-end="468" vertical-scroll-proportion="0.19490446">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/api/BeanWithSingleTypeConstructorWithDependencies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="62" selection-start="52" selection-end="97" vertical-scroll-proportion="0.043312103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/dkitc/ridioc/test/DIObjectFactoryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="492" column="0" selection-start="24531" selection-end="24531" vertical-scroll-proportion="0.27798507">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -31,33 +31,38 @@ public class DIObjectFactoryTest extends DIBaseTest {
     public void newInstancePositiveTests() {
         newInstancePositiveTests_checkDefaultConstructor();
 
-        // primitives
-        newInstancePositiveTests_checkPrimitiveByte();
-        newInstancePositiveTests_checkPrimitiveShort();
-        newInstancePositiveTests_checkPrimitiveInteger();
-        newInstancePositiveTests_checkPrimitiveLong();
-        newInstancePositiveTests_checkPrimitiveFloat();
-        newInstancePositiveTests_checkPrimitiveDouble();
-        newInstancePositiveTests_checkPrimitiveCharacter();
-        newInstancePositiveTests_checkPrimitiveBoolean();
+        // arrays
+        //newInstancePositiveTests_checkJavaLangStringArray();
+        //newInstancePositiveTests_checkTypeArray();
+        //newInstancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
 
-        // java.lang.Number
+        // literals
+        newInstancePositiveTests_checkPrimitiveByte();
         newInstancePositiveTests_checkJavaLangByte();
+        newInstancePositiveTests_checkPrimitiveShort();
         newInstancePositiveTests_checkJavaLangShort();
+        newInstancePositiveTests_checkPrimitiveInteger();
         newInstancePositiveTests_checkJavaLangInteger();
+        newInstancePositiveTests_checkPrimitiveLong();
         newInstancePositiveTests_checkJavaLangLong();
+        newInstancePositiveTests_checkPrimitiveFloat();
         newInstancePositiveTests_checkJavaLangFloat();
+        newInstancePositiveTests_checkPrimitiveDouble();
         newInstancePositiveTests_checkJavaLangDouble();
+        newInstancePositiveTests_checkPrimitiveCharacter();
+        //newInstancePositiveTests_checkJavaLangCharacter();
+        newInstancePositiveTests_checkPrimitiveBoolean();
+        //newInstancePositiveTests_checkJavaLangBoolean();
         newInstancePositiveTests_checkJavaMathBigDecimal();
         newInstancePositiveTests_checkJavaMathBigInteger();
-
-        // java.lang.XZY
         newInstancePositiveTests_checkJavaLangString();
-        //newInstancePositiveTests_checkJavaLangStringArray();
         newInstancePositiveTests_checkJavaLangEnum();
         //newInstancePositiveTests_checkJavaLangDate();
-        //newInstancePositiveTests_checkJavaLangCharacter();
-        //newInstancePositiveTests_checkJavaLangBoolean();
+
+        // types
+        //newInstancePositiveTests_checkSingleType();
+        //newInstancePositiveTests_checkMultipleTypes();
+        //newInstancePositiveTests_checkMultipleTypesWithDependencies();
     }
 
     @Test
@@ -75,37 +80,39 @@ public class DIObjectFactoryTest extends DIBaseTest {
     public void instancePositiveTests() {
         instancePositiveTests_checkDefaultConstructor();
 
-        // primitives
-        instancePositiveTests_checkPrimitiveByte();
-        instancePositiveTests_checkPrimitiveShort();
-        instancePositiveTests_checkPrimitiveInteger();
-        instancePositiveTests_checkPrimitiveLong();
-        instancePositiveTests_checkPrimitiveFloat();
-        instancePositiveTests_checkPrimitiveDouble();
-        instancePositiveTests_checkPrimitiveCharacter();
-        instancePositiveTests_checkPrimitiveBoolean();
-
-        // java.lang.Number
-        instancePositiveTests_checkJavaLangByte();
-        instancePositiveTests_checkJavaLangShort();
-        instancePositiveTests_checkJavaLangInteger();
-        instancePositiveTests_checkJavaLangLong();
-        instancePositiveTests_checkJavaLangFloat();
-        instancePositiveTests_checkJavaLangDouble();
-        instancePositiveTests_checkJavaMathBigDecimal();
-        instancePositiveTests_checkJavaMathBigInteger();
-
-        // java.lang.XZY
-        instancePositiveTests_checkJavaLangString();
+        // arrays
         instancePositiveTests_checkJavaLangStringArray();
-        instancePositiveTests_checkJavaLangEnum();
-        instancePositiveTests_checkJavaLangDate();
-        instancePositiveTests_checkJavaLangCharacter();
-        instancePositiveTests_checkJavaLangBoolean();
-
-        // types
         instancePositiveTests_checkTypeArray();
         instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
+
+        // literals
+        instancePositiveTests_checkPrimitiveByte();
+        instancePositiveTests_checkJavaLangByte();
+        instancePositiveTests_checkPrimitiveShort();
+        instancePositiveTests_checkJavaLangShort();
+        instancePositiveTests_checkPrimitiveInteger();
+        instancePositiveTests_checkJavaLangInteger();
+        instancePositiveTests_checkPrimitiveLong();
+        instancePositiveTests_checkJavaLangLong();
+        instancePositiveTests_checkPrimitiveFloat();
+        instancePositiveTests_checkJavaLangFloat();
+        instancePositiveTests_checkPrimitiveDouble();
+        instancePositiveTests_checkJavaLangDouble();
+        instancePositiveTests_checkPrimitiveCharacter();
+        instancePositiveTests_checkJavaLangCharacter();
+        instancePositiveTests_checkPrimitiveBoolean();
+        instancePositiveTests_checkJavaLangBoolean();
+        instancePositiveTests_checkJavaMathBigDecimal();
+        instancePositiveTests_checkJavaMathBigInteger();
+        instancePositiveTests_checkJavaLangString();
+        instancePositiveTests_checkJavaLangEnum();
+        instancePositiveTests_checkJavaLangDate();
+
+        // types
+        instancePositiveTests_checkSingleType();
+        instancePositiveTests_checkSingleTypeWithDependencies();
+        instancePositiveTests_checkMultipleTypes();
+        //instancePositiveTests_checkMultipleTypesWithDependencies();
     }
 
     @Test
@@ -445,15 +452,62 @@ public class DIObjectFactoryTest extends DIBaseTest {
         BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean.getMultipleImps();
         assertNotNull(beanWithMultipleImplsArray1);
         assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray1.length);
-
         AnotherBeanWithTypeArrayConstructor anotherBean = objectFactory.instance(AnotherBeanWithTypeArrayConstructor.class);
         assertNotNull(anotherBean);
         BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = anotherBean.getMultipleImps();
         assertNotNull(beanWithMultipleImplsArray2);
         assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray2.length);
-
         assertArrayEquals(beanWithMultipleImplsArray1, beanWithMultipleImplsArray2);
         assertTrue(beanWithMultipleImplsArray1 == beanWithMultipleImplsArray2);
+    }
+
+    private void instancePositiveTests_checkSingleType() {
+        BeanWithSingleTypeConstructor bean1 = objectFactory.instance(BeanWithSingleTypeConstructor.class);
+        assertNotNull(bean1);
+        BeanWithDefaultConstructor beanWithDefaultConstructor1 = bean1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor1);
+        BeanWithSingleTypeConstructor bean2 = objectFactory.instance(BeanWithSingleTypeConstructor.class);
+        assertNotNull(bean2);
+        BeanWithDefaultConstructor beanWithDefaultConstructor2 = bean2.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor2);
+        assertTrue(bean1 == bean2);
+        assertTrue(beanWithDefaultConstructor1 == beanWithDefaultConstructor2);
+    }
+
+    private void instancePositiveTests_checkSingleTypeWithDependencies() {
+        BeanWithSingleTypeConstructorWithDependencies bean1 = objectFactory.instance(BeanWithSingleTypeConstructorWithDependencies.class);
+        assertNotNull(bean1);
+        BeanWithSingleTypeDependency beanWithSingleTypeDependency1 = bean1.getBeanWithSingleTypeDependency();
+        assertNotNull(beanWithSingleTypeDependency1);
+        BeanWithDefaultConstructor beanWithDefaultConstructor1 = beanWithSingleTypeDependency1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor1);
+        BeanWithSingleTypeConstructorWithDependencies bean2 = objectFactory.instance(BeanWithSingleTypeConstructorWithDependencies.class);
+        assertNotNull(bean2);
+        BeanWithSingleTypeDependency beanWithSingleTypeDependency2 = bean2.getBeanWithSingleTypeDependency();
+        assertNotNull(beanWithSingleTypeDependency2);
+        BeanWithDefaultConstructor beanWithDefaultConstructor2 = beanWithSingleTypeDependency2.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor1);
+        assertTrue(bean1 == bean2);
+        assertTrue(beanWithSingleTypeDependency1 == beanWithSingleTypeDependency2);
+        assertTrue(beanWithDefaultConstructor1 == beanWithDefaultConstructor2);
+    }
+
+    private void instancePositiveTests_checkMultipleTypes() {
+        BeanWithMultipleTypesConstructor bean1 = objectFactory.instance(BeanWithMultipleTypesConstructor.class);
+        assertNotNull(bean1);
+        BeanWithDefaultConstructor beanWithDefaultConstructor1 = bean1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor1);
+        AnotherBeanWithDefaultConstructor anotherBeanWithDefaultConstructor1 = bean1.getAnotherBeanWithDefaultConstructor();
+        assertNotNull(anotherBeanWithDefaultConstructor1);
+        BeanWithMultipleTypesConstructor bean2 = objectFactory.instance(BeanWithMultipleTypesConstructor.class);
+        assertNotNull(bean2);
+        BeanWithDefaultConstructor beanWithDefaultConstructor2 = bean2.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor2);
+        AnotherBeanWithDefaultConstructor anotherBeanWithDefaultConstructor2 = bean1.getAnotherBeanWithDefaultConstructor();
+        assertNotNull(anotherBeanWithDefaultConstructor2);
+        assertTrue(bean1 == bean2);
+        assertTrue(beanWithDefaultConstructor1 == beanWithDefaultConstructor2);
+        assertTrue(anotherBeanWithDefaultConstructor1 == anotherBeanWithDefaultConstructor2);
     }
 
     private void newInstanceNegativeTests_checkBeanButNoImplementation() {
