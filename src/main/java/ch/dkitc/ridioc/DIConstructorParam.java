@@ -103,6 +103,10 @@ public class DIConstructorParam {
         return Boolean.class.isAssignableFrom(type);
     }
 
+    public boolean isLiteral() {
+        return isNumber() || isPrimitive() || isEnum() || isString() || isDate() || isCharacter() || isBoolean();
+    }
+
     private void mustBeAnArray() {
         if (!type.isArray()) {
             throw new IllegalStateException(type + " is not an array");

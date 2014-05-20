@@ -15,6 +15,8 @@ import ch.dkitc.ridioc.test.api.*;
 
 public class DIObjectFactoryTest extends DIBaseTest {
 
+    private static final int NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES = 3;
+
     private DIObjectFactory objectFactory;
 
     public DIObjectFactoryTest() {
@@ -100,6 +102,10 @@ public class DIObjectFactoryTest extends DIBaseTest {
         instancePositiveTests_checkJavaLangDate();
         instancePositiveTests_checkJavaLangCharacter();
         instancePositiveTests_checkJavaLangBoolean();
+
+        // types
+        instancePositiveTests_checkTypeArray();
+        instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
     }
 
     @Test
@@ -414,6 +420,40 @@ public class DIObjectFactoryTest extends DIBaseTest {
         assertNotNull(bean2);
         assertEquals(bean2.getTestShort(), Short.MAX_VALUE);
         assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+    }
+
+    private void instancePositiveTests_checkTypeArray() {
+        BeanWithTypeArrayConstructor bean1 = objectFactory.instance(BeanWithTypeArrayConstructor.class);
+        assertNotNull(bean1);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean1.getMultipleImps();
+        assertNotNull(beanWithMultipleImplsArray1);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray1.length);
+        BeanWithTypeArrayConstructor bean2 = objectFactory.instance(BeanWithTypeArrayConstructor.class);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = bean1.getMultipleImps();
+        assertNotNull(beanWithMultipleImplsArray2);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray2.length);
+        assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+        assertArrayEquals(beanWithMultipleImplsArray1, beanWithMultipleImplsArray2);
+        assertTrue(beanWithMultipleImplsArray1 == beanWithMultipleImplsArray2);
+    }
+
+    private void instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes() {
+        BeanWithTypeArrayConstructor bean = objectFactory.instance(BeanWithTypeArrayConstructor.class);
+        assertNotNull(bean);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean.getMultipleImps();
+        assertNotNull(beanWithMultipleImplsArray1);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray1.length);
+
+        AnotherBeanWithTypeArrayConstructor anotherBean = objectFactory.instance(AnotherBeanWithTypeArrayConstructor.class);
+        assertNotNull(anotherBean);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = anotherBean.getMultipleImps();
+        assertNotNull(beanWithMultipleImplsArray2);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray2.length);
+
+        assertArrayEquals(beanWithMultipleImplsArray1, beanWithMultipleImplsArray2);
+        assertTrue(beanWithMultipleImplsArray1 == beanWithMultipleImplsArray2);
     }
 
     private void newInstanceNegativeTests_checkBeanButNoImplementation() {
