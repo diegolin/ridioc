@@ -32,10 +32,6 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
                     throw new IllegalArgumentException("There should be EXACTLY ONE parameter of type 'Class<?>'");
                 }
                 Class<?> type = castTo(args[0], Class.class);
-                // is it ourselves?
-                if (type.getClass().isInstance(this)) {
-                    return castTo(this, type);
-                }
                 return objectFactoryHelper.instance(type);
             }
         });
@@ -52,7 +48,6 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
             @Override
             public Object invoke(Method method, Object[] args) {
                 argumentsMustHaveExactArgumentsCountOf(args, 2);
-
                 return objectFactoryHelper.registerStringLiteralArray(castTo(args[0], String.class), castTo(args[1], String[].class));
             }
         });

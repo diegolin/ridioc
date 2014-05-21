@@ -85,6 +85,11 @@ public class DIObjectFactoryTest extends DIBaseTest {
         instancePositiveTests_checkTypeArray();
         instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
 
+        // lists
+        // instancePositiveTests_checkJavaLangStringList();
+        // instancePositiveTests_checkTypeList();
+        // instancePositiveTests_checkTypeListInjectedIntoDifferentTypes();
+
         // literals
         instancePositiveTests_checkPrimitiveByte();
         instancePositiveTests_checkJavaLangByte();
@@ -112,7 +117,10 @@ public class DIObjectFactoryTest extends DIBaseTest {
         instancePositiveTests_checkSingleType();
         instancePositiveTests_checkSingleTypeWithDependencies();
         instancePositiveTests_checkMultipleTypes();
-        //instancePositiveTests_checkMultipleTypesWithDependencies();
+        instancePositiveTests_checkMultipleTypesWithDependencies();
+
+        // factories
+        //instancePositiveTests_checkTypeFactory();
     }
 
     @Test
@@ -466,10 +474,12 @@ public class DIObjectFactoryTest extends DIBaseTest {
         assertNotNull(bean1);
         BeanWithDefaultConstructor beanWithDefaultConstructor1 = bean1.getBeanWithDefaultConstructor();
         assertNotNull(beanWithDefaultConstructor1);
+
         BeanWithSingleTypeConstructor bean2 = objectFactory.instance(BeanWithSingleTypeConstructor.class);
         assertNotNull(bean2);
         BeanWithDefaultConstructor beanWithDefaultConstructor2 = bean2.getBeanWithDefaultConstructor();
         assertNotNull(beanWithDefaultConstructor2);
+
         assertTrue(bean1 == bean2);
         assertTrue(beanWithDefaultConstructor1 == beanWithDefaultConstructor2);
     }
@@ -499,15 +509,48 @@ public class DIObjectFactoryTest extends DIBaseTest {
         assertNotNull(beanWithDefaultConstructor1);
         AnotherBeanWithDefaultConstructor anotherBeanWithDefaultConstructor1 = bean1.getAnotherBeanWithDefaultConstructor();
         assertNotNull(anotherBeanWithDefaultConstructor1);
+
         BeanWithMultipleTypesConstructor bean2 = objectFactory.instance(BeanWithMultipleTypesConstructor.class);
         assertNotNull(bean2);
         BeanWithDefaultConstructor beanWithDefaultConstructor2 = bean2.getBeanWithDefaultConstructor();
         assertNotNull(beanWithDefaultConstructor2);
         AnotherBeanWithDefaultConstructor anotherBeanWithDefaultConstructor2 = bean1.getAnotherBeanWithDefaultConstructor();
+
         assertNotNull(anotherBeanWithDefaultConstructor2);
         assertTrue(bean1 == bean2);
         assertTrue(beanWithDefaultConstructor1 == beanWithDefaultConstructor2);
         assertTrue(anotherBeanWithDefaultConstructor1 == anotherBeanWithDefaultConstructor2);
+    }
+
+    private void instancePositiveTests_checkMultipleTypesWithDependencies() {
+        BeanWithMultipleTypesConstructorWithDependencies bean1 = objectFactory.instance(BeanWithMultipleTypesConstructorWithDependencies.class);
+        assertNotNull(bean1);
+        BeanWithSingleTypeDependency beanWithSingleTypeDependency1 = bean1.getBeanWithSingleTypeDependency();
+        assertNotNull(beanWithSingleTypeDependency1);
+        BeanWithDefaultConstructor beanWithDefaultConstructor11 = beanWithSingleTypeDependency1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor11);
+        AnotherBeanWithSingleTypeDependency anotherBeanWithSingleTypeDependency1 = bean1.getAnotherBeanWithSingleTypeDependency();
+        assertNotNull(anotherBeanWithSingleTypeDependency1);
+        BeanWithDefaultConstructor beanWithDefaultConstructor12 = anotherBeanWithSingleTypeDependency1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor12);
+
+        BeanWithMultipleTypesConstructorWithDependencies bean2 = objectFactory.instance(BeanWithMultipleTypesConstructorWithDependencies.class);
+        assertNotNull(bean2);
+        BeanWithSingleTypeDependency beanWithSingleTypeDependency2 = bean2.getBeanWithSingleTypeDependency();
+        assertNotNull(beanWithSingleTypeDependency2);
+        BeanWithDefaultConstructor beanWithDefaultConstructor21 = beanWithSingleTypeDependency1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor21);
+        AnotherBeanWithSingleTypeDependency anotherBeanWithSingleTypeDependency2 = bean2.getAnotherBeanWithSingleTypeDependency();
+        assertNotNull(anotherBeanWithSingleTypeDependency2);
+        BeanWithDefaultConstructor beanWithDefaultConstructor22 = anotherBeanWithSingleTypeDependency1.getBeanWithDefaultConstructor();
+        assertNotNull(beanWithDefaultConstructor22);
+
+        assertTrue(bean1 == bean2);
+        assertTrue(beanWithSingleTypeDependency1 == beanWithSingleTypeDependency2);
+        assertTrue(beanWithDefaultConstructor11 == beanWithDefaultConstructor12);
+        assertTrue(beanWithDefaultConstructor12 == beanWithDefaultConstructor21);
+        assertTrue(beanWithDefaultConstructor21 == beanWithDefaultConstructor22);
+        assertTrue(anotherBeanWithSingleTypeDependency1 == anotherBeanWithSingleTypeDependency2);
     }
 
     private void newInstanceNegativeTests_checkBeanButNoImplementation() {

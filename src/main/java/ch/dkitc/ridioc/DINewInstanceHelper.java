@@ -40,6 +40,8 @@ public class DINewInstanceHelper {
     public <T> T newInstance(DIConstructor diConstructor, DIConstructorParams constructorParams, DIInstanceMethodParams instanceMethodParams) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         checkConstructorParameterTypes(constructorParams);
 
+        // diConstructor.getGenericSignature();
+
         List<Object> initArgsAsList = new ArrayList<Object>();
         Map<Class<?>, DIMethodParamsIndex> methodParamsIndexMap = new HashMap<Class<?>, DIMethodParamsIndex>();
         int usedMethodParamCount = 0;
@@ -65,6 +67,16 @@ public class DINewInstanceHelper {
                 continue;
             }
 
+            if (constrParam.isTypeFactory()) {
+                newInstanceTypeFactory(initArgsAsList, constrParam, constrParamType);
+                continue;
+            }
+
+            if (constrParam.isIterable()) {
+                newInstanceIterable(initArgsAsList, constrParam, constrParamType);
+                continue;
+            }
+
             if (constrParam.isArray()) {
                 newInstanceArray(initArgsAsList, constrParam, constrParamType);
                 continue;
@@ -81,6 +93,34 @@ public class DINewInstanceHelper {
 
         checkNewInstancePostConditions(constructorParams, instanceMethodParams, initArgsAsList, usedMethodParamCount);
         return diConstructor.newInstance(initArgsAsList);
+    }
+
+    private void newInstanceTypeFactory(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
+        if (constrParam.isTypeFactory()) {
+            throw new IllegalArgumentException(constrParam + ": type factories not (yet) supported");
+        }
+
+        throw new IllegalArgumentException(constrParam + ": This doesn't seem to be an type factory");
+    }
+
+    private void newInstanceIterable(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
+        if (constrParam.isSet()) {
+            throw new IllegalArgumentException(constrParam + ": java.util.Set not (yet) supported");
+        }
+
+        if (constrParam.isList()) {
+            throw new IllegalArgumentException(constrParam + ": java.util.List not (yet) supported");
+        }
+
+        if (constrParam.isCollection()) {
+            throw new IllegalArgumentException(constrParam + ": java.util.Collection not (yet) supported");
+        }
+
+        if (constrParam.isIterable()) {
+            throw new IllegalArgumentException(constrParam + ": java.util.Iterable not (yet) supported");
+        }
+
+        throw new IllegalArgumentException(constrParam + ": This doesn't seem to be an iterable");
     }
 
     private void checkNewInstancePostConditions(DIConstructorParams constructorParams, DIInstanceMethodParams instanceMethodParams, List<Object> initArgsAsList, int usedMethodParamCount) {

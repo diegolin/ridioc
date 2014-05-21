@@ -109,10 +109,9 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     }
 
     private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {
-        List<String> paramNames = diConstructor.getParameterNames();
         DIConstructorParams constructorParams = new DIConstructorParams();
-        for (int i = 0; i < paramNames.size(); i++) {
-            constructorParams.add(paramNames.get(i), diConstructor.getParamType(i), diConstructor.getParamAnnotations(i));
+        for (int i = 0; i < diConstructor.getParamCount(); i++) {
+            constructorParams.add(diConstructor.getParamName(i), diConstructor.getParamType(i), diConstructor.getParamAnnotations(i));
         }
         return constructorParams;
     }
@@ -154,5 +153,4 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
                 throw new IllegalArgumentException(potentialImplTypes.size() + " matching implementation types found within '" + reflectionsCache.getUrls() + '"');
         }
     }
-
 }

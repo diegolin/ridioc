@@ -1,8 +1,10 @@
 package ch.dkitc.ridioc;
 
 import java.lang.annotation.Annotation;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 public class DIConstructorParam {
 
@@ -15,7 +17,6 @@ public class DIConstructorParam {
         this.type = type;
         this.annotations = annotations;
     }
-
 
     @Override
     public String toString() {
@@ -30,6 +31,10 @@ public class DIConstructorParam {
         return type;
     }
 
+    public Class<?> getComponentType() {
+        return type.getComponentType();
+    }
+
     public String getName() {
         return name;
     }
@@ -39,84 +44,86 @@ public class DIConstructorParam {
     }
 
     public boolean isArrayOfPrimitives() {
-        mustBeAnArray();
-        return type.getComponentType().isPrimitive();
+        return isArray() && getComponentType().isPrimitive();
     }
 
     public boolean isArrayOfArrays() {
-        mustBeAnArray();
-        return type.getComponentType().isArray();
+        return isArray() && getComponentType().isArray();
     }
 
     public boolean isArrayOfEnums() {
-        mustBeAnArray();
-        return type.getComponentType().isEnum();
+        return isArray() && getComponentType().isEnum();
     }
 
     public boolean isArrayOfStrings() {
-        mustBeAnArray();
-        return String.class.isAssignableFrom(type.getComponentType());
+        return isArray() && isComponentTypeInstanceOf(String.class);
     }
 
     public boolean isArrayOfNumbers() {
-        mustBeAnArray();
-        return Number.class.isAssignableFrom(type.getComponentType());
+        return isArray() && isComponentTypeInstanceOf(Number.class);
     }
 
     public boolean isArrayOfDates() {
-        mustBeAnArray();
-        return Date.class.isAssignableFrom(type.getComponentType());
+        return isArray() && isComponentTypeInstanceOf(Date.class);
     }
 
     public boolean isNumber() {
-        mustNotBeAnArray();
-        return Number.class.isAssignableFrom(type);
+        return !isArray() && isInstanceOf(Number.class);
     }
 
     public boolean isPrimitive() {
-        mustNotBeAnArray();
-        return type.isPrimitive();
+        return !isArray() && type.isPrimitive();
     }
 
     public boolean isEnum() {
-        mustNotBeAnArray();
-        return type.isEnum();
+        return !isArray() && type.isEnum();
     }
 
     public boolean isString() {
-        mustNotBeAnArray();
-        return String.class.isAssignableFrom(type);
+        return !isArray() && isInstanceOf(String.class);
     }
 
     public boolean isDate() {
-        mustNotBeAnArray();
-        return Date.class.isAssignableFrom(type);
+        return !isArray() && isInstanceOf(Date.class);
     }
 
     public boolean isCharacter() {
-        mustNotBeAnArray();
-        return Character.class.isAssignableFrom(type);
+        return !isArray() && isInstanceOf(Character.class);
     }
 
     public boolean isBoolean() {
-        mustNotBeAnArray();
-        return Boolean.class.isAssignableFrom(type);
+        return !isArray() && isInstanceOf(Boolean.class);
     }
 
     public boolean isLiteral() {
         return isNumber() || isPrimitive() || isEnum() || isString() || isDate() || isCharacter() || isBoolean();
     }
 
-    private void mustBeAnArray() {
-        if (!type.isArray()) {
-            throw new IllegalStateException(type + " is not an array");
-        }
+    public boolean isIterable() {
+        return !isArray() && isInstanceOf(Iterable.class);
     }
 
-    private void mustNotBeAnArray() {
-        if (type.isArray()) {
-            throw new IllegalStateException(type + " is an array");
-        }
+    public boolean isSet() {
+        return !isArray() && isInstanceOf(Set.class);
     }
 
+    public boolean isList() {
+        return !isArray() && isInstanceOf(List.class);
+    }
+
+    public boolean isCollection() {
+        return !isArray() && isInstanceOf(Collection.class);
+    }
+
+    public boolean isTypeFactory() {
+        return !isArray() && isInstanceOf(DITypeFactory.class);
+    }
+
+    private boolean isInstanceOf(Class<?> givenType) {
+        return givenType.isAssignableFrom(type);
+    }
+
+    private boolean isComponentTypeInstanceOf(Class<?> givenType) {
+        return givenType.isAssignableFrom(getComponentType());
+    }
 }
