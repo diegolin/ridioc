@@ -2,6 +2,7 @@ package ch.dkitc.ridioc;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class DIConstructors extends ArrayList<DIConstructor> {
         DIConstructor diConstructor = findMatchingConstructorByParams(params);
         if (diConstructor != null) {
             // leave early!
-            return DIListUtils.toList(diConstructor);
+            return Arrays.asList(diConstructor);
         }
 
         // if we're here, no exact constructor was found for given params
@@ -37,7 +38,7 @@ public class DIConstructors extends ArrayList<DIConstructor> {
         DIConstructor diDefaultConstructor = findDefaultConstructor();
         if (diDefaultConstructor != null) {
             // leave early!
-            return DIListUtils.toList(diDefaultConstructor);
+            return Arrays.asList(diDefaultConstructor);
         }
 
         // o.k. let's just return ALL public constructors

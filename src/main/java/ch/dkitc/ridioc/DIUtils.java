@@ -1,6 +1,6 @@
 package ch.dkitc.ridioc;
 
-public class DITypeUtils {
+public class DIUtils {
 
     public static boolean hasDefaultConstructor(Class<?> type) {
         try {
@@ -17,6 +17,17 @@ public class DITypeUtils {
         }
     }
 
-    private DITypeUtils() {
+    public static void checkParams(Object[] params) throws IllegalArgumentException {
+        if (params ==  null) {
+            throw new IllegalArgumentException("'params' must not be null");
+        }
+        for (Object param : params) {
+            if (param == null) {
+                throw new IllegalArgumentException("Parameter within 'params' may NOT be null");
+            }
+        }
+    }
+
+    private DIUtils() {
     }
 }

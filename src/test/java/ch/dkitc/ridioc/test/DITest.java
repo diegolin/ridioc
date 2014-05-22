@@ -11,7 +11,10 @@ import ch.dkitc.ridioc.test.base.DIBaseTest;
 
 public class DITest extends DIBaseTest {
 
+    private static final String PACKAGE_PREFIX = DITest.class.getPackage().getName();
+
     public DITest() {
+        super(PACKAGE_PREFIX);
     }
 
     @Test

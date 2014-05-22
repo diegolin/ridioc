@@ -16,11 +16,14 @@ import ch.dkitc.ridioc.test.base.DIBaseTest;
 
 public class DIObjectFactoryTest extends DIBaseTest {
 
+    private static final String PACKAGE_PREFIX = DIObjectFactoryTest.class.getPackage().getName();
+
     private static final int NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES = 3;
 
     private DIObjectFactory objectFactory;
 
     public DIObjectFactoryTest() {
+        super(PACKAGE_PREFIX);
     }
 
     @Before

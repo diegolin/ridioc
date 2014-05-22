@@ -7,13 +7,14 @@ import ch.dkitc.ridioc.DIObjectFactory;
 
 public abstract class DIBaseTest {
 
-    public static final String PACKAGE_PREFIX = DIBaseTest.class.getPackage().getName();
+    private final String packagePrefix;
 
-    protected DIBaseTest() {
+    protected DIBaseTest(String packagePrefix) {
+        this.packagePrefix = packagePrefix;
     }
 
-    protected static DIObjectFactory createObjectFactory() {
-        DIObjectFactory objectFactory = DI.createObjectFactory(DIObjectFactory.class, PACKAGE_PREFIX);
+    protected DIObjectFactory createObjectFactory() {
+        DIObjectFactory objectFactory = DI.createObjectFactory(DIObjectFactory.class, packagePrefix);
         assertNotNull(objectFactory);
         return objectFactory;
     }

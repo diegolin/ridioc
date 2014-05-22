@@ -4,8 +4,8 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
-import static ch.dkitc.ridioc.DIParamUtils.checkParams;
-import static ch.dkitc.ridioc.DITypeUtils.checkType;
+import static ch.dkitc.ridioc.DIUtils.checkParams;
+import static ch.dkitc.ridioc.DIUtils.checkType;
 
 public class DIObjectFactoryHelper implements DIInternalInstances {
 
