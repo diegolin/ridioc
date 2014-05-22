@@ -3,6 +3,8 @@ package ch.dkitc.ridioc;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
+import com.google.common.collect.ImmutableList;
+
 public class DINewInstanceHelper {
 
     private final DIInternalInstances internalInstances;
@@ -19,6 +21,7 @@ public class DINewInstanceHelper {
         return wrappedPrimitiveTypeMap;
     }
 
+
     public Class<?> getWrappedPrimitiveType(Class<?> type) {
         if (!type.isPrimitive()) {
             throw new IllegalArgumentException("Given type '" + type + " is NOT primitive");
@@ -29,33 +32,23 @@ public class DINewInstanceHelper {
         return wrappedPrimitiveTypeMap.get(type);
     }
 
-    public String registerStringLiteral(String key, String singleValue) {
+    public Object registerStringLiteral(String key, Object singleValue) {
         return stringLiteralStore.putSingleValue(key, singleValue);
     }
 
-    public String[] registerStringLiteralArray(String key, String[] arrayValue) {
+    public Object[] registerStringLiteralArray(String key, Object[] arrayValue) {
         return stringLiteralStore.putArrayValue(key, arrayValue);
     }
 
     public <T> T newInstance(DIConstructor diConstructor, DIInstanceMethodParams instanceMethodParams) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         List<Object> initArgsAsList = new ArrayList<Object>();
-        Map<Class<?>, DIMethodParamsIndex> methodParamsIndexMap = new HashMap<Class<?>, DIMethodParamsIndex>();
+        DIMethodParamsIndexMap methodParamsIndexMap = new DIMethodParamsIndexMap(instanceMethodParams);
         int usedMethodParamCount = 0;
         for (DIConstructorParam constrParam : diConstructor) {
-            Class<?> constrParamType = constrParam.getType();
-            if (constrParamType.isPrimitive()) {
-                // override primitive type with wrapped type
-                constrParamType = getWrappedPrimitiveType(constrParamType);
-            }
+            Class<?> constrParamType = new OverrideConstrParamType(constrParam).invoke();
 
             // try to find constructor-param-value BY TYPE among them method-params
-            DIMethodParamsIndex methodParamsIndex = methodParamsIndexMap.get(constrParamType);
-            if (methodParamsIndex == null) {
-                DIInstanceMethodParams methodParamsOfType = instanceMethodParams.getParamsOfType(constrParamType);
-                methodParamsIndex = new DIMethodParamsIndex(methodParamsOfType);
-                methodParamsIndexMap.put(constrParamType, methodParamsIndex);
-            }
-            DIInstanceMethodParam instanceMethodParamOfType = methodParamsIndex.next();
+            DIInstanceMethodParam instanceMethodParamOfType = methodParamsIndexMap.get(constrParamType).next();
             if (instanceMethodParamOfType != null) {
                 // o.k. - a matching method param has been passed - use it
                 initArgsAsList.add(instanceMethodParamOfType.getValue());
@@ -63,27 +56,22 @@ public class DINewInstanceHelper {
                 continue;
             }
 
-            if (constrParam.isList()) {
-                newInstanceList(initArgsAsList, constrParam, constrParamType);
-                continue;
-            }
-
-            if (constrParam.isArray()) {
-                newInstanceArray(initArgsAsList, constrParam, constrParamType);
+            if (constrParam.isListOrArray()) {
+                new NewInstanceListOrArray(initArgsAsList, constrParam).invoke();
                 continue;
             }
 
             if (constrParam.isLiteral()) {
-                newInstanceLiteral(initArgsAsList, constrParam, constrParamType);
+                new NewInstanceLiteral(initArgsAsList, constrParam, constrParamType).invoke();
                 continue;
             }
 
-            // if we're here, it is NOT an array, not a number / primitive / enum / string / date / character / boolean
+            // if we're here, it is NOT an array, NOT a list, NOT a literal
             initArgsAsList.add(internalInstances.instance(constrParamType));
         }
 
         checkNewInstancePostConditions(diConstructor.getParamCount(), instanceMethodParams, initArgsAsList, usedMethodParamCount);
-        return diConstructor.newInstance(initArgsAsList);
+        return diConstructor.newInstance(initArgsAsList.toArray());
     }
 
     private void checkNewInstancePostConditions(int constructorParamCount, DIInstanceMethodParams instanceMethodParams, List<Object> initArgsAsList, int usedMethodParamCount) {
@@ -97,69 +85,66 @@ public class DINewInstanceHelper {
         }
     }
 
-    private void newInstanceLiteral(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
-        Object cachedInstance = internalInstances.instanceCache(constrParamType);
-        if (cachedInstance != null) {
-            initArgsAsList.add(cachedInstance);
-            return;
+    private class NewInstanceListOrArray {
+        private final List<Object> initArgsAsList;
+        private final DIConstructorParam constrParam;
+
+        public NewInstanceListOrArray(List<Object> initArgsAsList, DIConstructorParam constrParam) {
+            this.initArgsAsList = initArgsAsList;
+            this.constrParam = constrParam;
         }
-        if (stringLiteralStore.containsSingleValue(constrParam.getName())) {
-            initArgsAsList.add(stringLiteralStore.convertSingleValueTo(constrParam.getName(), constrParamType));
-            return;
+
+        public void invoke() {
+            Object [] instances = internalInstances.instancesCache(constrParam.getListOrArrayElementType());
+            if (instances == null) {
+                if (constrParam.isListOrArrayOfLiterals()) {
+                    instances = stringLiteralStore.convertArrayValueTo(constrParam.getName(), constrParam.getListOrArrayElementType());
+                } else {
+                    instances = internalInstances.instances(constrParam.getListOrArrayElementType());
+                }
+            }
+            if (constrParam.isList()) {
+                initArgsAsList.add(ImmutableList.copyOf(instances));
+            } else {
+                initArgsAsList.add(instances);
+            }
         }
-        throw new IllegalArgumentException("Could not find " + constrParam.getName() + " of type " + constrParamType + " within instance cache or string literal store");
     }
 
-    private void newInstanceArray(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
-        if (constrParam.isArrayOfNumbers()) {
-            throw new IllegalArgumentException(constrParam + ": Array of primitives not (yet) supported");
-        }
-        if (constrParam.isArrayOfPrimitives()) {
-            throw new IllegalArgumentException(constrParam + ": Array of primitives not (yet) supported");
-        }
-        if (constrParam.isArrayOfEnums()) {
-            throw new IllegalArgumentException(constrParam + ": Array of enums are not (yet) supported");
-        }
-        if (constrParam.isArrayOfStrings()) {
-            initArgsAsList.add(stringLiteralStore.getArrayValue(constrParam.getName()));
-            return;
-        }
-        if (constrParam.isArrayOfDates()) {
-            throw new IllegalArgumentException(constrParam + ": Array of dates are not (yet) supported");
-        }
-        if (constrParam.isArrayOfArrays()) {
-            throw new IllegalArgumentException(constrParam + ": Array of arrays not (yet) supported");
+    private class NewInstanceLiteral {
+        private final List<Object> initArgsAsList;
+        private final DIConstructorParam constrParam;
+        private final Class<?> constrParamType;
+
+        public NewInstanceLiteral(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
+            this.initArgsAsList = initArgsAsList;
+            this.constrParam = constrParam;
+            this.constrParamType = constrParamType;
         }
 
-        // if we're here, we are assuming that the constructor expects an array of types
-        initArgsAsList.add(internalInstances.instances(constrParamType));
+        public void invoke() {
+            Object instance = internalInstances.instanceCache(constrParamType);
+            if (instance == null) {
+                instance = stringLiteralStore.convertSingleValueTo(constrParam.getName(), constrParamType);
+            }
+            initArgsAsList.add(instance);
+        }
     }
 
-    private void newInstanceList(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
-        if (constrParam.isListOfNumbers()) {
-            throw new IllegalArgumentException(constrParam + ": Array of primitives not (yet) supported");
-        }
-        if (constrParam.isListOfPrimitives()) {
-            throw new IllegalArgumentException(constrParam + ": List of primitives not (yet) supported");
-        }
-        if (constrParam.isListOfEnums()) {
-            throw new IllegalArgumentException(constrParam + ": Array of enums are not (yet) supported");
-        }
-        if (constrParam.isListOfStrings()) {
-            initArgsAsList.add(Arrays.asList(stringLiteralStore.getArrayValue(constrParam.getName())));
-            return;
-        }
-        if (constrParam.isListOfDates()) {
-            throw new IllegalArgumentException(constrParam + ": Array of dates are not (yet) supported");
-        }
-        if (constrParam.isListOfArrays()) {
-            throw new IllegalArgumentException(constrParam + ": Array of arrays not (yet) supported");
+    private class OverrideConstrParamType {
+        private final DIConstructorParam constrParam;
+
+        public OverrideConstrParamType(DIConstructorParam constrParam) {
+            this.constrParam = constrParam;
         }
 
-        // if we're here, we are assuming that the constructor expects an array of types
-        Object instanceArray = internalInstances.instances(constrParamType);
-        initArgsAsList.add(Arrays.asList(instanceArray));
+        public Class<?> invoke() {
+            Class<?> constrParamType = constrParam.getType();
+            if (constrParamType.isPrimitive()) {
+                // override primitive type with wrapped type
+                constrParamType = getWrappedPrimitiveType(constrParamType);
+            }
+            return constrParamType;
+        }
     }
-
-
 }

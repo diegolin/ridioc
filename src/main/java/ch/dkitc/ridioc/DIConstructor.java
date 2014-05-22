@@ -86,8 +86,6 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
         return getParamNames().size();
     }
 
-
-
     public String getParamName(int paramIndex) {
         checkParamIndex(paramIndex);
         return getParamNames().get(paramIndex);

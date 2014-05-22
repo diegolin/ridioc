@@ -45,8 +45,8 @@ public final class DI {
         methods.mustContainExactlyOneMethod("newInstance").mustHaveParametersOfType(Class.class, Object[].class).mustHaveReturnType(Object.class);
         methods.mustContainExactlyOneMethod("instance").mustHaveParametersOfType(Class.class).mustHaveReturnType(Object.class);
         methods.mustContainExactlyOneMethod("registerInstance").mustHaveParametersOfType(Class.class, Object.class).mustHaveReturnType(Object.class);
-        methods.mustContainExactlyOneMethod("registerStringLiteral").mustHaveParametersOfType(String.class, String.class).mustHaveReturnType(String.class);
-        methods.mustContainExactlyOneMethod("registerStringLiteralArray").mustHaveParametersOfType(String.class, String[].class).mustHaveReturnType(String[].class);
+        methods.mustContainExactlyOneMethod("registerStringLiteral").mustHaveParametersOfType(String.class, Object.class).mustHaveReturnType(Object.class);
+        methods.mustContainExactlyOneMethod("registerStringLiteralArray").mustHaveParametersOfType(String.class, Object[].class).mustHaveReturnType(Object[].class);
         return factoryType;
     }
 

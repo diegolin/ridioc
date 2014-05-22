@@ -68,7 +68,7 @@ public class DIConstructorTest {
 
         // lists
         getParamXyzPositiveTests_checkJavaLangStringList();
-        //getParamXyzPositiveTests_checkTypeList();
+        getParamXyzPositiveTests_checkTypeList();
 
         // literals
         getParamXyzPositiveTests_checkPrimitiveByte();
@@ -109,8 +109,8 @@ public class DIConstructorTest {
     }
 
     private void getParamXyzPositiveTests_checkTypeArray() {
-        assertTrue(BeanWithTypeArrayConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithTypeArrayConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertTrue(BeanWithMultipleImplsArrayConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithMultipleImplsArrayConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("beanWithMultipleImplsArray", diConstructor.getParamName(0));
         assertEquals(BeanWithMultipleImpls[].class, diConstructor.getParamType(0));
@@ -127,6 +127,17 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
         assertEquals(1, diConstructor.getParamGenericTypes(0).size());
         assertEquals(String.class, diConstructor.getParamGenericTypes(0).get(0));
+    }
+
+    private void getParamXyzPositiveTests_checkTypeList() {
+        assertTrue(BeanWithMultipleImplsListConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithMultipleImplsListConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("beanWithMultipleImplsList", diConstructor.getParamName(0));
+        assertEquals(List.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(1, diConstructor.getParamGenericTypes(0).size());
+        assertEquals(BeanWithMultipleImpls.class, diConstructor.getParamGenericTypes(0).get(0));
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveByte() {

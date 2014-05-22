@@ -3,6 +3,10 @@ package ch.dkitc.ridioc;
 import java.lang.reflect.*;
 import java.util.*;
 
+import static ch.dkitc.ridioc.DIUtils.argumentsMustHaveAtLeastArgumentsCountOf;
+import static ch.dkitc.ridioc.DIUtils.argumentsMustHaveExactArgumentsCountOf;
+import static ch.dkitc.ridioc.DIUtils.castTo;
+
 public final class DIObjectFactoryInvocationHandler implements InvocationHandler {
 
     public static interface ObjectFactoryMethodHandler {
@@ -17,9 +21,7 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
         this.objectFactoryMethodHandlerMap.put("newInstance", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {
-                if (args.length <= 0) {
-                    throw new IllegalArgumentException("There should be at least ONE parameter of type 'Class<?>'");
-                }
+                argumentsMustHaveAtLeastArgumentsCountOf(args, 1);
                 Class<?> type = castTo(args[0], Class.class);
                 Object[] params = castTo(args[1], Object[].class);
                 return objectFactoryHelper.newInstance(type, params);
@@ -28,9 +30,7 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
         this.objectFactoryMethodHandlerMap.put("instance", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {
-                if (args.length != 1) {
-                    throw new IllegalArgumentException("There should be EXACTLY ONE parameter of type 'Class<?>'");
-                }
+                argumentsMustHaveExactArgumentsCountOf(args, 1);
                 Class<?> type = castTo(args[0], Class.class);
                 return objectFactoryHelper.instance(type);
             }
@@ -38,17 +38,19 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
         this.objectFactoryMethodHandlerMap.put("registerStringLiteral", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {
-                if (args.length != 2) {
-                    throw new IllegalArgumentException("There should be at EXACTLY TWO parameters of type 'java.lang.String'");
-                }
-                return objectFactoryHelper.registerStringLiteral(castTo(args[0], String.class), castTo(args[1], String.class));
+                argumentsMustHaveExactArgumentsCountOf(args, 2);
+                String key = castTo(args[0], String.class);
+                Object singleValue = args[1];
+                return objectFactoryHelper.registerStringLiteral(key, singleValue);
             }
         });
         this.objectFactoryMethodHandlerMap.put("registerStringLiteralArray", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {
                 argumentsMustHaveExactArgumentsCountOf(args, 2);
-                return objectFactoryHelper.registerStringLiteralArray(castTo(args[0], String.class), castTo(args[1], String[].class));
+                String key = castTo(args[0], String.class);
+                Object [] arrayValue = castTo(args[1], Object[].class);
+                return objectFactoryHelper.registerStringLiteralArray(key, arrayValue);
             }
         });
         this.objectFactoryMethodHandlerMap.put("registerInstance", new ObjectFactoryMethodHandler() {
@@ -70,18 +72,4 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
         }
         return methodHandler.invoke(method, args);
     }
-
-    private <T> T castTo(Object arg, Class<T> type) {
-        if (type.isInstance(arg)) {
-            return (T) arg;
-        }
-        throw new ClassCastException("Cannot cast value " + arg.getClass().getName() + " to type " + type.getName());
-    }
-
-    private static void argumentsMustHaveExactArgumentsCountOf(Object[] args, int count) {
-        if (args.length != count) {
-            throw new IllegalArgumentException("There should be at EXACTLY " + count + " parameters, but there are " + args.length);
-        }
-    }
-
 }

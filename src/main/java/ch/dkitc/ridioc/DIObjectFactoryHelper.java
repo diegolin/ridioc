@@ -10,13 +10,13 @@ import static ch.dkitc.ridioc.DIUtils.checkType;
 public class DIObjectFactoryHelper implements DIInternalInstances {
 
     private final Map<Class<?>, Object> instanceCache;
-    private final Map<Class<?>, Object> instancesCache;
+    private final Map<Class<?>, Object[]> instancesCache;
     private final DIReflectionsCache reflectionsCache;
     private final DINewInstanceHelper newInstanceHelper;
 
     public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
         instanceCache = new HashMap<Class<?>, Object>();
-        instancesCache = new HashMap<Class<?>, Object>();
+        instancesCache = new HashMap<Class<?>, Object[]>();
         this.reflectionsCache = new DIReflectionsCache(packagePrefix);
         this.newInstanceHelper = new DINewInstanceHelper(this, wrappedPrimitiveTypeMap);
     }
@@ -55,28 +55,26 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
         return instance;
     }
 
-    public Object instances(Class<?> type) throws IllegalArgumentException {
-        checkType(type);
-        Object instances = instancesCache.get(type);
+    public Object[] instances(Class<?> elementType) throws IllegalArgumentException {
+        Object[] instances = instancesCache.get(elementType);
         // not yet cached?
         if (instances == null) {
             // create it & cache it!
             List<Object> subTypeImplementations = new ArrayList<Object>();
-            Class<?> paramArrayComponentType = type.getComponentType();
-            for (Class<?> subTypeImpl : getPotentialImplTypes(paramArrayComponentType)) {
-                subTypeImplementations.add(constructOneImplementation(paramArrayComponentType, subTypeImpl));
+            for (Class<?> subTypeImpl : getPotentialImplTypes(elementType)) {
+                subTypeImplementations.add(constructOneImplementation(elementType, subTypeImpl));
             }
-            instances = subTypeImplementations.toArray((Object[]) Array.newInstance(paramArrayComponentType, subTypeImplementations.size()));
-            instancesCache.put(type, instances);
+            instances = subTypeImplementations.toArray((Object[]) Array.newInstance(elementType, subTypeImplementations.size()));
+            instancesCache.put(elementType, instances);
         }
         return instances;
     }
 
-    public String registerStringLiteral(String key, String singleValue) {
+    public Object registerStringLiteral(String key, Object singleValue) {
         return newInstanceHelper.registerStringLiteral(key, singleValue);
     }
 
-    public String[] registerStringLiteralArray(String key, String[] arrayValue) {
+    public Object[] registerStringLiteralArray(String key, Object[] arrayValue) {
         return newInstanceHelper.registerStringLiteralArray(key, arrayValue);
     }
 
@@ -93,6 +91,11 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     @Override
     public Object instanceCache(Class<?> type) {
         return instanceCache.get(type);
+    }
+
+    @Override
+    public Object[] instancesCache(Class<?> elementType) {
+        return instancesCache.get(elementType);
     }
 
     private <T> T constructOneImplementation(Class<T> type, Class<?> potentialImplType, Object... params) throws DIAggregateException {

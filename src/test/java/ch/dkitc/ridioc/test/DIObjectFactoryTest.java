@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 import ch.dkitc.ridioc.DIObjectFactory;
 import ch.dkitc.ridioc.test.api.*;
 import ch.dkitc.ridioc.test.base.DIBaseTest;
+import ch.dkitc.ridioc.test.impl.BeanWithMultipleImplsImpl1;
 
 public class DIObjectFactoryTest extends DIBaseTest {
 
@@ -38,7 +39,6 @@ public class DIObjectFactoryTest extends DIBaseTest {
         // arrays
         //newInstancePositiveTests_checkJavaLangStringArray();
         //newInstancePositiveTests_checkTypeArray();
-        //newInstancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
 
         // lists
         //newInstancePositiveTests_checkJavaLangStringList();
@@ -94,14 +94,22 @@ public class DIObjectFactoryTest extends DIBaseTest {
         instancePositiveTests_checkDefaultConstructor();
 
         // arrays
+        //instancePositiveTests_checkPrimitiveByteArray();
+        //instancePositiveTests_checkJavaLangByteArray();
         instancePositiveTests_checkJavaLangStringArray();
         instancePositiveTests_checkTypeArray();
         instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
 
         // lists
-        // instancePositiveTests_checkJavaLangStringList();
-        // instancePositiveTests_checkTypeList();
-        // instancePositiveTests_checkTypeListInjectedIntoDifferentTypes();
+        //instancePositiveTests_checkPrimitiveByteList();
+        instancePositiveTests_checkJavaLangByteList();
+        instancePositiveTests_checkJavaLangStringList();
+        instancePositiveTests_checkTypeList();
+        //instancePositiveTests_checkTypeListInjectedIntoDifferentTypes();
+
+        // arrays & lists
+        //instancePositiveTests_checkJavaLangStringArrayAndList();
+        instancePositiveTests_checkTypeArrayAndList();
 
         // literals
         instancePositiveTests_checkPrimitiveByte();
@@ -452,15 +460,20 @@ public class DIObjectFactoryTest extends DIBaseTest {
     }
 
     private void instancePositiveTests_checkTypeArray() {
-        BeanWithTypeArrayConstructor bean1 = objectFactory.instance(BeanWithTypeArrayConstructor.class);
+        // create BeanWithTypeArrayConstructor bean1
+        BeanWithMultipleImplsArrayConstructor bean1 = objectFactory.instance(BeanWithMultipleImplsArrayConstructor.class);
         assertNotNull(bean1);
-        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean1.getMultipleImps();
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean1.getMultipleImplsArray();
         assertNotNull(beanWithMultipleImplsArray1);
         assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray1.length);
-        BeanWithTypeArrayConstructor bean2 = objectFactory.instance(BeanWithTypeArrayConstructor.class);
-        BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = bean1.getMultipleImps();
+
+        // create BeanWithTypeArrayConstructor bean2
+        BeanWithMultipleImplsArrayConstructor bean2 = objectFactory.instance(BeanWithMultipleImplsArrayConstructor.class);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = bean1.getMultipleImplsArray();
         assertNotNull(beanWithMultipleImplsArray2);
         assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray2.length);
+
+        // perform cross checks
         assertEquals(bean1, bean2);
         assertTrue(bean1 == bean2);
         assertArrayEquals(beanWithMultipleImplsArray1, beanWithMultipleImplsArray2);
@@ -468,9 +481,9 @@ public class DIObjectFactoryTest extends DIBaseTest {
     }
 
     private void instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes() {
-        BeanWithTypeArrayConstructor bean = objectFactory.instance(BeanWithTypeArrayConstructor.class);
+        BeanWithMultipleImplsArrayConstructor bean = objectFactory.instance(BeanWithMultipleImplsArrayConstructor.class);
         assertNotNull(bean);
-        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean.getMultipleImps();
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray1 = bean.getMultipleImplsArray();
         assertNotNull(beanWithMultipleImplsArray1);
         assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray1.length);
         AnotherBeanWithTypeArrayConstructor anotherBean = objectFactory.instance(AnotherBeanWithTypeArrayConstructor.class);
@@ -564,6 +577,160 @@ public class DIObjectFactoryTest extends DIBaseTest {
         assertTrue(beanWithDefaultConstructor12 == beanWithDefaultConstructor21);
         assertTrue(beanWithDefaultConstructor21 == beanWithDefaultConstructor22);
         assertTrue(anotherBeanWithSingleTypeDependency1 == anotherBeanWithSingleTypeDependency2);
+    }
+
+    private void instancePositiveTests_checkJavaLangByteList() {
+        // register value List<Byte>
+        List<Byte> testBytes = new ArrayList<Byte>();
+        testBytes.add(Byte.MIN_VALUE);
+        testBytes.add(Byte.MAX_VALUE);
+        objectFactory.registerStringLiteralArray("testBytes", testBytes.toArray());
+
+        // create BeanWithJavaLangByteListConstructor bean1
+        BeanWithJavaLangByteListConstructor bean1 = objectFactory.instance(BeanWithJavaLangByteListConstructor.class);
+        assertNotNull(bean1);
+        assertNotNull(bean1.getTestBytes());
+        assertEquals(testBytes, bean1.getTestBytes());
+        assertFalse(testBytes == bean1.getTestBytes());
+
+        // create BeanWithJavaLangByteListConstructor bean1
+        BeanWithJavaLangByteListConstructor bean2 = objectFactory.instance(BeanWithJavaLangByteListConstructor.class);
+        assertNotNull(bean2);
+        assertNotNull(bean2.getTestBytes());
+        assertEquals(testBytes, bean2.getTestBytes());
+        assertFalse(testBytes == bean2.getTestBytes());
+
+        // perform cross checks
+        assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+        assertEquals(bean1.getTestBytes(), bean2.getTestBytes());
+        assertTrue(bean1.getTestBytes() == bean2.getTestBytes());
+    }
+
+    private void instancePositiveTests_checkJavaLangStringList() {
+        // register List<String>
+        List<String> testStrings = new ArrayList<String>();
+        testStrings.add("A");
+        testStrings.add("B");
+        testStrings.add("C");
+        objectFactory.registerStringLiteralArray("testStrings", testStrings.toArray(new String[testStrings.size()]));
+
+        // BeanWithStringListConstructor bean1
+        BeanWithStringListConstructor bean1 = objectFactory.instance(BeanWithStringListConstructor.class);
+        assertNotNull(bean1);
+        assertNotNull(bean1.getTestStrings());
+        assertEquals(testStrings, bean1.getTestStrings());
+        assertFalse(testStrings == bean1.getTestStrings());
+
+        BeanWithStringListConstructor bean2 = objectFactory.instance(BeanWithStringListConstructor.class);
+        assertNotNull(bean2);
+        assertNotNull(bean2.getTestStrings());
+        assertEquals(testStrings, bean2.getTestStrings());
+        assertFalse(testStrings == bean2.getTestStrings());
+
+        assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+        assertEquals(bean1.getTestStrings(), bean2.getTestStrings());
+        assertTrue(bean1.getTestStrings() == bean2.getTestStrings());
+
+        // check whether the list is unmodifiable
+        try {
+            bean1.getTestStrings().clear();
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            bean1.getTestStrings().add("D");
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            bean1.getTestStrings().remove(0);
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            bean1.getTestStrings().addAll(testStrings);
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+    }
+
+    private void instancePositiveTests_checkTypeArrayAndList() {
+        // create BeanWithMultipleImplsListConstructor bean1
+        BeanWithMultipleImplsListConstructor bean1 = objectFactory.instance(BeanWithMultipleImplsListConstructor.class);
+        assertNotNull(bean1);
+        List<BeanWithMultipleImpls> beanWithMultipleImplsList1 = bean1.getMultipleImplsList();
+        assertNotNull(beanWithMultipleImplsList1);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsList1.size());
+
+        // create BeanWithTypeArrayConstructor bean2
+        BeanWithMultipleImplsArrayConstructor bean2 = objectFactory.instance(BeanWithMultipleImplsArrayConstructor.class);
+        assertNotNull(bean2);
+        BeanWithMultipleImpls [] beanWithMultipleImplsArray2 = bean2.getMultipleImplsArray();
+        assertNotNull(beanWithMultipleImplsArray2);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsArray2.length);
+
+        // perform cross-checks
+        assertFalse(bean1 == bean2);
+        assertArrayEquals(beanWithMultipleImplsList1.toArray(), beanWithMultipleImplsArray2);
+    }
+
+    private void instancePositiveTests_checkTypeList() {
+        BeanWithMultipleImplsListConstructor bean1 = objectFactory.instance(BeanWithMultipleImplsListConstructor.class);
+        assertNotNull(bean1);
+        List<BeanWithMultipleImpls> beanWithMultipleImplsList1 = bean1.getMultipleImplsList();
+        assertNotNull(beanWithMultipleImplsList1);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsList1.size());
+
+        BeanWithMultipleImplsListConstructor bean2 = objectFactory.instance(BeanWithMultipleImplsListConstructor.class);
+        assertNotNull(bean2);
+        List<BeanWithMultipleImpls> beanWithMultipleImplsList2 = bean1.getMultipleImplsList();
+        assertNotNull(beanWithMultipleImplsList2);
+        assertEquals(NUMBER_OF_BEAN_WITH_MULTIPLE_IMPLS_TYPES, beanWithMultipleImplsList2.size());
+
+        assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+        assertEquals(beanWithMultipleImplsList1, beanWithMultipleImplsList2);
+        assertTrue(beanWithMultipleImplsList1 == beanWithMultipleImplsList2);
+
+        // check whether the list is unmodifiable
+        try {
+            beanWithMultipleImplsList1.clear();
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            beanWithMultipleImplsList1.add(new BeanWithMultipleImplsImpl1());
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            beanWithMultipleImplsList1.remove(0);
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
+        try {
+            beanWithMultipleImplsList1.addAll(beanWithMultipleImplsList2);
+            fail("should throw 'java.lang.UnsupportOperationExcepion'");
+        }
+        catch (UnsupportedOperationException ex) {
+            // o.k.
+        }
     }
 
     private void newInstanceNegativeTests_checkBeanButNoImplementation() {

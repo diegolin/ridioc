@@ -47,6 +47,14 @@
         <inspection_tool class="CyclicPackageDependency" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="ElementOnlyUsedFromTestCode" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="HtmlTagCanBeJavadocTag" enabled="true" level="WARNING" enabled_by_default="true" />
+        <inspection_tool class="MismatchedCollectionQueryUpdate" enabled="false" level="WARNING" enabled_by_default="false">
+          <option name="queryNames">
+            <value />
+          </option>
+          <option name="updateNames">
+            <value />
+          </option>
+        </inspection_tool>
         <inspection_tool class="RedundantSuppression" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="RedundantThrowsDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -87,6 +95,7 @@
   <component name="ProjectDictionaryState">
     <dictionary name="diego.kuenzi">
       <words>
+        <w>booleans</w>
         <w>dkitc</w>
         <w>iterable</w>
         <w>nano</w>

@@ -18,7 +18,7 @@ public interface DIObjectFactory {
 
     <T> T registerInstance(Class<T> type, T instance) throws IllegalArgumentException;
 
-    String registerStringLiteral(String key, String value) throws IllegalArgumentException;
+    String registerStringLiteral(String key, Object value) throws IllegalArgumentException;
 
-    String[] registerStringLiteralArray(String key, String[] valuesArray) throws IllegalArgumentException;
+    String[] registerStringLiteralArray(String key, Object[] valuesArray) throws IllegalArgumentException;
 }

@@ -41,7 +41,7 @@ public class DIConstructorParam {
 
     public Class<?> getListType() {
         if (!isList()) {
-            throw new IllegalStateException("Only applicable to arrays: " + type + " is NOT an array");
+            throw new IllegalStateException("Only applicable to lists: " + type + " is NOT an list");
         }
         switch (genericTypes.size()) {
             case 0:
@@ -88,6 +88,14 @@ public class DIConstructorParam {
         return isArray() && isComponentType(Date.class);
     }
 
+    public boolean isArrayOfCharacters() {
+        return isArray() && isComponentType(Character.class);
+    }
+
+    public boolean isArrayOfBooleans() {
+        return isArray() && isComponentType(Boolean.class);
+    }
+
     public boolean isNumber() {
         return !isArray() && isInstanceOf(Number.class);
     }
@@ -120,8 +128,16 @@ public class DIConstructorParam {
         return isNumber() || isPrimitive() || isEnum() || isString() || isDate() || isCharacter() || isBoolean();
     }
 
+    public boolean isArrayOfLiterals() {
+        return isArrayOfNumbers() || isArrayOfPrimitives() || isArrayOfEnums() || isArrayOfStrings() || isArrayOfDates() || isArrayOfCharacters() || isArrayOfBooleans();
+    }
+
     public boolean isList() {
         return !isArray() && is(List.class);
+    }
+
+    public boolean isListOfLiterals() {
+        return isListOfNumbers() || isListOfPrimitives() || isListOfEnums() || isListOfStrings() || isListOfDates() || isListOfCharacters() || isListOfBooleans();
     }
 
     public boolean isListOfNumbers() {
@@ -144,8 +160,34 @@ public class DIConstructorParam {
         return isList() && isListTypeInstanceOf(Date.class);
     }
 
+    public boolean isListOfCharacters() {
+        return isList() && isListTypeInstanceOf(Character.class);
+    }
+
+    public boolean isListOfBooleans() {
+        return isList() && isListTypeInstanceOf(Boolean.class);
+    }
+
     public boolean isListOfArrays() {
         return isList() && getListType().isArray();
+    }
+
+    public Class<?> getListOrArrayElementType() {
+        if (isArray()) {
+            return getComponentType();
+        }
+        if (isList()) {
+            return getListType();
+        }
+        throw new IllegalStateException("Only applicable to arrays OR lists: " + type + " is NEITHER NOR");
+    }
+
+    public boolean isListOrArray() {
+        return isList() || isArray();
+    }
+
+    public boolean isListOrArrayOfLiterals() {
+        return isListOfLiterals() || isArrayOfLiterals();
     }
 
     private boolean is(Class<?> givenType) {
