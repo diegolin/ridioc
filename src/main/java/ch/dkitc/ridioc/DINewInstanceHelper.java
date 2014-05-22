@@ -38,10 +38,6 @@ public class DINewInstanceHelper {
     }
 
     public <T> T newInstance(DIConstructor diConstructor, DIConstructorParams constructorParams, DIInstanceMethodParams instanceMethodParams) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-        checkConstructorParameterTypes(constructorParams);
-
-        // diConstructor.getGenericSignature();
-
         List<Object> initArgsAsList = new ArrayList<Object>();
         Map<Class<?>, DIMethodParamsIndex> methodParamsIndexMap = new HashMap<Class<?>, DIMethodParamsIndex>();
         int usedMethodParamCount = 0;
@@ -67,11 +63,6 @@ public class DINewInstanceHelper {
                 continue;
             }
 
-            if (constrParam.isTypeFactory()) {
-                newInstanceTypeFactory(initArgsAsList, constrParam, constrParamType);
-                continue;
-            }
-
             if (constrParam.isIterable()) {
                 newInstanceIterable(initArgsAsList, constrParam, constrParamType);
                 continue;
@@ -93,14 +84,6 @@ public class DINewInstanceHelper {
 
         checkNewInstancePostConditions(constructorParams, instanceMethodParams, initArgsAsList, usedMethodParamCount);
         return diConstructor.newInstance(initArgsAsList);
-    }
-
-    private void newInstanceTypeFactory(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
-        if (constrParam.isTypeFactory()) {
-            throw new IllegalArgumentException(constrParam + ": type factories not (yet) supported");
-        }
-
-        throw new IllegalArgumentException(constrParam + ": This doesn't seem to be an type factory");
     }
 
     private void newInstanceIterable(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
@@ -170,15 +153,5 @@ public class DINewInstanceHelper {
 
         // if we're here, we are assuming that the constructor expects an array of types
         initArgsAsList.add(internalInstances.instances(constrParamType));
-    }
-
-    private static void checkConstructorParameterTypes(DIConstructorParams constructorParams) {
-        for (DIConstructorParam constrParam : constructorParams) {
-            Class<?> constrParamType = constrParam.getType();
-            if (Collection.class.isAssignableFrom(constrParamType)) {
-                // fail early
-                throw new IllegalArgumentException("Collections are NOT supported - I cannot determine the element type at runtime: http://stackoverflow.com/questions/10945993/using-java-reflections-to-find-collections-element-type");
-            }
-        }
     }
 }

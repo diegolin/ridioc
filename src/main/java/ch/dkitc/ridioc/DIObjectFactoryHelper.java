@@ -105,7 +105,14 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
             }
         }
 
-        throw new DIAggregateException("Cound not instantiate implementation for type '" + type + "'", exceptions);
+        switch (exceptions.size()) {
+            case 0:
+                throw new IllegalArgumentException("Cound not instantiate implementation for type '" + type + "' with parameters '" + Arrays.toString(params) + "'");
+            case 1:
+                throw new IllegalArgumentException("Cound not instantiate implementation for type '" + type + "' with parameters '" + Arrays.toString(params) + "'", exceptions.get(0));
+            default:
+                throw new DIAggregateException("Cound not instantiate implementation for type '" + type + "'", exceptions);
+        }
     }
 
     private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {

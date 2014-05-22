@@ -1,6 +1,9 @@
 package ch.dkitc.ridioc.test;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
@@ -9,7 +12,10 @@ import static org.junit.Assert.*;
 
 import ch.dkitc.ridioc.DI;
 import ch.dkitc.ridioc.DIConstructor;
+import ch.dkitc.ridioc.test.api.AnotherBeanWithDefaultConstructor;
+import ch.dkitc.ridioc.test.api.BeanWithDefaultConstructor;
 import ch.dkitc.ridioc.test.api.BeanWithMultipleImpls;
+import ch.dkitc.ridioc.test.api.MyEnum;
 import ch.dkitc.ridioc.test.impl.*;
 
 public class DIConstructorTest {
@@ -61,11 +67,14 @@ public class DIConstructorTest {
         getParamXyzPositiveTests_checkTypeArray();
 
         // lists
-        //getParamXyzPositiveTests_checkJavaLangStringList();
+        getParamXyzPositiveTests_checkJavaLangStringList();
         //getParamXyzPositiveTests_checkTypeIterable();
         //getParamXyzPositiveTests_checkTypeCollection();
         //getParamXyzPositiveTests_checkTypeSet();
         //getParamXyzPositiveTests_checkTypeList();
+
+        // maps
+        Map<String,String> map;
 
         // literals
         getParamXyzPositiveTests_checkPrimitiveByte();
@@ -85,14 +94,14 @@ public class DIConstructorTest {
         getParamXyzPositiveTests_checkPrimitiveBoolean();
         getParamXyzPositiveTests_checkJavaLangBoolean();
         getParamXyzPositiveTests_checkJavaMathBigDecimal();
-        //getParamXyzPositiveTests_checkJavaMathBigInteger();
-        //getParamXyzPositiveTests_checkJavaLangString();
-        //getParamXyzPositiveTests_checkJavaLangEnum();
-        //getParamXyzPositiveTests_checkJavaLangDate();
+        getParamXyzPositiveTests_checkJavaMathBigInteger();
+        getParamXyzPositiveTests_checkJavaLangString();
+        getParamXyzPositiveTests_checkJavaLangEnum();
+        getParamXyzPositiveTests_checkJavaLangDate();
 
         // types
-        //getParamXyzPositiveTests_checkSingleType();
-        //getParamXyzPositiveTests_checkMultipleTypes();
+        getParamXyzPositiveTests_checkSingleType();
+        getParamXyzPositiveTests_checkMultipleTypes();
 
         // factories
         //getParamXyzPositiveTests_checkTypeFactory();
@@ -116,6 +125,16 @@ public class DIConstructorTest {
         assertEquals(BeanWithMultipleImpls[].class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
         assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkJavaLangStringList() {
+        assertTrue(BeanWithStringListConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithStringListConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("testStrings", diConstructor.getParamName(0));
+        assertEquals(List.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(1, diConstructor.getParamGenericType(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveByte() {
@@ -286,7 +305,70 @@ public class DIConstructorTest {
         assertEquals(BigDecimal.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
         assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
 
+    private void getParamXyzPositiveTests_checkJavaMathBigInteger() {
+        assertTrue(BeanWithBigIntegerConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithBigIntegerConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("testBigInteger", diConstructor.getParamName(0));
+        assertEquals(BigInteger.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkJavaLangString() {
+        assertTrue(BeanWithStringConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithStringConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("testString", diConstructor.getParamName(0));
+        assertEquals(String.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkJavaLangEnum() {
+        assertTrue(BeanWithEnumConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithEnumConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("testEnum", diConstructor.getParamName(0));
+        assertEquals(MyEnum.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkJavaLangDate() {
+        assertTrue(BeanWithDateConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithDateConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("testDate", diConstructor.getParamName(0));
+        assertEquals(Date.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkSingleType() {
+        assertTrue(BeanWithSingleTypeConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithSingleTypeConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(1, diConstructor.getParamCount());
+        assertEquals("beanWithDefaultConstructor", diConstructor.getParamName(0));
+        assertEquals(BeanWithDefaultConstructor.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+    }
+
+    private void getParamXyzPositiveTests_checkMultipleTypes() {
+        assertTrue(BeanWithMultipleTypesConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithMultipleTypesConstructorImpl.class.getConstructors()[0], wrappedPrimitiveTypeMap);
+        assertEquals(2, diConstructor.getParamCount());
+        assertEquals("beanWithDefaultConstructor", diConstructor.getParamName(0));
+        assertEquals(BeanWithDefaultConstructor.class, diConstructor.getParamType(0));
+        assertEquals(0, diConstructor.getParamAnnotations(0).size());
+        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals("anotherBeanWithDefaultConstructor", diConstructor.getParamName(1));
+        assertEquals(AnotherBeanWithDefaultConstructor.class, diConstructor.getParamType(1));
+        assertEquals(0, diConstructor.getParamAnnotations(1).size());
+        assertEquals(0, diConstructor.getParamGenericType(1).size());
     }
 
 }

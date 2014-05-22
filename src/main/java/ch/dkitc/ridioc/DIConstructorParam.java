@@ -64,7 +64,7 @@ public class DIConstructorParam {
     }
 
     public boolean isArrayOfDates() {
-        return isArray() && isComponentTypeInstanceOf(Date.class);
+        return isArray() && isComponentType(Date.class);
     }
 
     public boolean isNumber() {
@@ -80,19 +80,19 @@ public class DIConstructorParam {
     }
 
     public boolean isString() {
-        return !isArray() && isInstanceOf(String.class);
+        return !isArray() && is(String.class);
     }
 
     public boolean isDate() {
-        return !isArray() && isInstanceOf(Date.class);
+        return !isArray() && is(Date.class);
     }
 
     public boolean isCharacter() {
-        return !isArray() && isInstanceOf(Character.class);
+        return !isArray() && is(Character.class);
     }
 
     public boolean isBoolean() {
-        return !isArray() && isInstanceOf(Boolean.class);
+        return !isArray() && is(Boolean.class);
     }
 
     public boolean isLiteral() {
@@ -100,30 +100,34 @@ public class DIConstructorParam {
     }
 
     public boolean isIterable() {
-        return !isArray() && isInstanceOf(Iterable.class);
+        return !isArray() && is(Iterable.class);
     }
 
     public boolean isSet() {
-        return !isArray() && isInstanceOf(Set.class);
+        return !isArray() && is(Set.class);
     }
 
     public boolean isList() {
-        return !isArray() && isInstanceOf(List.class);
+        return !isArray() && is(List.class);
     }
 
     public boolean isCollection() {
-        return !isArray() && isInstanceOf(Collection.class);
+        return !isArray() && is(Collection.class);
     }
 
-    public boolean isTypeFactory() {
-        return !isArray() && isInstanceOf(DITypeFactory.class);
+    private boolean is(Class<?> givenType) {
+        return givenType == type;
     }
 
     private boolean isInstanceOf(Class<?> givenType) {
         return givenType.isAssignableFrom(type);
     }
 
+    private boolean isComponentType(Class<?> givenType) {
+        return givenType == type.getComponentType();
+    }
+
     private boolean isComponentTypeInstanceOf(Class<?> givenType) {
-        return givenType.isAssignableFrom(getComponentType());
+        return givenType.isAssignableFrom(type.getComponentType());
     }
 }
