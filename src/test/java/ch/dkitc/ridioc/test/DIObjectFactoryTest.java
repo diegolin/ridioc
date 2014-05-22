@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 import ch.dkitc.ridioc.DIObjectFactory;
 import ch.dkitc.ridioc.test.api.*;
+import ch.dkitc.ridioc.test.base.DIBaseTest;
 
 public class DIObjectFactoryTest extends DIBaseTest {
 
@@ -35,6 +36,11 @@ public class DIObjectFactoryTest extends DIBaseTest {
         //newInstancePositiveTests_checkJavaLangStringArray();
         //newInstancePositiveTests_checkTypeArray();
         //newInstancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
+
+        // lists
+        //newInstancePositiveTests_checkJavaLangStringList();
+        //newInstancePositiveTests_checkTypeList();
+        //newInstancePositiveTests_checkTypeListInjectedIntoDifferentTypes();
 
         // literals
         newInstancePositiveTests_checkPrimitiveByte();
@@ -61,8 +67,12 @@ public class DIObjectFactoryTest extends DIBaseTest {
 
         // types
         //newInstancePositiveTests_checkSingleType();
+        //newInstancePositiveTests_checkSingleTypeWithDependencies();
         //newInstancePositiveTests_checkMultipleTypes();
         //newInstancePositiveTests_checkMultipleTypesWithDependencies();
+
+        // factories
+        //newInstancePositiveTests_checkTypeFactory();
     }
 
     @Test

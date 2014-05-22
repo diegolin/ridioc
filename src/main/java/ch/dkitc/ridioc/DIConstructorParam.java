@@ -1,21 +1,21 @@
 package ch.dkitc.ridioc;
 
 import java.lang.annotation.Annotation;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class DIConstructorParam {
 
     private final String name;
     private final Class<?> type;
     private final List<Annotation> annotations;
+    private final List<Class<?>> genericTypes;
 
-    public DIConstructorParam(String name, Class<?> type, List<Annotation> annotations) {
+    public DIConstructorParam(String name, Class<?> type, List<Annotation> annotations, List<Class<?>> genericTypes) {
         this.name = name;
         this.type = type;
         this.annotations = annotations;
+        this.genericTypes = genericTypes;
     }
 
     @Override
@@ -24,6 +24,7 @@ public class DIConstructorParam {
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", annotations=" + annotations +
+                ", generic types=" + genericTypes +
                 '}';
     }
 
@@ -32,7 +33,27 @@ public class DIConstructorParam {
     }
 
     public Class<?> getComponentType() {
+        if (!isArray()) {
+            throw new IllegalStateException("Only applicable to arrays: " + type + " is NOT an array");
+        }
         return type.getComponentType();
+    }
+
+    public Class<?> getListType() {
+        if (!isList()) {
+            throw new IllegalStateException("Only applicable to arrays: " + type + " is NOT an array");
+        }
+        switch (genericTypes.size()) {
+            case 0:
+                // generic type is not available
+                // fallback to base class
+                return Object.class;
+            case 1:
+                return genericTypes.get(0);
+            default:
+                // that does not make sense
+                throw new IllegalStateException(type + ": is a list type which should habe zero or one generic types but has " + genericTypes.size() + " generic types: " + genericTypes);
+        }
     }
 
     public String getName() {
@@ -99,20 +120,32 @@ public class DIConstructorParam {
         return isNumber() || isPrimitive() || isEnum() || isString() || isDate() || isCharacter() || isBoolean();
     }
 
-    public boolean isIterable() {
-        return !isArray() && is(Iterable.class);
-    }
-
-    public boolean isSet() {
-        return !isArray() && is(Set.class);
-    }
-
     public boolean isList() {
         return !isArray() && is(List.class);
     }
 
-    public boolean isCollection() {
-        return !isArray() && is(Collection.class);
+    public boolean isListOfNumbers() {
+        return isList() && isListTypeInstanceOf(Number.class);
+    }
+
+    public boolean isListOfPrimitives() {
+        return isList() && getListType().isPrimitive();
+    }
+
+    public boolean isListOfEnums() {
+        return isList() && getListType().isEnum();
+    }
+
+    public boolean isListOfStrings() {
+        return isList() && isListTypeInstanceOf(String.class);
+    }
+
+    public boolean isListOfDates() {
+        return isList() && isListTypeInstanceOf(Date.class);
+    }
+
+    public boolean isListOfArrays() {
+        return isList() && getListType().isArray();
     }
 
     private boolean is(Class<?> givenType) {
@@ -129,5 +162,9 @@ public class DIConstructorParam {
 
     private boolean isComponentTypeInstanceOf(Class<?> givenType) {
         return givenType.isAssignableFrom(type.getComponentType());
+    }
+
+    private boolean isListTypeInstanceOf(Class<?> givenType) {
+        return givenType.isAssignableFrom(getListType());
     }
 }

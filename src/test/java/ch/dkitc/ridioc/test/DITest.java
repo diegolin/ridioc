@@ -7,6 +7,7 @@ import ch.dkitc.ridioc.DI;
 import ch.dkitc.ridioc.DIObjectFactory;
 import ch.dkitc.ridioc.test.api.EmptyInterface;
 import ch.dkitc.ridioc.test.api.InterfaceWithFiveMethodsButNotAnObjectFactory;
+import ch.dkitc.ridioc.test.base.DIBaseTest;
 
 public class DITest extends DIBaseTest {
 

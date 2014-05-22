@@ -6,6 +6,10 @@ import java.util.Map;
 
 public final class DI {
 
+    public static DIObjectFactory createObjectFactory(String packagePrefix) {
+        return createObjectFactory(DIObjectFactory.class, packagePrefix);
+    }
+
     public static <FACTORY> FACTORY createObjectFactory(Class<FACTORY> factoryType, String packagePrefix) {
         String realPackagePrefix = checkAndMassagePackagePrefix(packagePrefix);
         Class<FACTORY> checkedFactoryType = checkFactoryType(factoryType);

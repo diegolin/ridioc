@@ -3,17 +3,14 @@ package ch.dkitc.ridioc;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.thoughtworks.paranamer.AdaptiveParanamer;
 import com.thoughtworks.paranamer.Paranamer;
 
-public class DIConstructor {
+public class DIConstructor implements Iterable<DIConstructorParam> {
 
     public static final Pattern EXTRACT_CONSTRUCTOR_PARAM_TYPES = Pattern.compile("\\((.*?)\\)");
     public static final Pattern EXTRACT_GENERIC_PARAM_TYPES = Pattern.compile("<(.*?)>");
@@ -89,6 +86,8 @@ public class DIConstructor {
         return getParamNames().size();
     }
 
+
+
     public String getParamName(int paramIndex) {
         checkParamIndex(paramIndex);
         return getParamNames().get(paramIndex);
@@ -106,7 +105,7 @@ public class DIConstructor {
         return annotations;
     }
 
-    public List<Class<?>> getParamGenericType(int paramIndex) {
+    public List<Class<?>> getParamGenericTypes(int paramIndex) {
         checkParamIndex(paramIndex);
 
         if (genericParamTypesList == null) {
@@ -144,6 +143,15 @@ public class DIConstructor {
         }
 
         return genericParamTypesList.get(paramIndex);
+    }
+
+    @Override
+    public Iterator<DIConstructorParam> iterator() {
+        DIConstructorParams params = new DIConstructorParams();
+        for (int i=0; i<getParamCount(); i++) {
+            params.add(getParamName(i), getParamType(i), getParamAnnotations(i), getParamGenericTypes(i));
+        }
+        return params.iterator();
     }
 
     private void checkParamIndex(int paramIndex) {

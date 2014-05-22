@@ -1,4 +1,4 @@
-package ch.dkitc.ridioc.test;
+package ch.dkitc.ridioc.test.base;
 
 import static org.junit.Assert.assertNotNull;
 

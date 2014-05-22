@@ -11,7 +11,7 @@ public class TypeFactorySample {
     public static final String PACKAGE_PREFIX = TypeFactorySample.class.getPackage().getName();
 
     public static void main(String [] args) {
-        DIObjectFactory objectFactory = DI.createObjectFactory(DIObjectFactory.class, PACKAGE_PREFIX);
+        DIObjectFactory objectFactory = DI.createObjectFactory(PACKAGE_PREFIX);
 
         BeanToCreateOtherBeans beanToCreateOtherBeans = objectFactory.instance(BeanToCreateOtherBeans.class);
 

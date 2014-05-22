@@ -17,8 +17,8 @@ public class DIConstructorParams implements Iterable<DIConstructorParam> {
         return constructorParams.iterator();
     }
 
-    public DIConstructorParam add(String paramName, Class<?> paramType, List<Annotation> annotations) {
-        DIConstructorParam constructorParam = new DIConstructorParam(paramName, paramType, annotations);
+    public DIConstructorParam add(String paramName, Class<?> paramType, List<Annotation> annotations, List<Class<?>> genericTypes) {
+        DIConstructorParam constructorParam = new DIConstructorParam(paramName, paramType, annotations, genericTypes);
         constructorParams.add(constructorParam);
         return constructorParam;
     }

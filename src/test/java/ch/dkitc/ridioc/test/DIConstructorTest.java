@@ -68,13 +68,7 @@ public class DIConstructorTest {
 
         // lists
         getParamXyzPositiveTests_checkJavaLangStringList();
-        //getParamXyzPositiveTests_checkTypeIterable();
-        //getParamXyzPositiveTests_checkTypeCollection();
-        //getParamXyzPositiveTests_checkTypeSet();
         //getParamXyzPositiveTests_checkTypeList();
-
-        // maps
-        Map<String,String> map;
 
         // literals
         getParamXyzPositiveTests_checkPrimitiveByte();
@@ -102,9 +96,6 @@ public class DIConstructorTest {
         // types
         getParamXyzPositiveTests_checkSingleType();
         getParamXyzPositiveTests_checkMultipleTypes();
-
-        // factories
-        //getParamXyzPositiveTests_checkTypeFactory();
     }
 
     private void getParamXyzPositiveTests_checkJavaLangStringArray() {
@@ -114,7 +105,7 @@ public class DIConstructorTest {
         assertEquals("testStrings", diConstructor.getParamName(0));
         assertEquals(String[].class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkTypeArray() {
@@ -124,7 +115,7 @@ public class DIConstructorTest {
         assertEquals("beanWithMultipleImplsArray", diConstructor.getParamName(0));
         assertEquals(BeanWithMultipleImpls[].class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangStringList() {
@@ -134,7 +125,8 @@ public class DIConstructorTest {
         assertEquals("testStrings", diConstructor.getParamName(0));
         assertEquals(List.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(1, diConstructor.getParamGenericType(0).size());
+        assertEquals(1, diConstructor.getParamGenericTypes(0).size());
+        assertEquals(String.class, diConstructor.getParamGenericTypes(0).get(0));
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveByte() {
@@ -144,7 +136,7 @@ public class DIConstructorTest {
         assertEquals("testByte", diConstructor.getParamName(0));
         assertEquals(byte.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangByte() {
@@ -154,7 +146,7 @@ public class DIConstructorTest {
         assertEquals("testByte", diConstructor.getParamName(0));
         assertEquals(Byte.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveShort() {
@@ -164,7 +156,7 @@ public class DIConstructorTest {
         assertEquals("testShort", diConstructor.getParamName(0));
         assertEquals(short.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangShort() {
@@ -174,7 +166,7 @@ public class DIConstructorTest {
         assertEquals("testShort", diConstructor.getParamName(0));
         assertEquals(Short.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveInteger() {
@@ -184,7 +176,7 @@ public class DIConstructorTest {
         assertEquals("testInt", diConstructor.getParamName(0));
         assertEquals(int.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangInteger() {
@@ -194,7 +186,7 @@ public class DIConstructorTest {
         assertEquals("testInteger", diConstructor.getParamName(0));
         assertEquals(Integer.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveLong() {
@@ -204,7 +196,7 @@ public class DIConstructorTest {
         assertEquals("testLong", diConstructor.getParamName(0));
         assertEquals(long.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangLong() {
@@ -214,7 +206,7 @@ public class DIConstructorTest {
         assertEquals("testLong", diConstructor.getParamName(0));
         assertEquals(Long.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveFloat() {
@@ -224,7 +216,7 @@ public class DIConstructorTest {
         assertEquals("testFloat", diConstructor.getParamName(0));
         assertEquals(float.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangFloat() {
@@ -234,7 +226,7 @@ public class DIConstructorTest {
         assertEquals("testFloat", diConstructor.getParamName(0));
         assertEquals(Float.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveDouble() {
@@ -244,7 +236,7 @@ public class DIConstructorTest {
         assertEquals("testDouble", diConstructor.getParamName(0));
         assertEquals(double.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangDouble() {
@@ -254,7 +246,7 @@ public class DIConstructorTest {
         assertEquals("testDouble", diConstructor.getParamName(0));
         assertEquals(Double.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveCharacter() {
@@ -264,7 +256,7 @@ public class DIConstructorTest {
         assertEquals("testChar", diConstructor.getParamName(0));
         assertEquals(char.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangCharacter() {
@@ -274,7 +266,7 @@ public class DIConstructorTest {
         assertEquals("testCharacter", diConstructor.getParamName(0));
         assertEquals(Character.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkPrimitiveBoolean() {
@@ -284,7 +276,7 @@ public class DIConstructorTest {
         assertEquals("testBoolean", diConstructor.getParamName(0));
         assertEquals(boolean.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangBoolean() {
@@ -294,7 +286,7 @@ public class DIConstructorTest {
         assertEquals("testBoolean", diConstructor.getParamName(0));
         assertEquals(Boolean.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaMathBigDecimal() {
@@ -304,7 +296,7 @@ public class DIConstructorTest {
         assertEquals("testBigDecimal", diConstructor.getParamName(0));
         assertEquals(BigDecimal.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaMathBigInteger() {
@@ -314,7 +306,7 @@ public class DIConstructorTest {
         assertEquals("testBigInteger", diConstructor.getParamName(0));
         assertEquals(BigInteger.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangString() {
@@ -324,7 +316,7 @@ public class DIConstructorTest {
         assertEquals("testString", diConstructor.getParamName(0));
         assertEquals(String.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangEnum() {
@@ -334,7 +326,7 @@ public class DIConstructorTest {
         assertEquals("testEnum", diConstructor.getParamName(0));
         assertEquals(MyEnum.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkJavaLangDate() {
@@ -344,7 +336,7 @@ public class DIConstructorTest {
         assertEquals("testDate", diConstructor.getParamName(0));
         assertEquals(Date.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkSingleType() {
@@ -354,7 +346,7 @@ public class DIConstructorTest {
         assertEquals("beanWithDefaultConstructor", diConstructor.getParamName(0));
         assertEquals(BeanWithDefaultConstructor.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
     private void getParamXyzPositiveTests_checkMultipleTypes() {
@@ -364,11 +356,11 @@ public class DIConstructorTest {
         assertEquals("beanWithDefaultConstructor", diConstructor.getParamName(0));
         assertEquals(BeanWithDefaultConstructor.class, diConstructor.getParamType(0));
         assertEquals(0, diConstructor.getParamAnnotations(0).size());
-        assertEquals(0, diConstructor.getParamGenericType(0).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(0).size());
         assertEquals("anotherBeanWithDefaultConstructor", diConstructor.getParamName(1));
         assertEquals(AnotherBeanWithDefaultConstructor.class, diConstructor.getParamType(1));
         assertEquals(0, diConstructor.getParamAnnotations(1).size());
-        assertEquals(0, diConstructor.getParamGenericType(1).size());
+        assertEquals(0, diConstructor.getParamGenericTypes(1).size());
     }
 
 }

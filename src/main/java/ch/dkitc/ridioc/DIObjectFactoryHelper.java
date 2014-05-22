@@ -46,6 +46,9 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
         if (instance == null) {
             // create it & cache it!
             Class<?> potentialImplType = getSinglePotentialImplType(type);
+
+            // TODO intercept dynamic creation of factory type!!
+
             instance = constructOneImplementation(type, potentialImplType);
             instanceCache.put(type, instance);
         }
@@ -96,10 +99,9 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
         List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, newInstanceHelper.getWrappedPrimitiveTypeMap()).findMatchingConstructorsByParams(params);
         List<Exception> exceptions = new ArrayList<Exception>();
         for (DIConstructor diConstructor : diConstructors) {
-            DIConstructorParams constructorParams = createConstructorParams(diConstructor);
             DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);
             try {
-                return newInstanceHelper.newInstance(diConstructor, constructorParams, instanceMethodParams);
+                return newInstanceHelper.newInstance(diConstructor, instanceMethodParams);
             } catch (Exception ex) {
                 exceptions.add(ex);
             }
@@ -113,14 +115,6 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
             default:
                 throw new DIAggregateException("Cound not instantiate implementation for type '" + type + "'", exceptions);
         }
-    }
-
-    private DIConstructorParams createConstructorParams(DIConstructor diConstructor) {
-        DIConstructorParams constructorParams = new DIConstructorParams();
-        for (int i = 0; i < diConstructor.getParamCount(); i++) {
-            constructorParams.add(diConstructor.getParamName(i), diConstructor.getParamType(i), diConstructor.getParamAnnotations(i));
-        }
-        return constructorParams;
     }
 
     private <T> List<Class<? extends T>> getPotentialImplTypes(Class<T> type) {

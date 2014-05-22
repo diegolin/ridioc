@@ -37,11 +37,11 @@ public class DINewInstanceHelper {
         return stringLiteralStore.putArrayValue(key, arrayValue);
     }
 
-    public <T> T newInstance(DIConstructor diConstructor, DIConstructorParams constructorParams, DIInstanceMethodParams instanceMethodParams) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+    public <T> T newInstance(DIConstructor diConstructor, DIInstanceMethodParams instanceMethodParams) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         List<Object> initArgsAsList = new ArrayList<Object>();
         Map<Class<?>, DIMethodParamsIndex> methodParamsIndexMap = new HashMap<Class<?>, DIMethodParamsIndex>();
         int usedMethodParamCount = 0;
-        for (DIConstructorParam constrParam : constructorParams) {
+        for (DIConstructorParam constrParam : diConstructor) {
             Class<?> constrParamType = constrParam.getType();
             if (constrParamType.isPrimitive()) {
                 // override primitive type with wrapped type
@@ -63,8 +63,8 @@ public class DINewInstanceHelper {
                 continue;
             }
 
-            if (constrParam.isIterable()) {
-                newInstanceIterable(initArgsAsList, constrParam, constrParamType);
+            if (constrParam.isList()) {
+                newInstanceList(initArgsAsList, constrParam, constrParamType);
                 continue;
             }
 
@@ -82,34 +82,14 @@ public class DINewInstanceHelper {
             initArgsAsList.add(internalInstances.instance(constrParamType));
         }
 
-        checkNewInstancePostConditions(constructorParams, instanceMethodParams, initArgsAsList, usedMethodParamCount);
+        checkNewInstancePostConditions(diConstructor.getParamCount(), instanceMethodParams, initArgsAsList, usedMethodParamCount);
         return diConstructor.newInstance(initArgsAsList);
     }
 
-    private void newInstanceIterable(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
-        if (constrParam.isSet()) {
-            throw new IllegalArgumentException(constrParam + ": java.util.Set not (yet) supported");
-        }
-
-        if (constrParam.isList()) {
-            throw new IllegalArgumentException(constrParam + ": java.util.List not (yet) supported");
-        }
-
-        if (constrParam.isCollection()) {
-            throw new IllegalArgumentException(constrParam + ": java.util.Collection not (yet) supported");
-        }
-
-        if (constrParam.isIterable()) {
-            throw new IllegalArgumentException(constrParam + ": java.util.Iterable not (yet) supported");
-        }
-
-        throw new IllegalArgumentException(constrParam + ": This doesn't seem to be an iterable");
-    }
-
-    private void checkNewInstancePostConditions(DIConstructorParams constructorParams, DIInstanceMethodParams instanceMethodParams, List<Object> initArgsAsList, int usedMethodParamCount) {
+    private void checkNewInstancePostConditions(int constructorParamCount, DIInstanceMethodParams instanceMethodParams, List<Object> initArgsAsList, int usedMethodParamCount) {
         // sanity check 1: do we have all the required constructor parameters?
-        if (initArgsAsList.size() != constructorParams.size()) {
-            throw new IllegalArgumentException("There should be " + constructorParams.size() + " arguments, but there are " + initArgsAsList.size() + " arguments");
+        if (initArgsAsList.size() != constructorParamCount) {
+            throw new IllegalArgumentException("There should be " + constructorParamCount + " arguments, but there are " + initArgsAsList.size() + " arguments");
         }
         // sanity check 2: did we use all the given method parameters?
         if (usedMethodParamCount != instanceMethodParams.size()) {
@@ -154,4 +134,32 @@ public class DINewInstanceHelper {
         // if we're here, we are assuming that the constructor expects an array of types
         initArgsAsList.add(internalInstances.instances(constrParamType));
     }
+
+    private void newInstanceList(List<Object> initArgsAsList, DIConstructorParam constrParam, Class<?> constrParamType) {
+        if (constrParam.isListOfNumbers()) {
+            throw new IllegalArgumentException(constrParam + ": Array of primitives not (yet) supported");
+        }
+        if (constrParam.isListOfPrimitives()) {
+            throw new IllegalArgumentException(constrParam + ": List of primitives not (yet) supported");
+        }
+        if (constrParam.isListOfEnums()) {
+            throw new IllegalArgumentException(constrParam + ": Array of enums are not (yet) supported");
+        }
+        if (constrParam.isListOfStrings()) {
+            initArgsAsList.add(Arrays.asList(stringLiteralStore.getArrayValue(constrParam.getName())));
+            return;
+        }
+        if (constrParam.isListOfDates()) {
+            throw new IllegalArgumentException(constrParam + ": Array of dates are not (yet) supported");
+        }
+        if (constrParam.isListOfArrays()) {
+            throw new IllegalArgumentException(constrParam + ": Array of arrays not (yet) supported");
+        }
+
+        // if we're here, we are assuming that the constructor expects an array of types
+        Object instanceArray = internalInstances.instances(constrParamType);
+        initArgsAsList.add(Arrays.asList(instanceArray));
+    }
+
+
 }
