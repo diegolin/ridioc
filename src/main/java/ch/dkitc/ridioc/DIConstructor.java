@@ -1,14 +1,16 @@
 package ch.dkitc.ridioc;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.thoughtworks.paranamer.AdaptiveParanamer;
+import com.google.common.collect.Lists;
 import com.thoughtworks.paranamer.Paranamer;
+import static ch.dkitc.ridioc.DIUtils.unboxToPrimitive;
 
 public class DIConstructor implements Iterable<DIConstructorParam> {
 
@@ -16,24 +18,38 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
     public static final Pattern EXTRACT_GENERIC_PARAM_TYPES = Pattern.compile("<(.*?)>");
 
     private final Constructor<?> constructor;
-    private final Paranamer paranamer = new AdaptiveParanamer();
+    private final Paranamer paranamer;
     private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
     private List<String> paramNames;
     private List<List<Class<?>>> genericParamTypesList;
 
-    public DIConstructor(Constructor<?> constructor, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+    public DIConstructor(Constructor<?> constructor, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
         if (constructor == null) {
             throw new IllegalArgumentException("'constructor' must not be NULL");
         }
         if (wrappedPrimitiveTypeMap == null) {
             throw new IllegalArgumentException("'wrappedPrimitiveTypeMap' must not be NULL");
         }
+        if (paranamer == null) {
+            throw new IllegalArgumentException("'paranemer' must not be NULL");
+        }
         this.constructor = constructor;
         this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
+        this.paranamer = paranamer;
     }
 
     public String getName() {
         return constructor.getDeclaringClass().getName();
+    }
+
+    @Override
+    public String toString() {
+        return "DIConstructor{" +
+                "constructor=" + constructor +
+                ", paranamer=" + paranamer +
+                ", paramNames=" + paramNames +
+                ", genericParamTypesList=" + genericParamTypesList +
+                '}';
     }
 
     public boolean matchesParams(Object ... givenParams) {
@@ -79,16 +95,51 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
     }
 
     public <T> T newInstance(Object ... initArgs) throws IllegalAccessException, InvocationTargetException, InstantiationException {
-        return (T) constructor.newInstance(initArgs);
+        Object [] realInitArgs = new Object[initArgs.length];
+        List<DIConstructorParam> constrParams = Lists.newArrayList(iterator());
+
+        // sanity check!
+        if (initArgs.length != constrParams.size()) {
+            throw new IllegalArgumentException("The number of init-args (" + initArgs.length + ") is not equal to the number of the constructor parameters (" + constrParams.size() + ")");
+        }
+
+        for (int i=0; i<initArgs.length; i++) {
+            Object initArg = initArgs[i];
+            Class<?> initArgClass = initArg.getClass();
+            DIConstructorParam constrParam = constrParams.get(i);
+            if (constrParam.isArrayOfPrimitives() && initArgClass.isArray() && !initArgClass.getComponentType().isPrimitive()) {
+                // we need to convert the corresponding init argument!
+                realInitArgs[i] = unboxToPrimitive((Object[])initArg, toPrimitiveArrayType(initArgClass));
+            } else {
+                realInitArgs[i] = initArg;
+            }
+        }
+        return (T) constructor.newInstance(realInitArgs);
+    }
+
+    private Class<?> toPrimitiveArrayType(Class<?> nonPrimitiveArrayType) {
+        Class<?> componentType = nonPrimitiveArrayType.getComponentType();
+        for (Map.Entry<Class<?>, Class<?>> mapEntry : wrappedPrimitiveTypeMap.entrySet()) {
+            if (mapEntry.getValue().equals(componentType)) {
+                // gotcha!
+                return Array.newInstance(mapEntry.getKey(), 0).getClass();
+            }
+        }
+
+        throw new IllegalArgumentException("Could not determine primitive array type for '" + nonPrimitiveArrayType + "'");
     }
 
     public int getParamCount() {
-        return getParamNames().size();
+        return constructor.getParameterTypes().length;
     }
 
     public String getParamName(int paramIndex) {
         checkParamIndex(paramIndex);
-        return getParamNames().get(paramIndex);
+        if (paramIndex < getParamNames().size()) {
+            return getParamNames().get(paramIndex);
+        } else {
+            return "(unknown)";
+        }
     }
 
     public Class<?> getParamType(int paramIndex) {

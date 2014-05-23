@@ -101,6 +101,7 @@
         <w>nano</w>
         <w>pico</w>
         <w>uber</w>
+        <w>unbox</w>
       </words>
     </dictionary>
     <dictionary name="Diego.kuenzi">
@@ -168,6 +169,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: commons-lang:commons-lang:2.6">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: dom4j:dom4j:1.6.1">

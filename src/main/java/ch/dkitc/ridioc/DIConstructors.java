@@ -1,20 +1,37 @@
 package ch.dkitc.ridioc;
 
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import com.thoughtworks.paranamer.Paranamer;
+
 public class DIConstructors extends ArrayList<DIConstructor> {
 
     private final Class<?> type;
 
-    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
         this.type = type;
         for (Constructor<?> constructor : type.getConstructors()) {
-            add(new DIConstructor(constructor, wrappedPrimitiveTypeMap));
+            add(new DIConstructor(constructor, wrappedPrimitiveTypeMap, paranamer));
         }
+    }
+
+    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+        this(type, wrappedPrimitiveTypeMap, new Paranamer() {
+            @Override
+            public String[] lookupParameterNames(AccessibleObject methodOrConstructor) {
+                return new String[0];
+            }
+
+            @Override
+            public String[] lookupParameterNames(AccessibleObject methodOrConstructor, boolean throwExceptionIfMissing) {
+                return new String[0];
+            }
+        });
     }
 
     public DIConstructors mustHaveAtLeastOnePublicConstructor() {

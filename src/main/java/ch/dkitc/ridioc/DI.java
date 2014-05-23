@@ -4,6 +4,8 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.thoughtworks.paranamer.AdaptiveParanamer;
+
 public final class DI {
 
     public static DIObjectFactory createObjectFactory(String packagePrefix) {
@@ -13,7 +15,7 @@ public final class DI {
     public static <FACTORY> FACTORY createObjectFactory(Class<FACTORY> factoryType, String packagePrefix) {
         String realPackagePrefix = checkAndMassagePackagePrefix(packagePrefix);
         Class<FACTORY> checkedFactoryType = checkFactoryType(factoryType);
-        DIObjectFactoryInvocationHandler factoryHandler = new DIObjectFactoryInvocationHandler(realPackagePrefix, createWrappedPrimitiveTypeMap());
+        DIObjectFactoryInvocationHandler factoryHandler = new DIObjectFactoryInvocationHandler(realPackagePrefix, createWrappedPrimitiveTypeMap(), new AdaptiveParanamer());
         return (FACTORY) Proxy.newProxyInstance(factoryType.getClassLoader(), new Class[]{checkedFactoryType}, factoryHandler);
     }
 

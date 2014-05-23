@@ -4,6 +4,7 @@ import javax.xml.bind.DatatypeConverter;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -94,14 +95,12 @@ public class DIObjectFactoryTest extends DIBaseTest {
         instancePositiveTests_checkDefaultConstructor();
 
         // arrays
-        //instancePositiveTests_checkPrimitiveByteArray();
-        //instancePositiveTests_checkJavaLangByteArray();
+        instancePositiveTests_checkJavaLangByteArray();
         instancePositiveTests_checkJavaLangStringArray();
         instancePositiveTests_checkTypeArray();
         instancePositiveTests_checkTypeArrayInjectedIntoDifferentTypes();
 
         // lists
-        //instancePositiveTests_checkPrimitiveByteList();
         instancePositiveTests_checkJavaLangByteList();
         instancePositiveTests_checkJavaLangStringList();
         instancePositiveTests_checkTypeList();
@@ -328,6 +327,30 @@ public class DIObjectFactoryTest extends DIBaseTest {
         assertNotNull(bean2);
         assertEquals(bean2.getTestString(), testString);
         assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+    }
+
+    private void instancePositiveTests_checkJavaLangByteArray() {
+        // register string literal array for bytes
+        Byte[] testBytes = new Byte[]{Byte.MAX_VALUE, -1, 0, 1, Byte.MAX_VALUE};
+        objectFactory.registerStringLiteralArray("testBytes", testBytes);
+
+        // create BeanWithJavaLangByteListConstructor bean1
+        BeanWithJavaLangByteArrayConstructor bean1 = objectFactory.instance(BeanWithJavaLangByteArrayConstructor.class);
+        assertNotNull(bean1);
+        assertNotNull(bean1.getTestBytes());
+        assertArrayEquals(testBytes, bean1.getTestBytes());
+
+        // create BeanWithJavaLangByteListConstructor bean2
+        BeanWithJavaLangByteArrayConstructor bean2 = objectFactory.instance(BeanWithJavaLangByteArrayConstructor.class);
+        assertNotNull(bean2);
+        assertNotNull(bean2.getTestBytes());
+        assertArrayEquals(testBytes, bean2.getTestBytes());
+
+        // perform cross-checks
+        assertEquals(bean1, bean2);
+        assertTrue(bean1 == bean2);
+        assertArrayEquals(bean1.getTestBytes(), bean2.getTestBytes());
     }
 
     private void instancePositiveTests_checkJavaLangStringArray() {
@@ -581,24 +604,22 @@ public class DIObjectFactoryTest extends DIBaseTest {
 
     private void instancePositiveTests_checkJavaLangByteList() {
         // register value List<Byte>
-        List<Byte> testBytes = new ArrayList<Byte>();
-        testBytes.add(Byte.MIN_VALUE);
-        testBytes.add(Byte.MAX_VALUE);
-        objectFactory.registerStringLiteralArray("testBytes", testBytes.toArray());
+        Byte[] testBytes = new Byte[]{Byte.MAX_VALUE, -1, 0, 1, Byte.MAX_VALUE};
+        objectFactory.registerStringLiteralArray("testBytes", testBytes);
 
         // create BeanWithJavaLangByteListConstructor bean1
         BeanWithJavaLangByteListConstructor bean1 = objectFactory.instance(BeanWithJavaLangByteListConstructor.class);
         assertNotNull(bean1);
         assertNotNull(bean1.getTestBytes());
-        assertEquals(testBytes, bean1.getTestBytes());
-        assertFalse(testBytes == bean1.getTestBytes());
+        assertEquals(Arrays.asList(testBytes), bean1.getTestBytes());
+        assertFalse(testBytes == bean1.getTestBytes().toArray());
 
         // create BeanWithJavaLangByteListConstructor bean1
         BeanWithJavaLangByteListConstructor bean2 = objectFactory.instance(BeanWithJavaLangByteListConstructor.class);
         assertNotNull(bean2);
         assertNotNull(bean2.getTestBytes());
-        assertEquals(testBytes, bean2.getTestBytes());
-        assertFalse(testBytes == bean2.getTestBytes());
+        assertEquals(Arrays.asList(testBytes), bean2.getTestBytes());
+        assertFalse(testBytes == bean2.getTestBytes().toArray());
 
         // perform cross checks
         assertEquals(bean1, bean2);

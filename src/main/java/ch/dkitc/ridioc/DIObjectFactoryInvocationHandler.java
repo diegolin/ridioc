@@ -1,11 +1,12 @@
 package ch.dkitc.ridioc;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
-import static ch.dkitc.ridioc.DIUtils.argumentsMustHaveAtLeastArgumentsCountOf;
-import static ch.dkitc.ridioc.DIUtils.argumentsMustHaveExactArgumentsCountOf;
-import static ch.dkitc.ridioc.DIUtils.castTo;
+import com.thoughtworks.paranamer.Paranamer;
+import static ch.dkitc.ridioc.DIUtils.*;
 
 public final class DIObjectFactoryInvocationHandler implements InvocationHandler {
 
@@ -16,8 +17,8 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
     private final DIObjectFactoryHelper objectFactoryHelper;
     private final Map<String, ObjectFactoryMethodHandler> objectFactoryMethodHandlerMap = new HashMap<String, ObjectFactoryMethodHandler>();
 
-    protected DIObjectFactoryInvocationHandler(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
-        this.objectFactoryHelper = new DIObjectFactoryHelper(packagePrefix, wrappedPrimitiveTypeMap);
+    protected DIObjectFactoryInvocationHandler(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
+        this.objectFactoryHelper = new DIObjectFactoryHelper(packagePrefix, wrappedPrimitiveTypeMap, paranamer);
         this.objectFactoryMethodHandlerMap.put("newInstance", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {

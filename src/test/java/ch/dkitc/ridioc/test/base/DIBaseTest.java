@@ -19,4 +19,14 @@ public abstract class DIBaseTest {
         return objectFactory;
     }
 
+    protected static Object[] toJavaLangByteArray(byte[] testBytes) {
+        Byte[] javaLangByteArray = new Byte[testBytes.length];
+        for (int i=0; i<testBytes.length; i++) {
+            // this is safe boxing
+            javaLangByteArray[i] = testBytes[i];
+        }
+        return javaLangByteArray;
+    }
+
+
 }

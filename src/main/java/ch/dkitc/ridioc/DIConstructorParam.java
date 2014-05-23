@@ -4,6 +4,10 @@ import java.lang.annotation.Annotation;
 import java.util.Date;
 import java.util.List;
 
+import static ch.dkitc.ridioc.DIUtils.checkList;
+import static ch.dkitc.ridioc.DIUtils.checkName;
+import static ch.dkitc.ridioc.DIUtils.checkType;
+
 public class DIConstructorParam {
 
     private final String name;
@@ -12,10 +16,10 @@ public class DIConstructorParam {
     private final List<Class<?>> genericTypes;
 
     public DIConstructorParam(String name, Class<?> type, List<Annotation> annotations, List<Class<?>> genericTypes) {
-        this.name = name;
-        this.type = type;
-        this.annotations = annotations;
-        this.genericTypes = genericTypes;
+        this.name = checkName(name);
+        this.type = checkType(type);
+        this.annotations = checkList(annotations, "annotations");
+        this.genericTypes = checkList(genericTypes, "genericType");
     }
 
     @Override
@@ -137,15 +141,11 @@ public class DIConstructorParam {
     }
 
     public boolean isListOfLiterals() {
-        return isListOfNumbers() || isListOfPrimitives() || isListOfEnums() || isListOfStrings() || isListOfDates() || isListOfCharacters() || isListOfBooleans();
+        return isListOfNumbers() || isListOfEnums() || isListOfStrings() || isListOfDates() || isListOfCharacters() || isListOfBooleans();
     }
 
     public boolean isListOfNumbers() {
         return isList() && isListTypeInstanceOf(Number.class);
-    }
-
-    public boolean isListOfPrimitives() {
-        return isList() && getListType().isPrimitive();
     }
 
     public boolean isListOfEnums() {

@@ -1,7 +1,10 @@
 package ch.dkitc.ridioc;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.ImmutableList;
 
@@ -97,8 +100,11 @@ public class DINewInstanceHelper {
         public void invoke() {
             Object [] instances = internalInstances.instancesCache(constrParam.getListOrArrayElementType());
             if (instances == null) {
-                if (constrParam.isListOrArrayOfLiterals()) {
-                    instances = stringLiteralStore.convertArrayValueTo(constrParam.getName(), constrParam.getListOrArrayElementType());
+                if (constrParam.isArrayOfLiterals()) {
+                    Class<?> overrideType = new OverrideConstrParamType(constrParam).invoke();
+                    instances = stringLiteralStore.convertArrayValueTo(constrParam.getName(), overrideType.getComponentType());
+                } else if (constrParam.isListOrArrayOfLiterals()) {
+                    instances = stringLiteralStore.convertArrayValueTo(constrParam.getName(), constrParam.getListType());
                 } else {
                     instances = internalInstances.instances(constrParam.getListOrArrayElementType());
                 }
@@ -139,10 +145,15 @@ public class DINewInstanceHelper {
         }
 
         public Class<?> invoke() {
-            Class<?> constrParamType = constrParam.getType();
-            if (constrParamType.isPrimitive()) {
+            Class<?> constrParamType;
+            if (constrParam.isPrimitive()) {
                 // override primitive type with wrapped type
-                constrParamType = getWrappedPrimitiveType(constrParamType);
+                constrParamType = getWrappedPrimitiveType(constrParam.getType());
+            } else if (constrParam.isArrayOfPrimitives()) {
+                Class<?> wrappedComponentType = getWrappedPrimitiveType(constrParam.getComponentType());
+                constrParamType = Array.newInstance(wrappedComponentType, 0).getClass();
+            } else {
+                constrParamType = constrParam.getType();
             }
             return constrParamType;
         }

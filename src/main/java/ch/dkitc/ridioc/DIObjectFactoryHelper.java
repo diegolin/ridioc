@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
+import com.thoughtworks.paranamer.Paranamer;
 import static ch.dkitc.ridioc.DIUtils.checkParams;
 import static ch.dkitc.ridioc.DIUtils.checkType;
 
@@ -13,12 +14,14 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     private final Map<Class<?>, Object[]> instancesCache;
     private final DIReflectionsCache reflectionsCache;
     private final DINewInstanceHelper newInstanceHelper;
+    private final Paranamer paranamer;
 
-    public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+    public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
         instanceCache = new HashMap<Class<?>, Object>();
         instancesCache = new HashMap<Class<?>, Object[]>();
         this.reflectionsCache = new DIReflectionsCache(packagePrefix);
         this.newInstanceHelper = new DINewInstanceHelper(this, wrappedPrimitiveTypeMap);
+        this.paranamer = paranamer;
     }
 
     public <T> T newInstance(Class<T> type, Object... params) {
@@ -99,7 +102,7 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     }
 
     private <T> T constructOneImplementation(Class<T> type, Class<?> potentialImplType, Object... params) throws DIAggregateException {
-        List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, newInstanceHelper.getWrappedPrimitiveTypeMap()).findMatchingConstructorsByParams(params);
+        List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, newInstanceHelper.getWrappedPrimitiveTypeMap(), paranamer).findMatchingConstructorsByParams(params);
         List<Exception> exceptions = new ArrayList<Exception>();
         for (DIConstructor diConstructor : diConstructors) {
             DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);
