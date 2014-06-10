@@ -15,21 +15,8 @@ public final class DI {
     public static <FACTORY> FACTORY createObjectFactory(Class<FACTORY> factoryType, String packagePrefix) {
         String realPackagePrefix = checkAndMassagePackagePrefix(packagePrefix);
         Class<FACTORY> checkedFactoryType = checkFactoryType(factoryType);
-        DIObjectFactoryInvocationHandler factoryHandler = new DIObjectFactoryInvocationHandler(realPackagePrefix, createWrappedPrimitiveTypeMap(), new AdaptiveParanamer());
+        DIObjectFactoryInvocationHandler factoryHandler = new DIObjectFactoryInvocationHandler(realPackagePrefix, new AdaptiveParanamer());
         return (FACTORY) Proxy.newProxyInstance(factoryType.getClassLoader(), new Class[]{checkedFactoryType}, factoryHandler);
-    }
-
-    public static Map<Class<?>, Class<?>> createWrappedPrimitiveTypeMap() {
-        Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap = new HashMap<Class<?>, Class<?>>();
-        wrappedPrimitiveTypeMap.put(byte.class, Byte.class);
-        wrappedPrimitiveTypeMap.put(short.class, Short.class);
-        wrappedPrimitiveTypeMap.put(int.class, Integer.class);
-        wrappedPrimitiveTypeMap.put(long.class, Long.class);
-        wrappedPrimitiveTypeMap.put(float.class, Float.class);
-        wrappedPrimitiveTypeMap.put(double.class, Double.class);
-        wrappedPrimitiveTypeMap.put(char.class, Character.class);
-        wrappedPrimitiveTypeMap.put(boolean.class, Boolean.class);
-        return wrappedPrimitiveTypeMap;
     }
 
     public static <FACTORY> Class<FACTORY> checkFactoryType(Class<FACTORY> factoryType) {

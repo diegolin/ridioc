@@ -4,35 +4,18 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.google.common.collect.ImmutableList;
+import static ch.dkitc.ridioc.DIUtils.getWrappedPrimitiveType;
 
 public class DINewInstanceHelper {
 
     private final DIInternalInstances internalInstances;
-    private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
     private final DIStringLiteralStore stringLiteralStore;
 
-    public DINewInstanceHelper(DIInternalInstances internalInstances, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
+    public DINewInstanceHelper(DIInternalInstances internalInstances) {
         this.internalInstances = internalInstances;
-        this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
-        this.stringLiteralStore = new DIStringLiteralStore(wrappedPrimitiveTypeMap);
-    }
-
-    public Map<Class<?>, Class<?>> getWrappedPrimitiveTypeMap() {
-        return wrappedPrimitiveTypeMap;
-    }
-
-
-    public Class<?> getWrappedPrimitiveType(Class<?> type) {
-        if (!type.isPrimitive()) {
-            throw new IllegalArgumentException("Given type '" + type + " is NOT primitive");
-        }
-        if (!wrappedPrimitiveTypeMap.containsKey(type)) {
-            throw new IllegalArgumentException("There is no wrapped type for primitive type '" + type + "' available");
-        }
-        return wrappedPrimitiveTypeMap.get(type);
+        this.stringLiteralStore = new DIStringLiteralStore();
     }
 
     public Object registerStringLiteral(String key, Object singleValue) {

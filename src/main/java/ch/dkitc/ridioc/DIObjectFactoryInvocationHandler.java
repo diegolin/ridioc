@@ -17,8 +17,8 @@ public final class DIObjectFactoryInvocationHandler implements InvocationHandler
     private final DIObjectFactoryHelper objectFactoryHelper;
     private final Map<String, ObjectFactoryMethodHandler> objectFactoryMethodHandlerMap = new HashMap<String, ObjectFactoryMethodHandler>();
 
-    protected DIObjectFactoryInvocationHandler(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
-        this.objectFactoryHelper = new DIObjectFactoryHelper(packagePrefix, wrappedPrimitiveTypeMap, paranamer);
+    protected DIObjectFactoryInvocationHandler(String packagePrefix, Paranamer paranamer) {
+        this.objectFactoryHelper = new DIObjectFactoryHelper(packagePrefix, paranamer);
         this.objectFactoryMethodHandlerMap.put("newInstance", new ObjectFactoryMethodHandler() {
             @Override
             public Object invoke(Method method, Object[] args) {

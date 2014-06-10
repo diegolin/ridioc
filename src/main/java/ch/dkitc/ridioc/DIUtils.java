@@ -1,11 +1,36 @@
 package ch.dkitc.ridioc;
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
 
 public class DIUtils {
+
+    private static Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
+
+    static {
+        wrappedPrimitiveTypeMap = new HashMap<Class<?>, Class<?>>();
+        wrappedPrimitiveTypeMap.put(byte.class, Byte.class);
+        wrappedPrimitiveTypeMap.put(short.class, Short.class);
+        wrappedPrimitiveTypeMap.put(int.class, Integer.class);
+        wrappedPrimitiveTypeMap.put(long.class, Long.class);
+        wrappedPrimitiveTypeMap.put(float.class, Float.class);
+        wrappedPrimitiveTypeMap.put(double.class, Double.class);
+        wrappedPrimitiveTypeMap.put(char.class, Character.class);
+        wrappedPrimitiveTypeMap.put(boolean.class, Boolean.class);
+    }
+
+    public static Class<?> getWrappedPrimitiveType(Class<?> type) {
+        if (!type.isPrimitive()) {
+            throw new IllegalArgumentException("Given type '" + type + " is NOT primitive");
+        }
+        if (!wrappedPrimitiveTypeMap.containsKey(type)) {
+            throw new IllegalArgumentException("There is no wrapped type for primitive type '" + type + "' available");
+        }
+        return wrappedPrimitiveTypeMap.get(type);
+    }
 
     public static boolean hasDefaultConstructor(Class<?> type) {
         try {
@@ -68,12 +93,8 @@ public class DIUtils {
         throw new ClassCastException("Cannot cast value " + arg.getClass().getName() + " to type " + type.getName());
     }
 
-    public static Object unboxToPrimitive(Object[] boxedPrimitiveArray, Class<?> primitiveArrayType) {
-        try {
-            return ArrayUtils.class.getMethod("toPrimitive", boxedPrimitiveArray.getClass()).invoke(null, primitiveArrayType.cast(boxedPrimitiveArray));
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Cannot unbox primitive array '" + Arrays.toString(boxedPrimitiveArray) + "'", e);
-        }
+    public static Object unboxToPrimitiveByteArray(Byte[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
     }
 
     private DIUtils() {

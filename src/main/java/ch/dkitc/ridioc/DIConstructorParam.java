@@ -72,6 +72,10 @@ public class DIConstructorParam {
         return isArray() && getComponentType().isPrimitive();
     }
 
+    public boolean isArrayOfPrimitiveBytes() {
+        return isArrayOfPrimitives() && isComponentType(byte.class);
+    }
+
     public boolean isArrayOfArrays() {
         return isArray() && getComponentType().isArray();
     }

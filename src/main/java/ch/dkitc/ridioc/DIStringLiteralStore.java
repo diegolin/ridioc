@@ -7,15 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static ch.dkitc.ridioc.DIUtils.castTo;
+import static ch.dkitc.ridioc.DIUtils.getWrappedPrimitiveType;
 
 public class DIStringLiteralStore {
 
     private final Map<String, Object> singleValueMap = new HashMap<String, Object>();
     private final Map<String, Object[]> arrayValueMap = new HashMap<String, Object[]>();
-    private final Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap;
 
-    public DIStringLiteralStore(Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
-        this.wrappedPrimitiveTypeMap = wrappedPrimitiveTypeMap;
+    public DIStringLiteralStore() {
     }
 
     public Object[] convertArrayValueTo(String name, Class<?> elementType)  {
@@ -55,7 +54,7 @@ public class DIStringLiteralStore {
     private Object internalConvertSingleValueTo(String name, Object singleValue, Class<?> type) {
         String singleValueAsString = String.valueOf(singleValue);
         if (Number.class.isAssignableFrom(type)) {
-            DIConstructor diConstructor = new DIConstructors(type, wrappedPrimitiveTypeMap).findMatchingConstructorByParamTypes(String.class);
+            DIConstructor diConstructor = new DIConstructors(type).findMatchingConstructorByParamTypes(String.class);
             if (diConstructor == null) {
                 throw new IllegalArgumentException(type + " does not have constructor that takes a single string argument");
             }
@@ -65,7 +64,7 @@ public class DIStringLiteralStore {
                 throw new IllegalArgumentException("Cannot convert '" + name + "'='" + singleValueAsString + "' to type '" + type.getName() + "'", ex);
             }
         } else if (type.isPrimitive()) {
-            Class<?> wrappedType = wrappedPrimitiveTypeMap.get(type);
+            Class<?> wrappedType = getWrappedPrimitiveType(type);
             if (wrappedType == null) {
                 throw new IllegalArgumentException("Cannot convert '" + name + "'='" + singleValueAsString + "' to primitive type '" + type.getName() + "' no wrapped type found");
             }

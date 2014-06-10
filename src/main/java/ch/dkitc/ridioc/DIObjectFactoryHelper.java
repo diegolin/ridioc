@@ -7,6 +7,7 @@ import java.util.*;
 import com.thoughtworks.paranamer.Paranamer;
 import static ch.dkitc.ridioc.DIUtils.checkParams;
 import static ch.dkitc.ridioc.DIUtils.checkType;
+import static ch.dkitc.ridioc.DIUtils.getWrappedPrimitiveType;
 
 public class DIObjectFactoryHelper implements DIInternalInstances {
 
@@ -16,11 +17,11 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     private final DINewInstanceHelper newInstanceHelper;
     private final Paranamer paranamer;
 
-    public DIObjectFactoryHelper(String packagePrefix, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
+    public DIObjectFactoryHelper(String packagePrefix, Paranamer paranamer) {
         instanceCache = new HashMap<Class<?>, Object>();
         instancesCache = new HashMap<Class<?>, Object[]>();
         this.reflectionsCache = new DIReflectionsCache(packagePrefix);
-        this.newInstanceHelper = new DINewInstanceHelper(this, wrappedPrimitiveTypeMap);
+        this.newInstanceHelper = new DINewInstanceHelper(this);
         this.paranamer = paranamer;
     }
 
@@ -84,7 +85,7 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     public Object registerInstance(Class<?> type, Object instance) {
         Class<?> realType;
         if (type.isPrimitive()) {
-            realType = newInstanceHelper.getWrappedPrimitiveType(type);
+            realType = getWrappedPrimitiveType(type);
         } else {
             realType = type;
         }
@@ -102,7 +103,7 @@ public class DIObjectFactoryHelper implements DIInternalInstances {
     }
 
     private <T> T constructOneImplementation(Class<T> type, Class<?> potentialImplType, Object... params) throws DIAggregateException {
-        List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, newInstanceHelper.getWrappedPrimitiveTypeMap(), paranamer).findMatchingConstructorsByParams(params);
+        List<DIConstructor> diConstructors = new DIConstructors(potentialImplType, paranamer).findMatchingConstructorsByParams(params);
         List<Exception> exceptions = new ArrayList<Exception>();
         for (DIConstructor diConstructor : diConstructors) {
             DIInstanceMethodParams instanceMethodParams = new DIInstanceMethodParams(params);

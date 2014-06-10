@@ -5,7 +5,6 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import com.thoughtworks.paranamer.Paranamer;
 
@@ -13,15 +12,15 @@ public class DIConstructors extends ArrayList<DIConstructor> {
 
     private final Class<?> type;
 
-    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap, Paranamer paranamer) {
+    public DIConstructors(Class<?> type, Paranamer paranamer) {
         this.type = type;
         for (Constructor<?> constructor : type.getConstructors()) {
-            add(new DIConstructor(constructor, wrappedPrimitiveTypeMap, paranamer));
+            add(new DIConstructor(constructor, paranamer));
         }
     }
 
-    public DIConstructors(Class<?> type, Map<Class<?>, Class<?>> wrappedPrimitiveTypeMap) {
-        this(type, wrappedPrimitiveTypeMap, new Paranamer() {
+    public DIConstructors(Class<?> type) {
+        this(type, new Paranamer() {
             @Override
             public String[] lookupParameterNames(AccessibleObject methodOrConstructor) {
                 return new String[0];

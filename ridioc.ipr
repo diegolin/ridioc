@@ -55,9 +55,11 @@
             <value />
           </option>
         </inspection_tool>
+        <inspection_tool class="NumberEquality" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="RedundantSuppression" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="RedundantThrowsDeclaration" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
+        <inspection_tool class="UnnecessaryBoxing" enabled="false" level="WARNING" enabled_by_default="false" />
         <inspection_tool class="UnnecessaryInheritDoc" enabled="true" level="WARNING" enabled_by_default="true" />
         <inspection_tool class="UnnecessaryJavaDocLink" enabled="true" level="WARNING" enabled_by_default="true">
           <option name="ignoreInlineLinkToSuper" value="false" />
