@@ -1,5 +1,6 @@
 package ch.dkitc.ridioc.test;
 
+import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -61,46 +62,9 @@ public class DIConstructorTest {
     }
 
     @Test
-    public void getParamXyzPositiveTests() {
-        // arrays
-        getParamXyzPositiveTests_checkJavaLangStringArray();
-        getParamXyzPositiveTests_checkTypeArray();
-
-        // lists
-        getParamXyzPositiveTests_checkJavaLangStringList();
-        getParamXyzPositiveTests_checkTypeList();
-
-        // literals
-        getParamXyzPositiveTests_checkPrimitiveByte();
-        getParamXyzPositiveTests_checkJavaLangByte();
-        getParamXyzPositiveTests_checkPrimitiveShort();
-        getParamXyzPositiveTests_checkJavaLangShort();
-        getParamXyzPositiveTests_checkPrimitiveInteger();
-        getParamXyzPositiveTests_checkJavaLangInteger();
-        getParamXyzPositiveTests_checkPrimitiveLong();
-        getParamXyzPositiveTests_checkJavaLangLong();
-        getParamXyzPositiveTests_checkPrimitiveFloat();
-        getParamXyzPositiveTests_checkJavaLangFloat();
-        getParamXyzPositiveTests_checkPrimitiveDouble();
-        getParamXyzPositiveTests_checkJavaLangDouble();
-        getParamXyzPositiveTests_checkPrimitiveCharacter();
-        getParamXyzPositiveTests_checkJavaLangCharacter();
-        getParamXyzPositiveTests_checkPrimitiveBoolean();
-        getParamXyzPositiveTests_checkJavaLangBoolean();
-        getParamXyzPositiveTests_checkJavaMathBigDecimal();
-        getParamXyzPositiveTests_checkJavaMathBigInteger();
-        getParamXyzPositiveTests_checkJavaLangString();
-        getParamXyzPositiveTests_checkJavaLangEnum();
-        getParamXyzPositiveTests_checkJavaLangDate();
-
-        // types
-        getParamXyzPositiveTests_checkSingleType();
-        getParamXyzPositiveTests_checkMultipleTypes();
-    }
-
-    private void getParamXyzPositiveTests_checkJavaLangStringArray() {
+    public void getParamXyzPositiveTests_checkJavaLangStringArray() {
         assertTrue(BeanWithStringArrayConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithStringArrayConstructorImpl.class.getConstructors()[0], paranamer);
+        DIConstructor diConstructor = new DIConstructor(getFirstConstructor(BeanWithStringArrayConstructorImpl.class), paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("testStrings", diConstructor.getParamName(0));
         assertEquals(String[].class, diConstructor.getParamType(0));
@@ -108,9 +72,10 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkTypeArray() {
+    @Test
+    public void getParamXyzPositiveTests_checkTypeArray() {
         assertTrue(BeanWithMultipleImplsArrayConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithMultipleImplsArrayConstructorImpl.class.getConstructors()[0], paranamer);
+        DIConstructor diConstructor = new DIConstructor(getFirstConstructor(BeanWithMultipleImplsArrayConstructorImpl.class), paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("beanWithMultipleImplsArray", diConstructor.getParamName(0));
         assertEquals(BeanWithMultipleImpls[].class, diConstructor.getParamType(0));
@@ -118,9 +83,10 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangStringList() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangStringList() {
         assertTrue(BeanWithStringListConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithStringListConstructorImpl.class.getConstructors()[0], paranamer);
+        DIConstructor diConstructor = new DIConstructor(getFirstConstructor(BeanWithStringListConstructorImpl.class), paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("testStrings", diConstructor.getParamName(0));
         assertEquals(List.class, diConstructor.getParamType(0));
@@ -129,7 +95,8 @@ public class DIConstructorTest {
         assertEquals(String.class, diConstructor.getParamGenericTypes(0).get(0));
     }
 
-    private void getParamXyzPositiveTests_checkTypeList() {
+    @Test
+    public void getParamXyzPositiveTests_checkTypeList() {
         assertTrue(BeanWithMultipleImplsListConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithMultipleImplsListConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -140,7 +107,8 @@ public class DIConstructorTest {
         assertEquals(BeanWithMultipleImpls.class, diConstructor.getParamGenericTypes(0).get(0));
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveByte() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveByte() {
         assertTrue(BeanWithPrimitiveByteConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveByteConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -150,9 +118,10 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangByte() {
-        assertTrue(BeanWithByteConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithByteConstructorImpl.class.getConstructors()[0], paranamer);
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangByte() {
+        assertTrue(BeanWithJavaLangByteConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(BeanWithJavaLangByteConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("testByte", diConstructor.getParamName(0));
         assertEquals(Byte.class, diConstructor.getParamType(0));
@@ -160,9 +129,10 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveShort() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveShort() {
         assertTrue(BeanWithPrimitiveShortConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveShortConstructorImpl.class.getConstructors()[0], paranamer);
+        DIConstructor diConstructor = new DIConstructor(getFirstConstructor(BeanWithPrimitiveShortConstructorImpl.class), paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("testShort", diConstructor.getParamName(0));
         assertEquals(short.class, diConstructor.getParamType(0));
@@ -170,9 +140,10 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangShort() {
-        assertTrue(BeanWithShortConstructorImpl.class.getConstructors().length >= 1);
-        DIConstructor diConstructor = new DIConstructor(BeanWithShortConstructorImpl.class.getConstructors()[0], paranamer);
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangShort() {
+        assertTrue(BeanWithJavaLangShortConstructorImpl.class.getConstructors().length >= 1);
+        DIConstructor diConstructor = new DIConstructor(getFirstConstructor(BeanWithJavaLangShortConstructorImpl.class), paranamer);
         assertEquals(1, diConstructor.getParamCount());
         assertEquals("testShort", diConstructor.getParamName(0));
         assertEquals(Short.class, diConstructor.getParamType(0));
@@ -180,7 +151,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveInteger() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveInteger() {
         assertTrue(BeanWithPrimitiveIntegerConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveIntegerConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -190,7 +162,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangInteger() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangInteger() {
         assertTrue(BeanWithIntegerConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithIntegerConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -200,7 +173,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveLong() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveLong() {
         assertTrue(BeanWithPrimitiveLongConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveLongConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -210,7 +184,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangLong() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangLong() {
         assertTrue(BeanWithLongConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithLongConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -220,7 +195,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveFloat() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveFloat() {
         assertTrue(BeanWithPrimitiveFloatConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveFloatConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -230,7 +206,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangFloat() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangFloat() {
         assertTrue(BeanWithFloatConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithFloatConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -240,7 +217,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveDouble() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveDouble() {
         assertTrue(BeanWithPrimitiveDoubleConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveDoubleConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -250,7 +228,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangDouble() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangDouble() {
         assertTrue(BeanWithDoubleConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithDoubleConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -260,7 +239,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveCharacter() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveCharacter() {
         assertTrue(BeanWithPrimitiveCharConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveCharConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -270,7 +250,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangCharacter() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangCharacter() {
         assertTrue(BeanWithCharacterConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithCharacterConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -280,7 +261,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkPrimitiveBoolean() {
+    @Test
+    public void getParamXyzPositiveTests_checkPrimitiveBoolean() {
         assertTrue(BeanWithPrimitiveBooleanConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithPrimitiveBooleanConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -290,7 +272,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangBoolean() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangBoolean() {
         assertTrue(BeanWithBooleanConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithBooleanConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -300,7 +283,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaMathBigDecimal() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaMathBigDecimal() {
         assertTrue(BeanWithBigDecimalConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithBigDecimalConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -310,7 +294,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaMathBigInteger() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaMathBigInteger() {
         assertTrue(BeanWithBigIntegerConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithBigIntegerConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -320,7 +305,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangString() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangString() {
         assertTrue(BeanWithStringConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithStringConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -330,7 +316,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangEnum() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangEnum() {
         assertTrue(BeanWithEnumConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithEnumConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -340,7 +327,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkJavaLangDate() {
+    @Test
+    public void getParamXyzPositiveTests_checkJavaLangDate() {
         assertTrue(BeanWithDateConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithDateConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -350,7 +338,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkSingleType() {
+    @Test
+    public void getParamXyzPositiveTests_checkSingleType() {
         assertTrue(BeanWithSingleTypeConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithSingleTypeConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(1, diConstructor.getParamCount());
@@ -360,7 +349,8 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(0).size());
     }
 
-    private void getParamXyzPositiveTests_checkMultipleTypes() {
+    @Test
+    public void getParamXyzPositiveTests_checkMultipleTypes() {
         assertTrue(BeanWithMultipleTypesConstructorImpl.class.getConstructors().length >= 1);
         DIConstructor diConstructor = new DIConstructor(BeanWithMultipleTypesConstructorImpl.class.getConstructors()[0], paranamer);
         assertEquals(2, diConstructor.getParamCount());
@@ -374,4 +364,9 @@ public class DIConstructorTest {
         assertEquals(0, diConstructor.getParamGenericTypes(1).size());
     }
 
+    protected static Constructor<?> getFirstConstructor(Class<?> type) {
+        assertNotNull(type);
+        assertTrue(type.getConstructors().length >= 1);
+        return type.getConstructors()[0];
+    }
 }

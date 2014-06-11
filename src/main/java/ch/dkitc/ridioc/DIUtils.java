@@ -97,6 +97,23 @@ public class DIUtils {
         return ArrayUtils.toPrimitive(boxedPrimitiveArray);
     }
 
+    public static Object unboxToPrimitiveShortArray(Short[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
+    public static Object unboxToPrimitiveIntegerArray(Integer[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
+    public static Object unboxToPrimitiveLongArray(Long[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
+    public static Object unboxToPrimitiveFloatArray(Float[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
     private DIUtils() {
     }
+
 }

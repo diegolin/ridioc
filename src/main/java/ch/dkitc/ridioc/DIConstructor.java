@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 
 import com.google.common.collect.Lists;
 import com.thoughtworks.paranamer.Paranamer;
-import static ch.dkitc.ridioc.DIUtils.getWrappedPrimitiveType;
-import static ch.dkitc.ridioc.DIUtils.unboxToPrimitiveByteArray;
+import static ch.dkitc.ridioc.DIUtils.*;
 
 public class DIConstructor implements Iterable<DIConstructorParam> {
 
@@ -106,7 +105,16 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
                 // we need to convert the corresponding init argument
                 if (constrParam.isArrayOfPrimitiveBytes()) {
                     realInitArgs[i] = unboxToPrimitiveByteArray((Byte[]) initArg);
-                } else {
+                } else if (constrParam.isArrayOfPrimitiveShorts()) {
+                    realInitArgs[i] = unboxToPrimitiveShortArray((Short[]) initArg);
+                } else if (constrParam.isArrayOfPrimitiveIntegers()) {
+                    realInitArgs[i] = unboxToPrimitiveIntegerArray((Integer[]) initArg);
+                } else if (constrParam.isArrayOfPrimitiveLongs()) {
+                    realInitArgs[i] = unboxToPrimitiveLongArray((Long[]) initArg);
+                } else if (constrParam.isArrayOfPrimitiveFloats()) {
+                    realInitArgs[i] = unboxToPrimitiveFloatArray((Float[]) initArg);
+                }
+                else {
                     throw new IllegalArgumentException(constrParam + " is not (yet) supported");
                 }
             } else {

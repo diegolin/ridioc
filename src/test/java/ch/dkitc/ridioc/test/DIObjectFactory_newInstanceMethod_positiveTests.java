@@ -5,21 +5,20 @@ import java.math.BigInteger;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.Assert.*;
 
 import ch.dkitc.ridioc.DIObjectFactory;
 import ch.dkitc.ridioc.test.api.*;
 import ch.dkitc.ridioc.test.base.DIBaseTest;
 
-public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
+public class DIObjectFactory_newInstanceMethod_positiveTests extends DIBaseTest {
 
-    private static final String PACKAGE_PREFIX = DIObjectFactory_newInstancePositiveTests.class.getPackage().getName();
+    private static final String PACKAGE_PREFIX = DIObjectFactory_newInstanceMethod_positiveTests.class.getPackage().getName();
 
     private DIObjectFactory objectFactory;
 
-    public DIObjectFactory_newInstancePositiveTests() {
+    public DIObjectFactory_newInstanceMethod_positiveTests() {
         super(PACKAGE_PREFIX);
     }
 
@@ -29,27 +28,27 @@ public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
     }
 
     // arrays
-    //newInstancePositiveTests_checkJavaLangStringArray();
-    //newInstancePositiveTests_checkTypeArray();
+    // checkJavaLangStringArray();
+    // checkTypeArray();
 
     // lists
-    //newInstancePositiveTests_checkJavaLangStringList();
-    //newInstancePositiveTests_checkTypeList();
-    //newInstancePositiveTests_checkTypeListInjectedIntoDifferentTypes();
+    // checkJavaLangStringList();
+    // heckTypeList();
+    // checkTypeListInjectedIntoDifferentTypes();
 
     // literals
-    //newInstancePositiveTests_checkJavaLangCharacter();
-    //newInstancePositiveTests_checkJavaLangBoolean();
-    //newInstancePositiveTests_checkJavaLangDate();
+    // checkJavaLangCharacter();
+    // checkJavaLangBoolean();
+    // checkJavaLangDate();
 
     // types
-    //newInstancePositiveTests_checkSingleType();
-    //newInstancePositiveTests_checkSingleTypeWithDependencies();
-    //newInstancePositiveTests_checkMultipleTypes();
-    //newInstancePositiveTests_checkMultipleTypesWithDependencies();
+    // checkSingleType();
+    // checkSingleTypeWithDependencies();
+    // checkMultipleTypes();
+    // checkMultipleTypesWithDependencies();
 
     // factories
-    //newInstancePositiveTests_checkTypeFactory();
+    // checkTypeFactory();
 
     @Test
     public void checkDefaultConstructor() {
@@ -57,6 +56,7 @@ public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
         assertNotNull(bean1);
         BeanWithDefaultConstructor bean2 = objectFactory.newInstance(BeanWithDefaultConstructor.class);
         assertNotNull(bean2);
+        assertTrue(bean1 != bean2);
         assertNotEquals(bean1, bean2);
     }
 
@@ -68,6 +68,7 @@ public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
         BeanWithPrimitiveByteConstructor bean2 = objectFactory.newInstance(BeanWithPrimitiveByteConstructor.class, Byte.MIN_VALUE);
         assertNotNull(bean2);
         assertEquals(bean2.getTestByte(), Byte.MIN_VALUE);
+        assertTrue(bean1 != bean2);
         assertNotEquals(bean1, bean2);
     }
 
@@ -76,13 +77,13 @@ public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
         Byte testByte = Byte.MIN_VALUE;
 
         // BeanWithByteConstructor bean1
-        BeanWithByteConstructor bean1 = objectFactory.newInstance(BeanWithByteConstructor.class, testByte);
+        BeanWithJavaLangByteConstructor bean1 = objectFactory.newInstance(BeanWithJavaLangByteConstructor.class, testByte);
         assertNotNull(bean1);
         assertNotNull(bean1.getTestByte());
         assertEquals(bean1.getTestByte(), testByte);
 
         // BeanWithByteConstructor bean2
-        BeanWithByteConstructor bean2 = objectFactory.newInstance(BeanWithByteConstructor.class, testByte);
+        BeanWithJavaLangByteConstructor bean2 = objectFactory.newInstance(BeanWithJavaLangByteConstructor.class, testByte);
         assertNotNull(bean2);
         assertNotNull(bean2.getTestByte());
         assertEquals(bean2.getTestByte(), testByte);
@@ -115,13 +116,13 @@ public class DIObjectFactory_newInstancePositiveTests extends DIBaseTest {
         Short testShort = Short.MAX_VALUE;
 
         // BeanWithShortConstructor bean1
-        BeanWithShortConstructor bean1 = objectFactory.newInstance(BeanWithShortConstructor.class, testShort);
+        BeanWithJavaLangShortConstructor bean1 = objectFactory.newInstance(BeanWithJavaLangShortConstructor.class, testShort);
         assertNotNull(bean1);
         assertNotNull(bean1.getTestShort());
         assertEquals(bean1.getTestShort(), testShort);
 
         // BeanWithShortConstructor bean2
-        BeanWithShortConstructor bean2 = objectFactory.newInstance(BeanWithShortConstructor.class, testShort);
+        BeanWithJavaLangShortConstructor bean2 = objectFactory.newInstance(BeanWithJavaLangShortConstructor.class, testShort);
         assertNotNull(bean2);
         assertNotNull(bean2.getTestShort());
         assertEquals(bean2.getTestShort(), testShort);

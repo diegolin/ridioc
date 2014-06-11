@@ -1,5 +1,5 @@
 package ch.dkitc.ridioc.test.api;
 
-public interface BeanWithByteConstructor {
+public interface BeanWithJavaLangByteConstructor {
     Byte getTestByte();
 }
