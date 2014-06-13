@@ -1,5 +1,5 @@
 package ch.dkitc.ridioc.test.api;
 
-public interface BeanWithBooleanConstructor {
+public interface BeanWithJavaLangBooleanConstructor {
     Boolean getTestBoolean();
 }

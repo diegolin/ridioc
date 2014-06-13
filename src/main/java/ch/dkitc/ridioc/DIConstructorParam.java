@@ -92,6 +92,14 @@ public class DIConstructorParam {
         return isArrayOfPrimitives() && isComponentType(float.class);
     }
 
+    public boolean isArrayOfPrimitiveDoubles() {
+        return isArrayOfPrimitives() && isComponentType(double.class);
+    }
+
+    public boolean isArrayOfPrimitiveCharacters() {
+        return isArrayOfPrimitives() && isComponentType(char.class);
+    }
+
     public boolean isArrayOfArrays() {
         return isArray() && getComponentType().isArray();
     }

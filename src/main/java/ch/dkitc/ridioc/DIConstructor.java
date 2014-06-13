@@ -113,6 +113,10 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
                     realInitArgs[i] = unboxToPrimitiveLongArray((Long[]) initArg);
                 } else if (constrParam.isArrayOfPrimitiveFloats()) {
                     realInitArgs[i] = unboxToPrimitiveFloatArray((Float[]) initArg);
+                } else if (constrParam.isArrayOfPrimitiveDoubles()) {
+                    realInitArgs[i] = unboxToPrimitiveDoubleArray((Double[]) initArg);
+                } else if (constrParam.isArrayOfPrimitiveCharacters()) {
+                    realInitArgs[i] = unboxToPrimitiveCharacterArray((Character[]) initArg);
                 }
                 else {
                     throw new IllegalArgumentException(constrParam + " is not (yet) supported");
@@ -215,8 +219,7 @@ public class DIConstructor implements Iterable<DIConstructorParam> {
         return paramNames;
     }
 
-    private static Class<?> findPrimitiveType(String name)
-    {
+    private static Class<?> findPrimitiveType(String name) {
         if (name.equals("byte")) {
             return byte.class;
         }

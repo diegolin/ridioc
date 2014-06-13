@@ -1,5 +1,5 @@
 package ch.dkitc.ridioc.test.api;
 
-public interface BeanWithFloatConstructor {
+public interface BeanWithJavaLangFloatConstructor {
     Float getTestFloat();
 }

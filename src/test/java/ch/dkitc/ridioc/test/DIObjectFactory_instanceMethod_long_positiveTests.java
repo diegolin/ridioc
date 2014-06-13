@@ -53,7 +53,7 @@ public class DIObjectFactory_instanceMethod_long_positiveTests extends DIBaseTes
     @Test
     public void checkPrimitiveLongArray() {
         // register string literal array for longs
-        Long[] testLongs = new Long[]{Long.MAX_VALUE, -20l, -10l, -2l, -1l, 0l, 1l, 2l, 10l, 20l, Long.MAX_VALUE};
+        Long[] testLongs = new Long[]{Long.MIN_VALUE, -20l, -10l, -2l, -1l, 0l, 1l, 2l, 10l, 20l, Long.MAX_VALUE};
         objectFactory.registerStringLiteralArray("testLongs", testLongs);
 
         // create BeanWithPrimitiveLongArrayConstructor bean1
@@ -99,8 +99,8 @@ public class DIObjectFactory_instanceMethod_long_positiveTests extends DIBaseTes
 
     @Test
     public void checkJavaLangLongArray() {
-        // register string literal array for shorts
-        Long[] testLongs = new Long[]{Long.MAX_VALUE, -20l, -10l, -2l, -1l, 0l, 1l, 2l, 10l, 20l, Long.MAX_VALUE};
+        // register string literal array for floats
+        Long[] testLongs = new Long[]{Long.MIN_VALUE, -20l, -10l, -2l, -1l, 0l, 1l, 2l, 10l, 20l, Long.MAX_VALUE};
         objectFactory.registerStringLiteralArray("testLongs", testLongs);
 
         // create BeanWithJavaLangLongArrayConstructor bean1
@@ -121,11 +121,10 @@ public class DIObjectFactory_instanceMethod_long_positiveTests extends DIBaseTes
         assertArrayEquals(bean1.getTestLongs(), bean2.getTestLongs());
     }
 
-
     @Test
     public void checkJavaLangLongList() {
         // register value List<Long>
-        Long[] testLongs = new Long[]{Long.MAX_VALUE, -1000l, -100l, -10l, -1l, 0l, 1l, 10l, 100l, 1000l, Long.MAX_VALUE};
+        Long[] testLongs = new Long[]{Long.MIN_VALUE, -1000l, -100l, -10l, -1l, 0l, 1l, 10l, 100l, 1000l, Long.MAX_VALUE};
         objectFactory.registerStringLiteralArray("testLongs", testLongs);
 
         // create BeanWithJavaLangLongListConstructor bean1
