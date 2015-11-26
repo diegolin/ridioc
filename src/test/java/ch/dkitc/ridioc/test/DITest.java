@@ -20,6 +20,7 @@ public class DITest extends DIBaseTest {
     @Test
     public void createFactoryPositiveTests() {
         DI.createObjectFactory(DIObjectFactory.class, PACKAGE_PREFIX);
+        DI.createObjectFactory(MyDIObjectFactory.class, PACKAGE_PREFIX);
     }
 
     @Test
@@ -67,3 +68,5 @@ public class DITest extends DIBaseTest {
         }
     }
 }
+
+interface MyDIObjectFactory extends DIObjectFactory {}
