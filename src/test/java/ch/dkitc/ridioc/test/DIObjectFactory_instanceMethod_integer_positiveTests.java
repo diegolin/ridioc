@@ -54,7 +54,7 @@ public class DIObjectFactory_instanceMethod_integer_positiveTests extends DIBase
     @Test
     public void checkPrimitiveIntegerArray() {
         // register string literal array for ints
-        Integer[] testInts = new Integer[]{Integer.MAX_VALUE, -20, -10, -2 , -1, 0, 1, 2, 10, 20, Integer.MAX_VALUE};
+        Integer[] testInts = new Integer[]{Integer.MIN_VALUE, -20, -10, -2 , -1, 0, 1, 2, 10, 20, Integer.MAX_VALUE};
         objectFactory.registerStringLiteralArray("testInts", testInts);
 
         // create BeanWithPrimitiveShortArrayConstructor bean1
@@ -81,12 +81,12 @@ public class DIObjectFactory_instanceMethod_integer_positiveTests extends DIBase
         objectFactory.registerInstance(Integer.class, testInteger);
 
         // BeanWithIntegerConstructor bean1
-        BeanWithIntegerConstructor bean1 = objectFactory.instance(BeanWithIntegerConstructor.class);
+        BeanWithJavaLangIntegerConstructor bean1 = objectFactory.instance(BeanWithJavaLangIntegerConstructor.class);
         assertNotNull(bean1);
         assertEquals(bean1.getTestInteger(), testInteger);
 
         // BeanWithIntegerConstructor bean2
-        BeanWithIntegerConstructor bean2 = objectFactory.instance(BeanWithIntegerConstructor.class);
+        BeanWithJavaLangIntegerConstructor bean2 = objectFactory.instance(BeanWithJavaLangIntegerConstructor.class);
         assertNotNull(bean2);
         assertEquals(bean2.getTestInteger(), testInteger);
 
@@ -124,7 +124,7 @@ public class DIObjectFactory_instanceMethod_integer_positiveTests extends DIBase
     @Test
     public void checkJavaLangIntegerList() {
         // register value List<Integer>
-        Integer[] testIntegers = new Integer[]{Integer.MAX_VALUE, -1000, -100, -10, -1, 0, 1, 10, 100, 1000, Integer.MAX_VALUE};
+        Integer[] testIntegers = new Integer[]{Integer.MIN_VALUE, -1000, -100, -10, -1, 0, 1, 10, 100, 1000, Integer.MAX_VALUE};
         objectFactory.registerStringLiteralArray("testIntegers", testIntegers);
 
         // create BeanWithJavaLangIntegerListConstructor bean1

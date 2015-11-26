@@ -156,12 +156,12 @@ public class DIObjectFactory_newInstanceMethod_positiveTests extends DIBaseTest 
         Integer testInt = 1234;
 
         // BeanWithIntegerConstructor bean2
-        BeanWithIntegerConstructor bean1 = objectFactory.newInstance(BeanWithIntegerConstructor.class, testInt);
+        BeanWithJavaLangIntegerConstructor bean1 = objectFactory.newInstance(BeanWithJavaLangIntegerConstructor.class, testInt);
         assertNotNull(bean1);
         assertEquals(bean1.getTestInteger(), testInt);
 
         // BeanWithIntegerConstructor bean2
-        BeanWithIntegerConstructor bean2 = objectFactory.newInstance(BeanWithIntegerConstructor.class, testInt);
+        BeanWithJavaLangIntegerConstructor bean2 = objectFactory.newInstance(BeanWithJavaLangIntegerConstructor.class, testInt);
         assertNotNull(bean2);
         assertEquals(bean2.getTestInteger(), testInt);
 
@@ -234,13 +234,13 @@ public class DIObjectFactory_newInstanceMethod_positiveTests extends DIBaseTest 
         Float testFloat = Float.MAX_VALUE;
 
         // BeanWithFloatConstructor bean1
-        BeanWithFloatConstructor bean1 = objectFactory.newInstance(BeanWithFloatConstructor.class, testFloat);
+        BeanWithJavaLangFloatConstructor bean1 = objectFactory.newInstance(BeanWithJavaLangFloatConstructor.class, testFloat);
         assertNotNull(bean1);
         assertNotNull(bean1.getTestFloat());
         assertEquals(bean1.getTestFloat(), testFloat, 0.0);
 
         // BeanWithFloatConstructor bean2
-        BeanWithFloatConstructor bean2 = objectFactory.newInstance(BeanWithFloatConstructor.class, testFloat);
+        BeanWithJavaLangFloatConstructor bean2 = objectFactory.newInstance(BeanWithJavaLangFloatConstructor.class, testFloat);
         assertNotNull(bean2);
         assertNotNull(bean2.getTestFloat());
         assertEquals(bean2.getTestFloat(), testFloat, 0.0);
@@ -274,13 +274,13 @@ public class DIObjectFactory_newInstanceMethod_positiveTests extends DIBaseTest 
         Double testDouble = Double.MAX_VALUE;
 
         // BeanWithDoubleConstructor bean1
-        BeanWithDoubleConstructor bean1 = objectFactory.newInstance(BeanWithDoubleConstructor.class, testDouble);
+        BeanWithJavaLangDoubleConstructor bean1 = objectFactory.newInstance(BeanWithJavaLangDoubleConstructor.class, testDouble);
         assertNotNull(bean1);
         assertNotNull(bean1.getTestDouble());
         assertEquals(bean1.getTestDouble(), testDouble, 0.0);
 
         // BeanWithDoubleConstructor bean2
-        BeanWithDoubleConstructor bean2 = objectFactory.newInstance(BeanWithDoubleConstructor.class, testDouble);
+        BeanWithJavaLangDoubleConstructor bean2 = objectFactory.newInstance(BeanWithJavaLangDoubleConstructor.class, testDouble);
         assertNotNull(bean2);
         assertNotNull(bean2.getTestDouble());
         assertEquals(bean2.getTestDouble(), testDouble, 0.0);

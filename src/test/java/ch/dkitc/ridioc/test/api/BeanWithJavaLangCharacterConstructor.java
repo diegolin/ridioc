@@ -1,5 +1,5 @@
 package ch.dkitc.ridioc.test.api;
 
-public interface BeanWithCharacterConstructor {
+public interface BeanWithJavaLangCharacterConstructor {
     Character getTestCharacter();
 }

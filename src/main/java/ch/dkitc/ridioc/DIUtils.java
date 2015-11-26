@@ -1,5 +1,6 @@
 package ch.dkitc.ridioc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,6 +111,30 @@ public class DIUtils {
     }
 
     public static Object unboxToPrimitiveFloatArray(Float[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
+    public static Object unboxToPrimitiveDoubleArray(Double[] boxedPrimitiveArray) {
+        return ArrayUtils.toPrimitive(boxedPrimitiveArray);
+    }
+
+    public static Character[] convertToJavaLangCharacterArray(String[] unicodeCharacterArray) {
+        List<Character> characters = new ArrayList<Character>();
+        for (String unicodeCharacter : unicodeCharacterArray) {
+            if (!unicodeCharacter.startsWith("\\u")) {
+                throw new IllegalArgumentException("Unicode character must start with '\\u' but looks like this: '" + unicodeCharacter + "'");
+            }
+            String unicode = unicodeCharacter.substring(2);
+            characters.add((char) Integer.parseInt(unicode, /* radix */ 16));
+        }
+        return characters.toArray(new Character[characters.size()]);
+    }
+
+    public static Object unboxToPrimitiveCharacterArray(String[] unicodeCharacterArray) {
+        return ArrayUtils.toPrimitive(convertToJavaLangCharacterArray(unicodeCharacterArray));
+    }
+
+    public static Object unboxToPrimitiveCharacterArray(Character[] boxedPrimitiveArray) {
         return ArrayUtils.toPrimitive(boxedPrimitiveArray);
     }
 

@@ -1,5 +1,5 @@
 package ch.dkitc.ridioc.test.api;
 
-public interface BeanWithDoubleConstructor {
+public interface BeanWithJavaLangDoubleConstructor {
     Double getTestDouble();
 }
